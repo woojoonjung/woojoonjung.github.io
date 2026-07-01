@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Woojun Jung</title>
+  <meta name="description" content="Woojun Jung — graduate researcher at the DAIS Lab, Korea University, working across machine learning, data mining, and human–AI interaction, with a background in industrial design." />
+  <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <script>
+    // Arriving with a #hash (e.g. from the Research/Projects nav) should land
+    // instantly, not animate up from the top — override the global smooth
+    // scroll-behavior until the browser's fragment scroll has settled.
+    if (location.hash) document.documentElement.style.scrollBehavior = "auto";
+  </script>
+</head>
+<body data-page="home" id="top">
+
+  <!-- Morphing header: name scales down + nav rides up as you scroll -->
+  <div class="morph__bg" id="morphBg"></div>
+  <div class="morph">
+    <a class="morph__name" id="morphName" href="#top" aria-label="Woojun Jung — home">
+      <img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" />
+    </a>
+    <!-- Natively-34px copy of the logo, shown only once docked. It carries the
+         cross-page `site-logo` identity when docked so Profile <-> Research/
+         Projects morphs between matching 34px boxes (no size wobble). -->
+    <div class="morph__dock-logo" id="morphDockLogo" aria-hidden="true">
+      <img src="assets/SVG/Woojun_Jung_Logo.svg" alt="" />
+    </div>
+    <div class="morph__tag" id="morphTag" aria-hidden="true">
+      <img class="morph__tag-figure" src="assets/robot_and_woojun.png" alt="" />
+      <div class="morph__tag-stack">
+        <img class="tagline-img" data-role="researcher" src="assets/SVG/Researcher.svg" alt="Researcher" />
+        <img class="tagline-img is-faded" data-role="designer" src="assets/SVG/Designer.svg" alt="Designer" />
+      </div>
+    </div>
+    <nav class="morph__nav nav-pill" id="morphNav" aria-label="Primary">
+      <a href="#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="research.html"><span class="nav-pill__label">Research</span></a>
+      <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
+    </nav>
+    <div class="scroll-cue" id="scrollCue">Scroll to Explore ↓</div>
+  </div>
+
+  <!-- Landing spacer (first viewport) -->
+  <section class="hero" aria-label="Landing"></section>
+
+  <!-- ===================== PROFILE ===================== -->
+  <main>
+    <section class="profile-top" id="profile">
+      <div class="container">
+        <div class="profile-photo reveal">
+          <img src="assets/Woojun_Jung_profile_image.png" alt="Portrait of Woojun Jung" width="786" height="1040" />
+        </div>
+
+        <div class="row reveal">
+          <div class="row__label">Biography.</div>
+          <div class="row__body">
+            <p>I am a graduate student at the DAIS Lab, Korea University, advised by Prof. Susik Yoon.
+              My primary research focus is <a href="research.html?topic=ml-dm">Representation Learning, Reinforcement Learning,</a> and
+              <a href="research.html">Human–AI Interaction</a>, with a central interest in building systems that
+              enable effective human–AI collaboration. With a background in both industrial design and computer
+              science, I strive to bridge technical rigor with human-centered design.</p>
+          </div>
+        </div>
+
+        <div class="row reveal">
+          <div class="row__label">Education.</div>
+          <div class="row__body">
+            <div class="edu-item">M.S., student in Computer Science &amp; Engineering,<br />Korea University (Mar. 2025 – Present)</div>
+            <div class="edu-item">B.E., in Computer Science &amp; Engineering,<br />Korea University (Mar. 2022 – Feb. 2025)</div>
+            <div class="edu-item">B.F.A., in Industrial &amp; Information Design,<br />Korea University (Mar. 2016 – Feb. 2022)</div>
+            <div class="edu-item edu-note">Period includes 2 years of military service in<br />Republic of Korea Air Force (Oct. 2017 – Sep. 2019)</div>
+          </div>
+        </div>
+
+        <div class="row reveal">
+          <div class="row__label">References.</div>
+          <div class="row__body">
+            <div class="ref-links">
+              <a href="assets/Woojun_Jung_CV.pdf" target="_blank" rel="noopener">CV</a>
+              <a href="https://scholar.google.com/citations?user=hVdeNvsAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a>
+              <a href="https://github.com/woojoonjung" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/in/woojun-jung-80945a301" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://x.com/woojoonjung" target="_blank" rel="noopener">X</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interests: intro pins to the viewport centre while captioned cards drift up past it -->
+    <section class="interests" id="interests">
+      <!-- Pinned, centred intro (eases from top → centre on entry) -->
+      <div class="interests__center">
+        <div class="interests__intro">
+          <div class="interests__label">Interests.</div>
+          <p class="interests__lead">I'm drawn to how machines perceive and understand the world and people in it, and
+            communicate that understanding back — questions I've been pursuing through my research. Alongside this, I
+            design and build things: some out of a wish to fix small frictions in daily life, others simply chasing a
+            shape or feeling that seemed worth making. Together, these threads move between understanding machines and making them easier to live with.</p>
+          <p class="strip-more">See my works in <a href="research.html">Research</a> and <a href="projects.html">Projects</a></p>
+        </div>
+      </div>
+
+      <!-- Floating cards: JS randomises size + position on each load; captions sit below each card -->
+      <div class="interests__field" id="interestsField">
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/research/NAVI.png" alt="Research figure: tabular representation" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">NAVI</span><span class="float-card__tag">Representation Learning</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/research/HAETAE.png" alt="Research figure: in-domain table pretraining" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">HAETAE</span><span class="float-card__tag">Representation Learning</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/research/StreamBench.png" alt="Research figure: massive document stream evaluation" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">StreamBench</span><span class="float-card__tag">LLM Evaluation</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/projects/DrSnap.png" alt="Project: DrSnap capstone project" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Dr.Snap</span><span class="float-card__tag">Interaction Design</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/projects/PetX.png" alt="Project: PetX home appliance concept" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">PetX</span><span class="float-card__tag">Industrial Design</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/projects/Bianca.png" alt="Project: Bianca interactive fridge" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Bianca</span><span class="float-card__tag">Interaction Design</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/projects/Neuro.png" alt="Project: Neuro BCI HMD concept" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Neuro</span><span class="float-card__tag">Industrial Design</span></figcaption> -->
+        </figure>
+        <figure class="float-card">
+          <div class="float-card__media"><img src="assets/projects/SilverLining.png" alt="Project: Silverlining time-of-day adjustable pendant lighting" /></div>
+          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Silverlining</span><span class="float-card__tag">Industrial Design</span></figcaption> -->
+        </figure>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <div style="height: var(--space-16);"></div>
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="row reveal">
+          <div class="row__label">Contact.</div>
+          <div class="row__body">
+            <p>I'm always interested in discussing research opportunities, collaborations, or simply connecting with
+              fellow researchers and designers. You can contact me directly via
+              <a href="mailto:smallthingsmatter729@gmail.com,woojoon@korea.ac.kr">E-mail</a>, or use the form below. Feel free to reach out!</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-panel reveal" id="contactForm" novalidate>
+        <input class="field" type="text" id="cfSubject" name="subject" autocomplete="off"
+               placeholder="What's this about? (e.g., Collaboration, Question)" />
+        <input class="field" type="email" id="cfEmail" name="email" autocomplete="email"
+               placeholder="Your email, so I can reply" />
+        <textarea class="field" id="cfBody" name="message" placeholder="Say hello, or tell me what's on your mind"></textarea>
+        <div class="contact-actions">
+          <button class="btn-send" type="submit">Submit</button>
+          <span class="form-status" id="cfStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container--max footer__inner">
+      <div class="footer__brand"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /> <span>© 2026</span></div>
+      <!-- <nav class="footer__links" aria-label="Footer">
+        <ul>
+          <li><a href="https://scholar.google.com/citations?user=hVdeNvsAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://github.com/woojoonjung" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav> -->
+      <div class="footer__social">
+        <a href="https://www.instagram.com/vvj.works/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/woojun-jung-80945a301" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.9-2.9s-2.2 1.4-2.2 2.8V21H9z"/></svg></a>
+        <a href="https://x.com/woojoonjung" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7.1-8.1L2.2 3h6.1l4.2 5.6zM16.4 19.2h1.66L7.7 4.7H5.9z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

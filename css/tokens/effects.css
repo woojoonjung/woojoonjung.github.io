@@ -1,0 +1,74 @@
+/* ============================================================
+   EFFECTS — shadows, transitions, motion
+   Shadows are extremely soft and warm-tinted: cards appear to
+   *float* on the paper rather than sit in a box. Almost no border.
+   ============================================================ */
+:root {
+  /* --- Shadows (warm, low-opacity, large blur) --- */
+  --shadow-xs:   0 1px 2px rgba(60, 58, 52, 0.04);
+  --shadow-sm:   0 2px 8px rgba(60, 58, 52, 0.05);
+  --shadow-card: 0 16px 42px rgba(60, 58, 52, 0.07), 0 4px 12px rgba(60, 58, 52, 0.04);
+  --shadow-card-hover: 0 26px 64px rgba(60, 58, 52, 0.11), 0 6px 16px rgba(60, 58, 52, 0.05);
+  --shadow-pill: 0 2px 10px rgba(60, 58, 52, 0.05), inset 0 0 0 1px rgba(60,58,52,0.015);
+  --shadow-chip: 0 1px 4px rgba(60, 58, 52, 0.10); /* active tab chip */
+  --shadow-media: 0 24px 60px rgba(40, 38, 34, 0.16); /* product render plate */
+
+  /* --- Glass nav pill: soft float + specular top/bottom edge strokes --- */
+  --blur-glass: blur(20px) saturate(1.7);
+  --shadow-glass:
+    0 10px 30px rgba(60, 58, 52, 0.08),
+    0 2px 6px rgba(60, 58, 52, 0.04),
+    inset 0 1px 0 var(--glass-edge-light),
+    inset 0 -1px 0 var(--glass-edge-dark);
+  --shadow-glass-chip:
+    0 1px 3px rgba(60, 58, 52, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px rgba(60, 58, 52, 0.05);
+
+  /* --- Inset / field --- */
+  --inset-field: inset 0 1px 2px rgba(60, 58, 52, 0.04);
+
+  /* --- Edge fades (the peek-carousel sides fade to paper) --- */
+  --fade-paper: linear-gradient(90deg, var(--paper) 0%, rgba(255,254,252,0) 14%, rgba(255,254,252,0) 86%, var(--paper) 100%);
+
+  /* --- Motion --- */
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-soft:  cubic-bezier(0.4, 0.0, 0.2, 1);
+  /* Framer-style curves (reference: Karolina Hess portfolio) — slow start,
+     decisive finish; nav chip uses the middle one for a visible glide. */
+  --ease-vt-nav:     cubic-bezier(0.67, 0, 0.39, 1);
+  --ease-vt-logo:    cubic-bezier(0.44, 0, 0.56, 1);
+  --ease-vt-content: cubic-bezier(0.65, -0.01, 0.38, 1);
+  --ease-vt-reveal:  cubic-bezier(0.6, 0, 0.56, 1);
+
+  --dur-fast:   180ms;
+  --dur-base:   320ms;
+  --dur-slow:   520ms;
+  --dur-fade:   900ms; /* gentle entrance fades */
+  /* Shell morph: one clock for landing↔profile scroll, landing↔subpage VT */
+  --dur-shell-morph: 800ms;
+  --dur-vt-shell: var(--dur-shell-morph);
+  --dur-vt-content-out: 500ms;
+  --dur-vt-content-in:  var(--dur-shell-morph);
+  --dur-profile-scroll: 85000ms; /* index: Profile anchor click only */
+  /* Click-driven page-swap morph (JS clone-and-fly). Same --ease-out curve as
+     the scroll-morph, but snappier than the 1350ms scroll clock since a click
+     isn't user-paced. Content cross-fade rides slightly shorter. */
+  --dur-shell-nav: 750ms;
+  --dur-content-nav: 380ms;
+
+  /* Smooth scroll (Lenis) — keep in sync with --dur-shell-morph (seconds) */
+  --scroll-duration: 1.35;
+  --scroll-lerp: 0.08;
+  --scroll-wheel: 0.85;
+
+  --transition-base: all var(--dur-base) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; --dur-fade: 0ms;
+    --dur-shell-morph: 0ms; --dur-vt-shell: 0ms; --dur-vt-content-out: 0ms; --dur-vt-content-in: 0ms;
+    --dur-profile-scroll: 0ms; --dur-shell-nav: 0ms; --dur-content-nav: 0ms;
+  }
+}

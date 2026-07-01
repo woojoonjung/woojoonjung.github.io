@@ -1,0 +1,15 @@
+/* ============================================================
+   FONTS
+   Two voices:
+   1. Gaegu — a hand-drawn marker face (Korean designer Hyun-min
+      Kang). Used ONLY for the name/logo ("Woojun Jung") and the
+      "-Researcher-" tag. Warm, human, slightly childlike.
+   2. Times New Roman — the academic body voice, used for everything
+      else (prose, nav, titles, labels, captions). Times New Roman
+      itself ships with Windows/macOS but can't be redistributed as a
+      webfont, so Tinos (Google Fonts) is loaded as a fallback: it's
+      metrically identical to Times New Roman (same glyph widths), so
+      systems without the real font still render visually the same,
+      with no layout shift.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@400;500&display=swap');

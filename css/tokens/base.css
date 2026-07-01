@@ -1,0 +1,46 @@
+/* ============================================================
+   BASE — light reset + element defaults.
+   Sets the warm-paper, serif-prose baseline of the brand.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font: var(--type-body);
+  letter-spacing: var(--ls-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings default to the serif voice (NOT the hand — the hand is
+   reserved for the name/logo via .wj-logo). */
+h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-serif); color: var(--text-strong); font-weight: var(--fw-bold); line-height: var(--lh-snug); }
+p { margin: 0; }
+
+a { color: var(--text-link); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; transition: color var(--dur-fast) var(--ease-out); }
+a:hover { color: var(--text-link-hover); }
+
+::selection { background: rgba(60,60,60,0.12); }
+
+img { display: block; max-width: 100%; }
+
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: var(--radius-xs); }
+
+/* --- Identity helper: the handwritten name/logo --- */
+.wj-logo { font: var(--type-logo); color: var(--text-primary); letter-spacing: 0; }
+.wj-logo--hero { font: var(--type-hero); }
+.wj-logo--sm { font-size: var(--fs-logo-sm); }
+.wj-logo--ghost { color: var(--text-faint); } /* footer outline-grey treatment */
+
+/* --- Prose helpers --- */
+.wj-prose { font: var(--type-body); color: var(--text-body); text-wrap: pretty; }
+.wj-prose a { color: inherit; text-decoration: underline; text-decoration-color: var(--ink-300); }
+.wj-prose a:hover { text-decoration-color: currentColor; }
+
+.wj-label { font: var(--type-label); color: var(--text-muted); }   /* hanging "Biography." */
+.wj-muted { color: var(--text-muted); }
+.wj-faint { color: var(--text-faint); }

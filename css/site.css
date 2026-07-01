@@ -1,0 +1,911 @@
+/* ============================================================
+   SITE — Woojun Jung portfolio
+   Component + layout layer on top of the design-system tokens.
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+/* Lenis takes over wheel smoothing — native smooth-scroll fights it. */
+html.lenis { scroll-behavior: auto !important; }
+html.lenis, html.lenis body { height: auto; }
+html.lenis.lenis-smooth iframe { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   CROSS-PAGE VIEW TRANSITIONS
+   The three pages (Profile / Research / Projects) are separate
+   documents, but the logo + pill nav are treated as one permanent
+   "site shell". Cross-document view transitions let those elements
+   stay anchored (or morph) across a navigation while only the page
+   content cross-fades — so the site reads as one notebook, not four
+   webpages. Progressive enhancement: browsers without cross-document
+   VT just navigate instantly (today's behaviour).
+   ============================================================ */
+@view-transition { navigation: auto; }
+
+/* Shared shell elements. Each name is unique per page: no page has
+   both a static .site-header and the index morph overlay, so the
+   logo/nav selectors below never collide within a single document. */
+.site-header__logo,                  /* Research / Projects */
+.morph__name {                       /* index (landing + docked) */
+  view-transition-name: site-logo;
+}
+/* Cross-page navs into Profile always land on index.html#profile. At that first
+   paint — BEFORE app.js runs its scroll handoff — the docked 34px logo must
+   already be the `site-logo` snapshot; otherwise the unnamed dock logo falls
+   into the page-content group and ghosts in via the fade (and the hero
+   #morphName would be captured instead). `:has(:target)` pins the docked handoff
+   in pure CSS so the snapshot is correct regardless of JS timing; JS then keeps
+   it in sync once the user scrolls. */
+body:has(#profile:target) .morph__name      { view-transition-name: none; opacity: 0; }
+body:has(#profile:target) .morph__dock-logo { view-transition-name: site-logo; opacity: 1; }
+.nav-pill {                          /* static pill AND index .morph__nav.nav-pill */
+  view-transition-name: site-nav;
+}
+/* The active chip is matched by NAME across pages (not DOM node), so the
+   highlight glides from the old page's active label to the new one's. */
+.nav-pill a[aria-current="page"] {
+  view-transition-name: nav-active;
+}
+/* Only the colored chip should travel between tabs — the labels must stay put.
+   Each label is lifted into its own persistent group, named by position (the
+   nav order is identical on every page), so a label morphs from its own spot to
+   the same spot = no movement. That also subtracts the active label's glyphs
+   from the `nav-active` snapshot, leaving a textless chip that slides under the
+   static labels. The group z-indexes keep the labels above the moving chip. */
+.nav-pill a:nth-child(1) .nav-pill__label { view-transition-name: nav-label-1; }
+.nav-pill a:nth-child(2) .nav-pill__label { view-transition-name: nav-label-2; }
+.nav-pill a:nth-child(3) .nav-pill__label { view-transition-name: nav-label-3; }
+::view-transition-group(nav-active)  { z-index: 1; }
+::view-transition-group(nav-label-1),
+::view-transition-group(nav-label-2),
+::view-transition-group(nav-label-3) { z-index: 2; }
+
+/* Shell morph timing — matched to index scroll-morph (--dur-shell-morph) and
+   Lenis anchor scroll; --ease-out parallels initMorph's easeOut cubic. */
+::view-transition-group(nav-active) {
+  animation-duration: var(--dur-vt-shell);
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-old(nav-active),
+::view-transition-new(nav-active) {
+  animation-duration: var(--dur-vt-shell);
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-group(site-logo) {
+  animation-duration: var(--dur-vt-shell);
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-group(site-nav),
+::view-transition-group(nav-label-1),
+::view-transition-group(nav-label-2),
+::view-transition-group(nav-label-3) {
+  animation-duration: var(--dur-vt-shell);
+  animation-timing-function: var(--ease-out);
+}
+
+/* Page content (everything not lifted into a named group above) fades
+   down-and-out, then the incoming content rises-and-in. */
+::view-transition-old(root) {
+  animation: vt-content-out var(--dur-vt-content-out) var(--ease-vt-content) both;
+}
+::view-transition-new(root) {
+  animation: vt-content-in var(--dur-vt-content-in) var(--ease-vt-content) 90ms both;
+}
+@keyframes vt-content-out {
+  to { opacity: 0; transform: translateY(10px); }
+}
+@keyframes vt-content-in {
+  from { opacity: 0; transform: translateY(18px); }
+}
+
+/* Respect reduced-motion: skip the choreography, navigate instantly. */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+/* ============================================================
+   CLIENT-ROUTER MORPH (JS clone-and-fly — see app.js morphSwap)
+   The router now drives the page-swap itself instead of leaning on
+   the snapshot crossfade above: while a navigation plays, the real
+   logo + nav pill are held invisible and live CLONES (.morph-fly)
+   are flown from their outgoing positions to the incoming resting
+   positions with the same --ease-out curve the scroll-morph uses.
+   Transforming a live vector clone (rather than a rasterized VT
+   snapshot) keeps the logo crisp through the whole move — true
+   parity with landing↔profile. The @view-transition rules above
+   stay as the no-JS / unsupported fallback.
+   ============================================================ */
+body.is-morphing .site-header__logo:not(.morph-fly),
+body.is-morphing .morph__name:not(.morph-fly),
+body.is-morphing .morph__dock-logo:not(.morph-fly),
+body.is-morphing .nav-pill:not(.morph-fly) { opacity: 0 !important; }
+
+.morph-fly {
+  opacity: 1 !important;
+  pointer-events: none;
+  /* clone is positioned/animated entirely from JS */
+}
+.morph-fly img { width: 100%; height: 100%; margin: 0; object-fit: contain; }
+
+/* Robot illustration + Researcher/Designer tagline (#morphTag, index only):
+   initMorph's render() sets this element's opacity inline based on scroll
+   position, and runs synchronously the instant the router swaps the landing
+   page in — before the shell flight even starts. Since the browser's default
+   opacity is already 1, setting it to "1" again is a no-op, so on arrival
+   (research/projects -> landing) it was popping in instantly instead of
+   fading. Force it hidden for the duration of the flight (transition: none,
+   so it snaps off rather than animating out) the same way the shell is held
+   invisible; once is-morphing is removed, #morphTag's own `transition: opacity
+   480ms var(--ease-vt-content)` (see the rule above it) takes back over and
+   animates 0 -> render()'s real value, i.e. a genuine fade-in timed to the
+   page transition finishing. */
+body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
+
+/* ---------- Layout containers ---------- */
+.container,
+.container--wide,
+.container--max {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container      { max-width: calc((var(--container) + var(--label-col) + var(--label-gap) + var(--gutter) * 2) * 0.6); }
+.container--wide { max-width: calc(var(--container-wide) + var(--gutter) * 2); }
+.container--max  { max-width: calc(var(--container-max) + var(--gutter) * 2); }
+
+.section { 
+  padding-block: var(--space-6); 
+  margin-top: var(--space-6);
+}
+.band { 
+  background: var(--surface-band); 
+  margin-top: var(--space-40);
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-40);
+}
+
+/* ---------- Nav pill (shared identity element) ---------- */
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background: var(--glass-surface);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--glass-edge-light);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-glass);
+}
+.nav-pill a {
+  position: relative;
+  font: var(--type-nav);
+  letter-spacing: var(--ls-nav);
+  color: var(--ink-900);
+  text-decoration: none;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-pill);
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.nav-pill a:hover { color: var(--text-primary); }
+.nav-pill a[aria-current="page"] {
+  color: var(--ink-900);
+  font-weight: var(--fw-med);
+  background: var(--glass-surface-active);
+  backdrop-filter: blur(8px) saturate(1.3);
+  -webkit-backdrop-filter: blur(8px) saturate(1.3);
+}
+/* Fallback for browsers without backdrop-filter: keep the original opaque pill
+   rather than a washed-out translucent one with no blur to back it up. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-pill { background: var(--surface-pill); border-color: transparent; box-shadow: var(--shadow-pill); }
+  .nav-pill a[aria-current="page"] { background: var(--pill-active); box-shadow: var(--shadow-chip); }
+}
+/* Gliding active-chip — used only during a router morph (see morphSwap). At
+   rest the per-link aria-current background above is the highlight (so it works
+   with no JS); during a page swap that background is stripped from the flying
+   nav clone and this single chip is flown from the OLD active item's box to the
+   NEW one, exactly like the reference's sliding nav indicator. Identical fill to
+   the resting active link, so the hand-off when the real nav is revealed is
+   seamless. JS sets left/top/width/height. */
+.nav-pill__chip {
+  position: absolute;
+  z-index: 0;
+  border-radius: var(--radius-pill);
+  background: var(--glass-surface-active);
+  backdrop-filter: blur(8px) saturate(1.3);
+  -webkit-backdrop-filter: blur(8px) saturate(1.3);
+  pointer-events: none;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-pill__chip { background: var(--pill-active); box-shadow: var(--shadow-chip); }
+}
+/* Keep labels above the gliding chip inside the flying clone. */
+.morph-fly.nav-pill a { z-index: 1; }
+
+/* ---------- Static site header (Profile/Research/Projects) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-6) var(--space-5);
+  /* Stay fully opaque through the logo (header top padding + the logo img's
+     own top margin + height), then fade to transparent below it — the logo
+     should never sit on a half-faded backdrop. */
+    background: linear-gradient(
+    to bottom,
+    var(--surface-page) 0,
+    color-mix(in srgb, var(--surface-page) 90%, transparent) calc(var(--space-6) + 46px),
+    color-mix(in srgb, var(--surface-page) 0%, transparent) 100%
+  );
+}
+.site-header__logo { display: block; line-height: 1; }
+.site-header__logo img {
+  height: 34px;
+  width: auto;
+  display: block;
+  margin: 12px 0 8px;
+}
+/* Flying logo clones are positioned from the visible image rect. The static
+   header logo's image margin would otherwise push the cloned glyph down ~12px. */
+.site-header__logo.morph-fly img,
+.morph__name.morph-fly img,
+.morph__dock-logo.morph-fly img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+
+/* ============================================================
+   LANDING + MORPH HEADER (index.html only)
+   The hand-drawn name scales down and docks at the top while the
+   nav pill rides up from the bottom of the first screen.
+   ============================================================ */
+.hero { height: 100vh; min-height: 560px; }
+
+.morph {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  pointer-events: none;
+}
+/* the paper bar that fades in behind the docked header */
+.morph__bg {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    var(--surface-page) 0,
+    color-mix(in srgb, var(--surface-page) 90%, transparent) calc(var(--space-6) + 46px),
+    color-mix(in srgb, var(--surface-page) 0%, transparent) 100%
+  );
+  opacity: 0;
+  will-change: opacity;
+}
+.morph__name {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  /* Laid out at HERO size; JS scales DOWN to dock it. Rasterizing large
+     and downscaling stays crisp — upscaling a small raster (the old
+     docked-size-then-scale-up approach) looked soft/blurry. */
+  width: 880px;
+  transform-origin: top center;
+  transform: translate(-50%, 20vh);
+  pointer-events: auto;
+  will-change: transform;
+}
+@media (max-width: 2380px) {
+  .morph__name { width: 660px; }
+}
+@media (max-width: 1920px) {
+  .morph__name { width: 550px; }
+}
+@media (max-width: 1180px) {
+  .morph__name { width: 400px; }
+}
+@media (max-width: 760px) {
+  .morph__name { width: 290px; }
+}
+@media (max-width: 420px) {
+  .morph__name { width: 230px; }
+}
+.morph__name img { display: block; width: 100%; height: auto; }
+
+/* Statically-sized docked logo — matches .site-header__logo on Research/Projects
+   exactly (34px tall, top edge 36px, centred), so the cross-page view transition
+   morphs between identical boxes instead of the huge hero box. Hidden until JS
+   hands it over once #morphName has fully docked (see initMorph). */
+.morph__dock-logo {
+  position: fixed;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  line-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.morph__dock-logo img { height: 34px; width: auto; display: block; }
+
+.morph__tag {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  /* Width collapses to the (in-flow) stack, so translateX(-50%) keeps the
+     Researcher/Designer states dead-centre in the viewport. The figure is
+     taken out of flow (see .morph__tag-figure) so it never shifts that
+     centre. Vertical position (translateY) is set by JS — see initMorph's
+     render() in app.js — which measures the name logo's actual rendered
+     bottom edge each frame and anchors this block just below it; a static vh
+     guess broke down on wide-short viewports where the (width-breakpoint-
+     driven) logo box runs taller than a fixed percentage assumed. The 50vh
+     below is only the pre-JS/no-script fallback. */
+  transform: translate(-50%, 50vh);
+  transition: opacity 480ms var(--ease-vt-content);
+  will-change: opacity;
+}
+.morph__tag-stack { position: relative; width: 380px; height: 34px; }
+/* The figure sits directly above the tagline, centred, in the existing
+   whitespace between the docked name and the caption line — NOT inside
+   .morph__tag's own flow, so the stack (the box JS anchors .morph__tag's
+   position by) keeps its own height. `bottom: 100%` parks the figure's
+   bottom edge level with the stack's top edge; margin-bottom opens a gap
+   above that — both are accounted for by the JS that positions .morph__tag. */
+.morph__tag-figure {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  margin-bottom: var(--space-6);
+  height: 380px;
+  width: auto;                  /* preserve the image's aspect ratio */
+  display: block;
+}
+@media (max-width: 1920px) {
+  .morph__tag-figure { height: 210px; }
+}
+/* Phones: a smaller figure suits the narrower column. (No transform override
+   needed here anymore — JS positions .morph__tag off the name's measured
+   bottom edge at every breakpoint, see the note on .morph__tag above.) */
+@media (max-width: 1180px) {
+  .morph__tag-figure { height: 160px; }
+}
+.tagline-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 560ms var(--ease-vt-nav);
+}
+.tagline-img[data-role="researcher"] { width: 236px; }
+@media (max-width: 1920px) {
+  .tagline-img[data-role="researcher"] { width: 196px; }
+}
+@media (max-width: 1180px) {
+  .tagline-img[data-role="researcher"] { width: 160px; }
+}
+/* Designer.svg's viewBox is much taller than Researcher's (48.43 vs 30.79)
+   because of the descender on "g" — centering by bounding box alone leaves
+   its baseline sitting ~6px higher than Researcher's. Nudge down to align
+   the actual letterforms, not just the boxes. (70% of the original 8.5px.) */
+.tagline-img[data-role="designer"]   { width: 210px; transform: translate(-50%, calc(-50% + 6px)); }
+@media (max-width: 1920px) {
+  .tagline-img[data-role="designer"]   { width: 176px; }
+}
+@media (max-width: 1180px) {
+  .tagline-img[data-role="designer"]   { width: 142px; }
+}
+.tagline-img.is-faded { opacity: 0; }
+
+.morph__nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 84vh);
+  pointer-events: auto;
+  will-change: transform;
+}
+.scroll-cue {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  /* Sits a fixed gap below the nav pill's own resting position (84vh,
+     see .morph__nav) instead of anchoring to the viewport bottom — keeps
+     the two close together regardless of screen height. */
+  transform: translate(-50%, calc(86vh + 60px));
+  margin-top:8px;
+  font: var(--type-caption);
+  color: var(--text-muted);
+  letter-spacing: var(--ls-wide);
+  z-index: 60;
+  transition: opacity 480ms var(--ease-vt-content);
+}
+
+/* ---------- Profile: hanging-label rows ---------- */
+.profile-top {
+  /* Laptop / tablet (default) */
+  padding-top: 210px;
+  padding-bottom: 180px;
+}
+@media (min-height: 1280px) {
+  /* Desktop: matches the .morph__name desktop breakpoint above.
+     The section becomes a full-viewport stage with its content centred on
+     both axes, rather than being positioned by padding. */
+  .profile-top {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+.profile-photo {
+  width: 200px;
+  aspect-ratio: 786 / 1040;
+  margin: 0 auto var(--space-12);
+  border-radius: 0px;
+  overflow: hidden;
+  background: var(--card-warm);
+  box-shadow: var(--shadow-card-hover);
+}
+.profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.row {
+  display: grid;
+  grid-template-columns: var(--label-col) 1fr;
+  gap: var(--label-gap);
+  max-width: calc(var(--label-col) + var(--label-gap) + var(--container));
+  margin-inline: auto;
+  padding-block: var(--space-5);
+}
+.row__label {
+  font: var(--type-label);
+  color: var(--text-muted);
+  width: 100%;
+  text-align: left;
+  padding-top: 0px;
+}
+.row__body { font: var(--type-body); color: var(--text-body); text-wrap: pretty; }
+.row__body p + p { margin-top: var(--space-3); }
+.row__body a { color: inherit; text-decoration: underline; text-decoration-color: var(--ink-300); }
+.row__body a:hover { text-decoration-color: currentColor; }
+.edu-item + .edu-item { margin-top: var(--space-3); }
+.edu-note { 
+  color: var(--text-faint); 
+  font-size: var(--fs-cap);
+  line-height: var(--lh-body);
+  }
+.ref-links { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.ref-links a { 
+  white-space: nowrap; 
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-300);
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out), text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.ref-links a:hover {
+  color: var(--text-primary);
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Interests: captioned cards drift up past a pinned intro ---------- */
+.interests {
+  position: relative;
+  background: var(--surface-band);
+  margin-top: var(--space-24);
+}
+/* Intro pins to the viewport centre. Because this box is exactly 100vh and the
+   intro is flex-centred within it, the instant the box's sticky top hits the
+   viewport top, the intro is ALREADY sitting dead-centre — no JS, no lag, it
+   locks the moment it arrives. The .interests__field below supplies the
+   scroll length, so the cards begin a viewport down and ride up past the text. */
+.interests__center {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none; /* clicks fall through to the cards; text re-enables it */
+}
+/* .interests__intro {
+  pointer-events: auto;
+  max-width: 560px;
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  background: color-mix(in srgb, var(--surface-band) 80%, transparent);
+  backdrop-filter: saturate(0.8) blur(6px);
+  -webkit-backdrop-filter: saturate(0.8) blur(6px);
+} */
+.interests__intro {
+  pointer-events: auto;
+  max-width: 560px;
+  padding: var(--space-32) var(--space-8);
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--surface-band) 40%, transparent) 10%,
+    color-mix(in srgb, var(--surface-band) 80%, transparent) 20%,
+    color-mix(in srgb, var(--surface-band) 95%, transparent) 30%,
+    color-mix(in srgb, var(--surface-band) 95%, transparent) 70%,
+    color-mix(in srgb, var(--surface-band) 80%, transparent) 80%,
+    color-mix(in srgb, var(--surface-band) 40%, transparent) 95%,
+    transparent 100%
+  );
+  /* backdrop-filter: saturate(0.8) blur(6px);
+  -webkit-backdrop-filter: saturate(0.8) blur(6px); */
+}
+.interests__label { font: var(--type-label); color: var(--text-muted); margin-bottom: var(--space-4); }
+.interests__lead  { font: var(--type-body); color: var(--text-body); text-wrap: pretty; }
+
+/* Holds the absolutely-placed cards; its height is set by JS after layout. */
+.interests__field { position: relative; }
+
+.float-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210px; /* JS overrides width/left/top per card */
+  margin: 0;
+  z-index: 1;
+}
+.float-card__media {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #F7F7F7;
+  /* box-shadow: var(--shadow-card); */
+  line-height: 0;
+}
+/* Research figures get breathing room so the chart/diagram doesn't bleed to the card edge. */
+.float-card__media:has(img[alt^="Research figure:"]) { padding: var(--space-4); }
+.float-card__media img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; } /* keeps the raw image ratio */
+.float-card__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+  font-size: var(--fs-cap);
+  font-family: var(--font-serif);
+  line-height: 1.1;
+}
+.float-card__name { color: var(--text-strong); }
+.float-card__tag  { color: var(--text-muted); text-align: right; }
+
+.strip-more { text-align: center; padding-block: var(--space-16) var(--space-24); font: var(--type-caption); color: var(--text-muted); }
+.strip-more a { color: inherit; }
+/* When the "See more" line sits inside the centred intro, keep it compact. */
+.interests__intro .strip-more { padding-block: var(--space-6) 0; margin: 0; }
+
+/* ---------- Contact form ---------- */
+.contact-panel {
+  max-width: var(--container);
+  margin: var(--space-12) auto var(--space-16);
+  padding: var(--space-4);
+  background: var(--surface-band);
+  border-radius: 0px;
+}
+.field {
+  width: 100%;
+  font: var(--fs-sm);
+  color: var(--text-primary);
+  background: var(--surface-page);
+  border: 1px solid var(--border-hairline);
+  border-radius: 0px;
+  padding: var(--space-1) var(--space-2);
+  box-shadow: var(--inset-field);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.field::placeholder { color: var(--ink-400); font-style: italic; }
+.field:focus { outline: none; border-color: var(--border-strong); box-shadow: var(--inset-field), 0 0 0 1px var(--focus-ring); }
+.field + .field { margin-top: var(--space-4); }
+textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body); }
+.contact-actions { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-1); margin-top: var(--space-4); margin-bottom: var(--space-2);}
+.btn-send {
+  font: var(--fs-lead);
+  color: var(--ink-600);
+  background: #E8E6E6;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+}
+.btn-send:hover { color: var(--text-strong); }
+.form-status { font: var(--type-caption); color: var(--text-muted); min-height: 1.4em; }
+.form-status.is-error { color: #9a5b4f; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer { border-top: 1px solid var(--border-hairline); margin-top: var(--space-24); }
+.footer__inner {
+  display: flex;
+  /* grid-template-columns: 1fr auto 1fr; */
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-12);
+}
+.footer__brand { display: flex; align-items: center; gap: var(--space-2); }
+.footer__brand img { height: 22px; width: auto; opacity: 0.42; }
+.footer__brand span { font: var(--type-caption); color: var(--text-faint); }
+.footer__links { display: flex; gap: var(--space-16); justify-self: center; }
+.footer__links ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.footer__links a { font: var(--type-caption); color: var(--text-muted); text-decoration-color: var(--line-strong); }
+.footer__links a:hover { color: var(--text-strong); }
+.footer__social { display: flex; gap: var(--space-4); justify-self: end; }
+.footer__social a { color: var(--text-faint); display: inline-flex; }
+.footer__social a:hover { color: var(--text-primary); }
+.footer__social svg { width: 18px; height: 18px; }
+
+/* ============================================================
+   FILTERS (Selected Works / Publications)
+   ============================================================ */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-6);
+  padding-top: 0px;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.filters__label { font: var(--type-label); color: var(--text-primary); margin-right: var(--space-2); }
+.filter {
+  font: var(--type-nav);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0px 0 2px;
+  text-underline-offset: 5px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.filter:hover { color: var(--text-primary); }
+.filter.is-active { color: var(--text-strong); text-decoration: underline; text-decoration-thickness: 1.5px; }
+/* Topics that exist but aren't ready yet (work in progress) — shown, greyed, inert */
+.filter--soon { color: var(--ink-300); cursor: default; pointer-events: none; }
+.filter--soon:hover { color: var(--ink-300); }
+
+/* ============================================================
+   WORK GRID (Projects) — cards share .pub-card, see below
+   ============================================================ */
+.work-grid,
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+  margin-top: var(--space-10);
+}
+/* Project cards size to their own image (see .pub-card__media--auto), so rows
+   shouldn't stretch every card to match the tallest one in the row. */
+.work-grid { align-items: start; }
+.is-hidden { display: none !important; }
+
+/* ============================================================
+   MEDIA CARDS (.pub-card) — shared by Research and Projects
+   The card itself holds only the figure on a quiet grey plate.
+   On hover the plate warms and the abstract/description cross-fades
+   in over the figure. Venue / title / authors / links sit below.
+   ============================================================ */
+.pub-card { display: flex; flex-direction: column; }
+
+.pub-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  /* Side padding only — the figure grows as large as the width allows and is
+     vertically centred, so wide and tall figures alike are never cropped. */
+  padding-inline: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;
+  overflow: hidden;
+  background: #F7F7F5;
+  transition: background var(--dur-base) var(--ease-out);
+}
+.pub-card__media:hover,
+.pub-card__media:focus-within { background: #EDECE6; }
+
+/* Projects: size the plate to the image's own aspect ratio instead of forcing
+   a square — cards end up different heights, which is fine here. The image
+   also runs edge-to-edge, with no side padding. */
+.pub-card__media--auto { aspect-ratio: auto; padding-inline: 0; }
+.pub-card__media--auto .pub-card__fig { width: 100%; height: auto; max-height: none; }
+
+.pub-card__fig {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.pub-card__media:hover .pub-card__fig,
+.pub-card__media:focus-within .pub-card__fig { opacity: 0; }
+
+.pub-card__abstract {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: var(--space-8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.pub-card__media:hover .pub-card__abstract,
+.pub-card__media:focus-within .pub-card__abstract { opacity: 1; }
+.pub-card__abstract p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  text-wrap: pretty;
+}
+
+.pub-card__body { padding-top: var(--space-5); }
+.pub-card__venue { font: var(--type-nav); color: var(--ink-900); }
+.pub-card__title { font: var(--type-nav); color: var(--ink-600); margin-top: var(--space-3); line-height: var(--lh-snug); }
+.pub-card__authors { font: var(--type-nav); color: var(--text-muted); margin-top: var(--space-3); line-height: var(--lh-snug); }
+.pub-card__authors b { text-decoration: underline; color: var(--ink-600); }
+
+.pub-card__links { display: flex; gap: var(--space-2); margin-top: var(--space-4); }
+.pub-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.pub-link:hover { color: var(--text-strong); border-color: var(--border-strong); background: var(--surface-card); }
+.pub-link svg { width: 16px; height: 16px; display: block; }
+
+/* Hover label: small dark chip with the link's name, floating above the button */
+.pub-link::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translate(-50%, 4px);
+  white-space: nowrap;
+  font: var(--type-caption);
+  font-size: var(--fs-micro);
+  color: #fff;
+  background: color-mix(in srgb, var(--ink-900) 88%, transparent);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-xs);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.pub-link:hover::after,
+.pub-link:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+
+/* ============================================================
+   ESSAY (reflection sections)
+   ============================================================ */
+.essay { max-width: var(--container-wide); margin-inline: auto; }
+.essay__lead {
+  font: var(--type-label);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.essay h3 { font: var(--type-h2); color: var(--text-strong); margin-top: var(--space-10); margin-bottom: var(--space-4); }
+.essay h3:first-of-type { margin-top: 0; }
+.essay p:not(.essay__lead) { font: var(--type-body); color: var(--text-body); text-wrap: pretty; }
+.essay p + p { margin-top: var(--space-4); }
+.essay-toggle {
+  margin: 0;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.essay-toggle:first-of-type { border-top: none; }
+.essay-toggle__summary {
+  list-style: none;
+  cursor: pointer;
+  font: var(--fs-sm);
+  color: var(--ink-900);
+  position: relative;
+  padding-right: var(--space-8);
+}
+.essay-toggle__summary::-webkit-details-marker { display: none; }
+.essay-toggle__summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
+.essay-toggle[open] .essay-toggle__summary::after { content: "-"; }
+.essay-toggle__body {
+  margin-top: var(--space-4);
+}
+
+/* ============================================================
+   Reveal-on-scroll
+   ============================================================ */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-fade) var(--ease-vt-reveal),
+    transform var(--dur-fade) var(--ease-vt-reveal);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* Landing → Profile: the photo leads in (a longer rise, a touch quicker), then
+   biography / education / references cascade with a restrained stagger. Blocks
+   only — never per-sentence. The photo is the container's 1st child (no delay);
+   the three .row blocks follow as children 2–4. */
+.js .profile-top .profile-photo.reveal { transition-duration: 520ms; }
+.js .profile-top .profile-photo.reveal:not(.is-in) { transform: translateY(24px); }
+.js .profile-top .container > .reveal:nth-child(2) { transition-delay: 120ms; }
+.js .profile-top .container > .reveal:nth-child(3) { transition-delay: 220ms; }
+.js .profile-top .container > .reveal:nth-child(4) { transition-delay: 320ms; }
+
+/* ---- Research: tabs lead (delay 0), then publication cards fade in left→right
+   in ~90ms steps (per column, so every row staggers the same way), then the essay
+   below. Figures inside cards are NOT animated independently. ---- */
+.js .pub-grid .pub-card.reveal:nth-child(3n+1) { transition-delay: 160ms; }
+.js .pub-grid .pub-card.reveal:nth-child(3n+2) { transition-delay: 250ms; }
+.js .pub-grid .pub-card.reveal:nth-child(3n+3) { transition-delay: 340ms; }
+
+/* Essay: question headings rise slightly; paragraphs simply fade. */
+.js .essay h3.reveal { transform: translateY(10px); }
+.js .essay h3.reveal.is-in { transform: none; }
+.js .essay p.reveal  { transform: none; }
+.js .essay .essay-toggle.reveal { transform: none; }
+
+/* ---- Projects: match Research reveal rhythm exactly (same column stagger). ---- */
+.js .work-grid .pub-card.reveal:nth-child(3n+1) { transition-delay: 160ms; }
+.js .work-grid .pub-card.reveal:nth-child(3n+2) { transition-delay: 250ms; }
+.js .work-grid .pub-card.reveal:nth-child(3n+3) { transition-delay: 340ms; }
+
+/* Projects hover: the image lifts a few px and the View icon nudges up-right. */
+.work-grid .pub-card__media { transition: background var(--dur-base) var(--ease-vt-reveal), transform var(--dur-base) var(--ease-vt-reveal); }
+/* .work-grid .pub-card__media:hover { transform: translateY(-3px); } */
+.work-grid .pub-link { transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-vt-nav); }
+.work-grid .pub-card__media:hover ~ .pub-card__body .pub-link { transform: translate(2px, -2px); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 880px) {
+  .work-grid, .pub-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__links { gap: var(--space-10); }
+}
+@media (max-width: 620px) {
+  .section { padding-block: var(--space-20); }
+  .work-grid, .pub-grid { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; gap: var(--space-2); }
+  .row__label { text-align: left; }
+  .footer__inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: var(--space-6); }
+  .footer__social, .footer__links { justify-self: center; }
+  textarea.field { min-height: 240px; }
+}

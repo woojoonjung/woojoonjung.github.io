@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Woojun Jung - Research</title>
+  <meta name="description" content="Publications by Woojun Jung — machine learning, data mining, and evaluation, with a focus on tabular representation and human–AI understanding." />
+  <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body data-page="research">
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="research.html" aria-current="page"><span class="nav-pill__label">Research</span></a>
+      <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container--wide">
+      <div class="filters reveal" id="researchFilters" role="tablist" aria-label="Filter publications">
+        <span class="filters__label">Publications.</span>
+        <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="ml-dm" aria-pressed="false">Representation Learning</button>
+        <button class="filter" data-filter="evaluation" aria-pressed="false">Evaluation</button>
+        <button class="filter filter--soon" data-filter="personalization" disabled aria-disabled="true" title="In progress — work underway">Reinforcement Learning</button>
+        <button class="filter filter--soon" data-filter="human-ai" disabled aria-disabled="true" title="In progress — work underway">Human–AI Interaction</button>
+      </div>
+
+      <div class="pub-grid" id="pubGrid">
+
+        <article class="pub-card reveal" data-cat="ml-dm">
+          <div class="pub-card__media">
+            <img class="pub-card__fig" src="assets/research/NAVI.png" alt="Figure from the tabular representation study" />
+            <!-- TODO: replace with the paper's real abstract -->
+            <div class="pub-card__abstract"><p>In real-world domains, many tables share similar vocabulary while representing different entities, relations, or operational contexts.
+              NAVI therefore learns tables schema-wise rather than header-wise, modeling both the co-occurrence patterns among headers and the associated values. 
+              Grounding each table in this broader context helps the model infer what each table represents within a domain—and distinguish closely related tables.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">ICML 26</div>
+            <h3 class="pub-card__title">Segment-driven Structural Induction and Semantic Alignment for Heterogeneous Tabular Representation</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Susik Yoon</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="https://arxiv.org/abs/2606.01890" aria-label="Paper (PDF)" title="Paper" data-label="Paper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="8.5" y1="13" x2="15.5" y2="13"/><line x1="8.5" y1="16.5" x2="13" y2="16.5"/></svg>
+              </a>
+              <a class="pub-link" href="https://github.com/woojoonjung/NAVI/" aria-label="Code on GitHub" title="Code" data-label="Code">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-card reveal" data-cat="evaluation">
+          <div class="pub-card__media">
+            <img class="pub-card__fig" src="assets/research/StreamBench.png" alt="Figure from the massive document stream evaluation study" />
+            <!-- TODO: replace with the paper's real abstract -->
+            <div class="pub-card__abstract"><p>We ask whether structural cues let large language models reason over massive, continuously arriving document streams. Across temporal QA, summarization, and topic-discovery tasks over evolving real-world events, we measure where models lose the thread of context and how structural signals most reliably restore it.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">KDD 26</div>
+            <h3 class="pub-card__title">Can Structural Cues Save LLMs? Evaluating Language Models in Massive Document Streams</h3>
+            <p class="pub-card__authors">Yukyung Lee, Yebin Lim*, <span style="color: var(--ink-900);">Woojun Jung*</span>, Wonjun Choi, Susik Yoon</p>
+      
+            <div class="pub-card__links">
+              <a class="pub-link" href="https://arxiv.org/abs/2603.19250" aria-label="Paper (PDF)" title="Paper" data-label="Paper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="8.5" y1="13" x2="15.5" y2="13"/><line x1="8.5" y1="16.5" x2="13" y2="16.5"/></svg>
+              </a>
+              <a class="pub-link" href="https://github.com/yukyunglee/llm-streaming-eval" aria-label="Code on GitHub" title="Code" data-label="Code">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-card reveal" data-cat="ml-dm">
+          <div class="pub-card__media">
+            <img class="pub-card__fig" src="assets/research/HAETAE.png" alt="Figure from the in-domain table pretraining study" />
+            <!-- TODO: replace with the paper's real abstract -->
+            <div class="pub-card__abstract"><p>HAETAE explores how table schemas can serve as reusable carriers of implicit domain expertise. 
+              Column headers often express the concepts that organize a domain, but their representations can become unstable when tables are encoded row-wise. 
+              HAETAE introduces a separate encoder for schema elements and header-anchoring objectives that keeps header embeddings consistent across rows and tables.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">SIGIR 25</div>
+            <h3 class="pub-card__title">HAETAE: In-domain Table Pretraining with Header Anchoring</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Susik Yoon</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="https://dl.acm.org/doi/10.1145/3726302.3730205" aria-label="Paper (PDF)" title="Paper" data-label="Paper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="8.5" y1="13" x2="15.5" y2="13"/><line x1="8.5" y1="16.5" x2="13" y2="16.5"/></svg>
+              </a>
+              <a class="pub-link" href="https://github.com/woojoonjung/HAETAE" aria-label="Code on GitHub" title="Code" data-label="Code">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="form-status" id="emptyState" style="text-align:center;margin-top:var(--space-12);display:none;">No publications in this topic yet.</p>
+
+      <!-- Reflection -->
+      <section class="essay" style="margin-top: var(--space-32);">
+        <p class="essay__lead reveal">Questions I keep returning to.</p>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">World Understanding — Can machines make sense of the world as humans do?</summary>
+          <p class="essay-toggle__body">
+            Aligning human and machine perception feels foundational to me. Machines that perceive the world more like we do can better interpret context, intention, and meaning.
+          </p>
+          <p class="essay-toggle__body">For me, this question first became concrete through tables. Decades of 
+            human knowledge—scientific records, medical data, institutional logic—are encoded in tabular form, 
+            often carrying implicit domain expertise that is difficult for machines to recover. How can we make 
+            that knowledge legible to AI? This question led to my work on HAETAE (SIGIR 25) and NAVI (ICML 26).
+          </p>
+          <p class="essay-toggle__body">
+            More broadly, humans make sense of the world by combining sensory experience with accumulated knowledge. 
+            We integrate sight, sound, touch, taste, and smell, then interpret them through concepts, memories, 
+            and shared systems of meaning. I am interested in how machines can connect these heterogeneous signals 
+            into coherent representations of the world.
+          </p>
+          <p class="essay-toggle__body">
+            At its core, I want machines to recognize what we recognize, infer what we infer, and work with 
+            the knowledge we carry.
+          </p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">Human Understanding — Can machines understand what lives between people?</summary>
+          <p class="essay-toggle__body">
+            Where world understanding asks whether machines can interpret the reality around us, human understanding 
+            asks whether they can interpret the realities that exist within and between people. Much of what shapes 
+            how we think, feel, and communicate is never stated directly: personal memories, routines, preferences, 
+            emotional states, cultural references, and the shared context built over time within families, communities, 
+            and relationships.
+          </p>
+          <p class="essay-toggle__body">
+            These aspects of human life are not easily captured as a fixed set of semantic labels. They are distributed 
+            across behavior, language, history, and relationships—felt rather than fully articulated. I am interested 
+            in how AI systems might recognize these implicit patterns
+          </p>
+          <p class="essay-toggle__body">
+            This leads me to two connected directions. One is lifelong hyper-personalization: small, on-device 
+            models that grow alongside a person, gradually building context through an ongoing relationship rather than 
+            relying on a static profile. The other is how pluralistic large models can transfer their understanding 
+            of communities, cultures, and social perspectives into personal models. A personal AI should be 
+            grounded in the individual it serves, while still retaining an awareness of the wider social worlds that 
+            shape that person’s life.
+          </p>
+          <p class="essay-toggle__body">
+            I am interested in AI not as a system that imitates every kind of person, but as one that learns the evolving 
+            context of a particular person while remaining open to the diversity of people around them.
+          </p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">Human Augmentation — Can machines help us understand what they understand?</summary>
+          <p class="essay-toggle__body">
+            The first two questions ask what machines should learn about the world and about people. This one asks how that 
+            understanding should return to us. A model may recognize a pattern in a medical record, infer a hidden relationship 
+            in data, or adapt to the context of a particular person—but none of that matters unless it can become understandable, 
+            usable, and appropriately timed.
+          </p>
+          <p class="essay-toggle__body">
+            I am interested in the translation layer between machine representations and human experience. What should be surfaced, 
+            and what should remain in the background? When is a number enough, when is an explanation needed, and when might an interface, 
+            visualization, gesture, or ambient cue communicate more effectively? The answer depends not only on what the system knows, 
+            but on what a person needs in that moment.
+          </p>
+          <p class="essay-toggle__body">
+            In this sense, human augmentation is not simply about exposing what a model sees. It is about composing a shared perceptual 
+            space: one where machine understanding can support people’s judgment, communication, and connection without overwhelming or 
+            replacing them. This is not a question models alone can answer—it requires prototypes, interfaces, and people to test them with.
+          </p>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container--max footer__inner">
+      <div class="footer__brand"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /> <span>© 2026</span></div>
+      <!-- <nav class="footer__links" aria-label="Footer">
+        <ul>
+          <li><a href="https://scholar.google.com/citations?user=hVdeNvsAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://github.com/woojoonjung" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav> -->
+      <div class="footer__social">
+        <a href="https://www.instagram.com/vvj.works/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/woojun-jung-80945a30" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.9-2.9s-2.2 1.4-2.2 2.8V21H9z"/></svg></a>
+        <a href="https://x.com/woojoonjung" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7.1-8.1L2.2 3h6.1l4.2 5.6zM16.4 19.2h1.66L7.7 4.7H5.9z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

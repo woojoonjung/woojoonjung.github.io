@@ -1,0 +1,67 @@
+/* ============================================================
+   COLORS — Woojun Jung portfolio
+   A warm, near-monochrome editorial palette. Ink on warm paper.
+   Photography (not UI) carries the chroma, so the system colors
+   stay quiet: charcoal text, warm whites, soft greys.
+   ============================================================ */
+:root {
+  /* --- Ink scale (warm charcoal → grey) --- */
+  --ink-900: #2b2a28; /* deepest, headings on light */
+  --ink-800: #3c3c3c; /* PRIMARY text + handwritten logo */
+  --ink-700: #56554f;
+  --ink-600: #6b6a68; /* secondary prose */
+  --ink-500: #8a8a89; /* muted / captions */
+  --ink-400: #9d9c9b; /* faint / footer logo / disabled ink */
+  --ink-300: #c4c3c0; /* placeholder, hairline-on-dark */
+  --ink-200: #ddddd9;
+
+  /* --- Paper / surfaces (warm whites & greys) --- */
+  --paper:        #fffefc; /* page background */
+  --paper-warm:   #faf9f6;
+  --band:         #E6E4E4; /* alternating section band */
+  --card:         #fcfcfa; /* default card fill */
+  --card-warm:    #f8f6f1; /* warm card fill (cream) */
+  --pill:         #f4f3f0; /* nav pill / inset field */
+  --pill-active:  #ffffff; /* active tab chip on pill */
+
+  /* --- Glass (frosted nav surfaces) --- */
+  --glass-surface:        rgba(255, 254, 251, 0.55); /* translucent pill fill, blurred via backdrop-filter */
+  --glass-surface-active: #F0EEE9; /* brighter frosted chip for the active link */
+  --glass-edge-light:     rgba(255, 255, 255, 0.65); /* top specular stroke */
+  --glass-edge-dark:      rgba(60, 58, 52, 0.06);     /* bottom contact shadow stroke */
+
+  /* --- Lines --- */
+  --line:        #e6e5e1; /* hairline divider / border */
+  --line-strong: #d9d8d4;
+  --line-faint:  #efeeea;
+
+  /* --- Image-backdrop tints (the soft gradients behind project
+         thumbnails — sampled from the work imagery). Use ONLY as
+         large soft washes behind media, never as UI fills. --- */
+  --tint-cream:    #f6efe3;
+  --tint-tan:      #e9ddcb;
+  --tint-lavender: #ece9f4;
+  --tint-sky:      #e7edf2;
+  --tint-night:    #2a2740; /* dark dramatic product render wash */
+
+  /* ============ SEMANTIC ALIASES ============ */
+  --text-primary: var(--ink-800);
+  --text-strong:  var(--ink-900);
+  --text-body:    var(--ink-700);
+  --text-muted:   var(--ink-500);
+  --text-faint:   var(--ink-400);
+  --text-link:    var(--ink-600);
+  --text-link-hover: var(--ink-900);
+  --text-on-dark: #f3f1ec;
+
+  --surface-page: var(--paper);
+  --surface-band: var(--band);
+  --surface-card: var(--card);
+  --surface-card-warm: var(--card-warm);
+  --surface-pill: var(--pill);
+
+  --border-hairline: var(--line);
+  --border-strong:   var(--line-strong);
+
+  --focus-ring: rgba(60, 60, 60, 0.35);
+}

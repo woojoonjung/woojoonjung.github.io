@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Woojun Jung - Projects</title>
+  <meta name="description" content="Selected design work by Woojun Jung — UX studies, market research, product and interaction design." />
+  <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body data-page="projects">
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="research.html"><span class="nav-pill__label">Research</span></a>
+      <a href="projects.html" aria-current="page"><span class="nav-pill__label">Projects</span></a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container--wide">
+      <div class="filters reveal" id="projectFilters" role="tablist" aria-label="Filter projects">
+        <span class="filters__label">Selected Works.</span>
+        <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="product" aria-pressed="false">Industrial Design</button>
+        <button class="filter" data-filter="interaction" aria-pressed="false">Interaction Design</button>
+      </div>
+
+      <div class="work-grid" id="workGrid">
+
+        <article class="pub-card reveal" data-cat="interaction">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/DrSnap.png" alt="Dr.Snap — capstone project" />
+            <!-- TODO: refine description -->
+            <div class="pub-card__abstract"><p>Dr.Snap began with a concern: busy urban residents and people living far from care were using 
+              general AI chatbots as a substitute for medical diagnosis, despite their limited reliability. Rather than offering an immediate 
+              verdict, we designed and built a multi-turn, questionnaire-driven UX workflow for more reliable diagnostic support.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">KU Capstone Competition 24, Runner-up Award</div>
+            <h3 class="pub-card__title">Dr.Snap: Multimodal Dermatology Decision-Support System for Busy Urbanites and Remote Residents</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Youngseo Kim, Youngsook Hwang</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Dr.Snap case study" title="View (TBD)" data-label="View (TBD)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- <article class="pub-card reveal" data-cat="ux interaction">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/Bonfire.png" alt="Bonfire — XR-based SNS platform" />
+            <div class="pub-card__abstract"><p>TODO: description</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Side Project 23'</div>
+            <h3 class="pub-card__title">Bonfire: Business Proposal for XR-based SNS Platform</h3>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Bonfire case study" title="View" data-label="View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article> -->
+
+        <!-- <article class="pub-card reveal" data-cat="product">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/Muuto.png" alt="Muuto — kitchen appliance concept" />
+            <div class="pub-card__abstract"><p>TODO: description</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Side Project 22'</div>
+            <h3 class="pub-card__title">Brand Study — Muuto: Kitchen Appliance Concept</h3>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Muuto case study" title="View" data-label="View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article> -->
+
+        <article class="pub-card reveal" data-cat="product">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/Neuro.png" alt="Neuro — BCI-Enabled VR Interaction Concept" />
+            <!-- TODO: refine description -->
+            <div class="pub-card__abstract"><p>Neuro explores how brain–computer interfaces could make virtual experiences more expressive, personal, and socially connected. 
+              We imagined an everyday BCI–VR wearable that translates neural signals into feedback, creative expression, and user-controlled interactions—supporting memory, 
+              imagination, and communication beyond conventional screens and inputs.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Graduation Project 21</div>
+            <h3 class="pub-card__title">Neuro: BCI-Enabled VR Interaction Concept</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Jiwon Ryu</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Neuro case study" title="View (TBD)" data-label="View (TBD)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-card reveal" data-cat="interaction">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/SilverLining.png" alt="Silverlining — adjustable pendant lighting" />
+            <!-- TODO: refine description -->
+            <div class="pub-card__abstract"><p>Silverlining reimagines pendant lighting as an adaptive part of everyday routines rather than a static fixture. 
+              A context-aware system combines time-based cues with task information captured through an embedded camera, adjusting the light’s position and 
+              atmosphere throughout the day. It lowers for brighter, focused illumination during daytime work, then rises into the shade for softer ambient light during 
+              rest in the evening.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Side Project 21</div>
+            <h3 class="pub-card__title">Silverlining: Context-aware Adjustable Pendant Lighting Concept</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung*</span>, Yeongjun Song*</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Silverlining case study" title="View (TBD)" data-label="View (TBD)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-card reveal" data-cat="interaction">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/Bianca.png" alt="Bianca — interactive fridge prototype" />
+            <!-- TODO: refine description -->
+            <div class="pub-card__abstract"><p>Bianca explores how subtle sensory cues can enrich familiar routines at home. We prototyped an interactive 
+              refrigerator door with pressure sensors and embedded LED lighting, using touch to trigger changing light patterns. By making those responses 
+              adjustable, the project imagines a future where AI can shape ambient feedback around a person’s context.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Class Project 20</div>
+            <h3 class="pub-card__title">Bianca: Interactive Fridge Prototyping with Arduino</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Yein Lim, Taeil Lee</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Bianca case study" title="View (TBD)" data-label="View (TBD)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- <article class="pub-card reveal" data-cat="ux product">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/Wink.png" alt="Wink — wearable action camera concept" />
+            <div class="pub-card__abstract"><p>TODO: description</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Side Project 20'</div>
+            <h3 class="pub-card__title">Wink: Wearable Action Camera Concept</h3>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View Wink case study" title="View" data-label="View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article> -->
+
+        <article class="pub-card reveal" data-cat="product">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/PetX.png" alt="PetX — home appliance concept for pet owners" />
+            <!-- TODO: refine description -->
+            <div class="pub-card__abstract"><p>BRIDGE explores how home appliances could ease the everyday gaps between single-person pet owners and the pets waiting at home. 
+              We identified moments where care, cleanliness, and companionship become difficult to sustain alone, then developed a connected appliance ecosystem spanning a 
+              robot cleaner, pet minibar, and entryway steam closet. I led the steam closet concept, which supports quicker departures, prepares clean clothes and pet-walking 
+              essentials, and helps remove dust after walks.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">Samsung Design Challenge 19, Runner-up Award</div>
+            <h3 class="pub-card__title">BRIDGE: Home Appliance Concept for Single-person Household Pet Owners</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung*</span>, Taeuk Ham*, Yeongjun Song*</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="#" aria-label="View PetX case study" title="View (TBD)" data-label="View (TBD)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="form-status" id="emptyState" style="text-align:center;margin-top:var(--space-12);display:none;">No work in this category yet.</p>
+
+      <!-- Reflection -->
+      <section class="essay" style="margin-top: var(--space-32);">
+        <p class="essay__lead reveal">What draws me in.</p>
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">Empathy — How can design ease everyday friction?</summary>
+          <p class="essay-toggle__body">I am drawn to the small moments when everyday systems fail to meet people where they are. 
+            Through observation, interviews, and surveys, I like uncovering the subtle frustrations that often go unnoticed: a 
+            task that feels unnecessarily complicated, information that arrives too late, or a system that asks too much of people 
+            in an already demanding moment. From there, I translate those insights into experiences that make things feel clearer, 
+            lighter, and more natural. Whether through a product, interface, or service, I am interested in designing systems that 
+            respond to real needs rather than abstract assumptions.</p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">Narrative — How can design enrich human experience?</summary>
+          <p class="essay-toggle__body">I am also interested in design as more than a way to solve problems. 
+            It can shape how people notice, feel, remember, and connect with the world around them.  This 
+            means designing not only individual interactions, but also the relationship between them: how 
+            sequential moments build into a narrative, how simultaneous sensory cues reinforce one another, 
+            and how an experience can create resonance or evoke a meaningful memory. I am interested in using 
+            form, material, interaction, and atmosphere to expand and connect our senses, making ordinary 
+            moments feel more immersive and meaningful.</p>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container--max footer__inner">
+      <div class="footer__brand"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /> <span>© 2026</span></div>
+      <!-- <nav class="footer__links" aria-label="Footer">
+        <ul>
+          <li><a href="https://scholar.google.com/citations?user=hVdeNvsAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://github.com/woojoonjung" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav> -->
+      <div class="footer__social">
+        <a href="https://www.instagram.com/vvj.works/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/woojun-jung-80945a30" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.9-2.9s-2.2 1.4-2.2 2.8V21H9z"/></svg></a>
+        <a href="https://x.com/woojoonjung" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7.1-8.1L2.2 3h6.1l4.2 5.6zM16.4 19.2h1.66L7.7 4.7H5.9z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

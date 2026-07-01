@@ -1,0 +1,61 @@
+/* ============================================================
+   TYPOGRAPHY
+   Hand-drawn display (Gaegu) + transitional serif (Noto Serif).
+   The serif does all the work; the hand is reserved for identity.
+   ============================================================ */
+:root {
+  /* --- Families --- */
+  --font-hand:  'Gaegu', 'Comic Sans MS', cursive;
+  --font-serif: 'Times New Roman', 'Tinos', Georgia, 'Source Serif Pro', serif;
+  --font-mono:  'Noto Sans Mono', ui-monospace, 'SF Mono', 'Courier New', monospace;
+  /* tiny utilitarian role, only for figure chrome / form micro-labels */
+  --font-ui:    var(--font-serif);
+
+  /* --- Type scale (px, fluid where it matters) --- */
+  --fs-hero:    clamp(64px, 11vw, 148px); /* landing name, hand */
+  --fs-logo:    34px;   /* header logo, hand */
+  --fs-logo-sm: 22px;   /* footer logo, hand */
+  --fs-tag:     30px;   /* "-Researcher-", hand */
+
+  --fs-display: 30px;   /* big serif heading e.g. card title */
+  --fs-h1:      26px;
+  --fs-h2:      21px;   /* section question heads */
+  --fs-h3:      18px;
+  --fs-lead:    17px;
+  --fs-body:    16px;   /* default prose */
+  --fs-sm:      14.5px; /* nav, secondary */
+  --fs-cap:     13px;   /* captions, footer */
+  --fs-micro:   11.5px; /* figure chrome */
+
+  /* --- Weights --- */
+  --fw-hand-light: 300;
+  --fw-hand:       400;
+  --fw-hand-bold:  700;
+  --fw-reg:  400;
+  --fw-med:  500;
+  --fw-semi: 600;
+  --fw-bold: 700;
+
+  /* --- Line heights --- */
+  --lh-tight:  1.15;
+  --lh-snug:   1.3;
+  --lh-body:   1.62; /* generous, academic prose */
+  --lh-loose:  1.75;
+
+  /* --- Tracking --- */
+  --ls-tight:  -0.01em;
+  --ls-normal: 0;
+  --ls-wide:   0.04em;
+  --ls-nav:    0.01em;
+
+  /* --- Semantic roles --- */
+  --type-hero:    var(--fw-hand-bold) var(--fs-hero)/0.95 var(--font-hand);
+  --type-tag:     var(--fw-hand-light) var(--fs-tag)/1 var(--font-hand);
+  --type-logo:    var(--fw-hand-bold) var(--fs-logo)/1 var(--font-hand);
+  --type-title:   var(--fw-bold) var(--fs-display)/var(--lh-snug) var(--font-serif);
+  --type-h2:      var(--fw-bold) var(--fs-h2)/var(--lh-snug) var(--font-serif);
+  --type-body:    var(--fw-reg) var(--fs-body)/var(--lh-body) var(--font-serif);
+  --type-label:   italic var(--fw-reg) var(--fs-body)/var(--lh-body) var(--font-serif); /* hanging "Biography." */
+  --type-nav:     var(--fw-reg) var(--fs-sm)/1 var(--font-serif);
+  --type-caption: var(--fw-reg) var(--fs-cap)/1.5 var(--font-serif);
+}
