@@ -16,16 +16,25 @@
   </script>
 </head>
 <body data-page="home" id="top">
-
+  <div id="profile" aria-hidden="true"></div>
+  <!-- LANDING DISABLED: the page now opens directly at the profile, under the
+       static header below (same shell as research.html / projects.html).
+       To restore the landing animation, uncomment the two morph segments and
+       the .hero spacer, and delete the static <header class="site-header">.
+       (Two comment segments because HTML comments can't nest around the
+       dock-logo note.) -->
   <!-- Morphing header: name scales down + nav rides up as you scroll -->
+  <!--
   <div class="morph__bg" id="morphBg"></div>
   <div class="morph">
     <a class="morph__name" id="morphName" href="#top" aria-label="Woojun Jung — home">
       <img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" />
     </a>
+  -->
     <!-- Natively-34px copy of the logo, shown only once docked. It carries the
          cross-page `site-logo` identity when docked so Profile <-> Research/
          Projects morphs between matching 34px boxes (no size wobble). -->
+  <!--
     <div class="morph__dock-logo" id="morphDockLogo" aria-hidden="true">
       <img src="assets/SVG/Woojun_Jung_Logo.svg" alt="" />
     </div>
@@ -43,13 +52,25 @@
     </nav>
     <div class="scroll-cue" id="scrollCue">Scroll to Explore ↓</div>
   </div>
+  -->
 
   <!-- Landing spacer (first viewport) -->
+  <!--
   <section class="hero" aria-label="Landing"></section>
+  -->
+
+  <header class="site-header">
+    <a class="site-header__logo" href="#profile" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="#profile" aria-current="page"><span class="nav-pill__label">Profile</span></a>
+      <a href="research.html"><span class="nav-pill__label">Research</span></a>
+      <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
+    </nav>
+  </header>
 
   <!-- ===================== PROFILE ===================== -->
   <main>
-    <section class="profile-top" id="profile">
+    <section class="profile-top">
       <div class="container">
         <div class="profile-photo reveal">
           <img src="assets/Woojun_Jung_profile_image.png" alt="Portrait of Woojun Jung" width="786" height="1040" />

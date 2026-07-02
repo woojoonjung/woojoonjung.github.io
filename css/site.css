@@ -433,10 +433,10 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* ---------- Profile: hanging-label rows ---------- */
 .profile-top {
   /* Laptop / tablet (default) */
-  padding-top: 210px;
+  padding-top: 60px;
   padding-bottom: 180px;
 }
-@media (min-height: 1280px) {
+@media (min-height: 1320px) {
   /* Desktop: matches the .morph__name desktop breakpoint above.
      The section becomes a full-viewport stage with its content centred on
      both axes, rather than being positioned by padding. */
@@ -445,7 +445,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 0;
+    padding-top: 5vh;
     padding-bottom: 0;
   }
 }
