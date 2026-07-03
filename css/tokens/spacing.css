@@ -30,7 +30,8 @@
   --radius-pill: 999px; /* nav, tags, chips */
 
   /* --- Layout --- */
-  --container:      660px;  /* the narrow academic column */
+  --container-narrow: 480px;  /* the narrow academic column */
+  --container:      660px;  /* the normal academic column */
   --container-wide: 1050px; /* projects / research grids */
   --container-max:  1200px;
   --gutter:         24px;

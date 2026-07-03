@@ -592,9 +592,9 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 /* ---------- Contact form ---------- */
 .contact-panel {
-  max-width: var(--container);
+  max-width: var(--container-narrow);
   margin: var(--space-12) auto var(--space-16);
-  padding: var(--space-4);
+  padding: var(--space-3);
   background: var(--surface-band);
   border-radius: 0px;
 }
@@ -611,7 +611,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 }
 .field::placeholder { color: var(--ink-400); font-style: italic; }
 .field:focus { outline: none; border-color: var(--border-strong); box-shadow: var(--inset-field), 0 0 0 1px var(--focus-ring); }
-.field + .field { margin-top: var(--space-4); }
+.field + .field { margin-top: var(--space-3); }
 textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body); }
 .contact-actions { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-1); margin-top: var(--space-4); margin-bottom: var(--space-2);}
 .btn-send {
