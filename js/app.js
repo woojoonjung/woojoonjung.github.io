@@ -106,6 +106,26 @@
     }
   }
 
+  /* ---------- Profile viewport alignment ---------- */
+  function initProfileLayout() {
+    var profile = document.querySelector(".profile-top");
+    var header = document.querySelector(".site-header");
+    if (!profile || !header) return;
+
+    function measureHeader() {
+      profile.style.setProperty("--profile-header-height", header.getBoundingClientRect().height + "px");
+    }
+
+    measureHeader();
+    if ("ResizeObserver" in window) {
+      var observer = new ResizeObserver(measureHeader);
+      observer.observe(header);
+      track(function () { observer.disconnect(); });
+    } else {
+      onWindow("resize", measureHeader);
+    }
+  }
+
   /* ---------- Reveal on scroll ---------- */
   function initReveal() {
     var els = document.querySelectorAll(".reveal");
@@ -940,6 +960,7 @@
      specific page's DOM, torn down via runCleanups() before each re-run. */
   function bootPage() {
     runCleanups();
+    initProfileLayout();
     initReveal();
     initProjectMedia();
     initEssayToggles();

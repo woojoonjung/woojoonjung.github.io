@@ -47,7 +47,7 @@
   /* ============ SEMANTIC ALIASES ============ */
   --text-primary: var(--ink-800);
   --text-strong:  var(--ink-900);
-  --text-body:    var(--ink-700);
+  --text-body:    var(--ink-800);
   --text-muted:   var(--ink-500);
   --text-faint:   var(--ink-400);
   --text-link:    var(--ink-600);

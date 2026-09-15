@@ -489,6 +489,59 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
   text-decoration-color: currentColor;
 }
 
+/* Keep the existing stacked layout below 1024px. The original child order
+   also preserves the photo / biography / education / links reveal sequence. */
+@media (min-width: 1024px) {
+  .profile-top {
+    /* Header + Profile fill the first viewport. The extra bottom padding
+       balances the header so the content is centred in the whole viewport.
+       min-height lets long content grow without clipping on short screens. */
+    min-height: calc(100vh - var(--profile-header-height, 171px));
+    min-height: calc(100dvh - var(--profile-header-height, 171px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--space-6);
+    padding-bottom: calc(var(--profile-header-height, 171px) + var(--space-6));
+  }
+
+  .profile-top > .container {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(48px, 5vw, 80px);
+    row-gap: var(--space-8);
+    align-items: start;
+    max-width: calc((var(--container-max) + var(--gutter) * 2) * 2 / 3 + 30px);
+  }
+
+  .profile-top .profile-photo {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+
+  .profile-top > .container > .row {
+    grid-column: 2;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding-block: 0;
+  }
+
+  .profile-top .row__body + .row__label {
+    margin-top: var(--space-3);
+  }
+
+  .profile-top .edu-break { display: none; }
+}
+
+/* @media (min-width: 1024px) and (min-height: 1320px) {
+  .profile-top { padding-bottom: var(--space-6); }
+} */
+
 /* ---------- Interests: captioned cards drift up past a pinned intro ---------- */
 .interests {
   position: relative;
@@ -699,7 +752,7 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
   width: fit-content;
   margin-bottom: var(--space-2);
   color: var(--ink-900);
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .pub-card__question::after {
@@ -767,8 +820,8 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
 }
 
 .pub-card__body { padding-top: var(--space-5); }
-.pub-card__venue { font: var(--type-nav); color: var(--ink-900); }
-.pub-card__title { font: var(--type-nav); color: var(--ink-600); margin-top: var(--space-3); line-height: var(--lh-snug); }
+.pub-card__venue { font: var(--type-nav); color: var(--ink-600); }
+.pub-card__title { font: var(--type-nav); color: var(--ink-900); margin-top: var(--space-4); line-height: var(--lh-snug); }
 .pub-card__authors { font: var(--type-nav); color: var(--text-muted); margin-top: var(--space-3); line-height: var(--lh-snug); }
 .pub-card__authors b { text-decoration: underline; color: var(--ink-600); }
 
@@ -996,9 +1049,8 @@ body[data-page="blog"] main > .container--wide {
   .nav-pill a { padding-inline: var(--space-3); }
 }
 @media (min-height: 1320px) {
-  /* Desktop: matches the .morph__name desktop breakpoint above.
-     The section becomes a full-viewport stage with its content centred on
-     both axes, rather than being positioned by padding. */
+  /* Profile centering now uses min-width: 1024px above.
+     Previous height-based rule retained for reference:
   .profile-top {
     min-height: 82vh;
     display: flex;
@@ -1007,6 +1059,7 @@ body[data-page="blog"] main > .container--wide {
     padding-top: 0;
     padding-bottom: 0;
   }
+  */
   body[data-page="research"] main.section,
   body[data-page="projects"] main.section,
   body[data-page="blog"] main.section {
