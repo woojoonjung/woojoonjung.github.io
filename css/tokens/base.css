@@ -1,6 +1,6 @@
 /* ============================================================
    BASE — light reset + element defaults.
-   Sets the warm-paper, serif-prose baseline of the brand.
+   Sets the warm-paper, Inter-prose baseline of the brand.
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -16,9 +16,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Headings default to the serif voice (NOT the hand — the hand is
-   reserved for the name/logo via .wj-logo). */
-h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-serif); color: var(--text-strong); font-weight: var(--fw-bold); line-height: var(--lh-snug); }
+/* Headings default to Inter; the handwritten face is reserved for
+   the name/logo via .wj-logo. */
+h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--font-sans); color: var(--text-strong); font-weight: var(--fw-bold); line-height: var(--lh-snug); }
 p { margin: 0; }
 
 a { color: var(--text-link); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; transition: color var(--dur-fast) var(--ease-out); }

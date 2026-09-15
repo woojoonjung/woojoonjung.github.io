@@ -86,14 +86,14 @@ body[data-page="project-detail"] .site-header {
 
 .project-detail .project-hero h1 {
   margin-top: 0.5rem;
-  font: 400 clamp(3.5rem, 6.4vw, 5.5rem)/1.05 var(--font-serif);
+  font: 400 clamp(3.5rem, 6.4vw, 5.5rem)/1.05 var(--font-sans);
   letter-spacing: -0.035em;
 }
 
 .project-detail .project-hero__statement {
   margin-top: 1.75rem;
   max-width: 36ch;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(var(--fs-lead), 2vw, var(--fs-h1));
   font-style: italic;
   line-height: var(--lh-snug);
@@ -177,7 +177,7 @@ body[data-page="project-detail"] .site-header {
 
 .project-detail .project-section__copy h2 {
   max-width: 25ch;
-  font: 400 clamp(1.4rem, 3vw, 2.6rem)/1.2 var(--font-serif);
+  font: 400 clamp(1.4rem, 3vw, 2.6rem)/1.2 var(--font-sans);
   letter-spacing: -0.01em;
   color: var(--text-strong);
 }
@@ -258,7 +258,7 @@ body[data-page="project-detail"] .site-header {
   row-gap: 0.4em;
   margin: 0;
   max-width: 45ch;
-  font: 400 clamp(1.0rem, 1.7vw, 1.35rem)/1.4 var(--font-serif);
+  font: 400 clamp(1.0rem, 1.7vw, 1.35rem)/1.4 var(--font-sans);
   color: var(--text-strong);
 }
 
