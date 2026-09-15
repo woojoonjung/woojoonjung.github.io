@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Bianca</title>
+  <meta name="description" content="Bianca, an interactive refrigerator prototype by Woojun Jung." />
+  <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/project-detail.css" />
+  <link rel="stylesheet" href="css/project-bianca.css" />
+</head>
+<body data-page="project-detail">
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="research.html"><span class="nav-pill__label">Research</span></a>
+      <a href="projects.html" aria-current="page"><span class="nav-pill__label">Projects</span></a>
+      <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
+    </nav>
+  </header>
+
+  <main class="project-detail bianca-page">
+    <nav class="project-back-nav project-wrap" aria-label="Back to projects">
+      <a class="project-back" href="projects.html">← All projects</a>
+    </nav>
+    <section class="project-hero project-wrap" aria-labelledby="project-title">
+      <div class="project-hero__copy">
+        <p class="project-kicker">Physical Computing · 2020</p>
+        <h1 id="project-title">Bianca</h1>
+        <p class="project-hero__statement">How can a familiar act become a memorable sensory exchange?</p>
+        <p class="project-hero__summary">Bianca brings light into the familiar act of opening a refrigerator.
+          A full-scale working prototype connects touch and movement with a visual response, exploring how an easily overlooked gesture might become a richer sensory experience.</p>
+        <dl class="project-meta">
+          <div><dt>Status</dt><dd>Functional prototype</dd></div>
+          <div><dt>Duration</dt><dd>Mar. 2020 - May 2020 (3 months)</dd></div>
+          <div class="project-meta__contribution">
+            <dt>Contributions</dt>
+            <dd class="project-contributions">
+              <div>
+                <p>Shared equally: Desk research, Physical construction, Film</p>
+              </div>
+              <div>
+                <p>Woojun Jung: Arduino code and electronics</p>
+                <p>Yein Lim: Material sourcing and procurement</p>
+              </div>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <figure class="project-hero__image">
+        <img src="assets/projects/Bianca.png" alt="Person interacting with the Bianca refrigerator prototype" width="681" height="582" loading="eager" decoding="async" fetchpriority="high" />
+        <!-- Replace with the strongest project image or a short muted demo video. -->
+      </figure>
+    </section>
+
+    <div class="project-wrap" id="project-content">
+      <section class="project-section" aria-labelledby="context-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">01 / Motivation</p>
+          <div class="project-section__copy">
+            <h2 id="motivation-title">Rediscovering<br>a familiar gesture</h2>
+            <div class="project-section__description">
+              <p>Opening a refrigerator is a familiar sequence of reaching, touching, and pulling.
+                The brief physical encounter within that routine—the contact of the hand, the resistance of the door, and the movement of opening it—is easily overlooked.<br>
+                Could we enrich the encounter to make it more memorable?</p>
+            </div>
+          </div>
+        </header>
+        <figure class="project-figure">
+          <img alt="A hand touching a refrigerator door" src="assets/projects/bianca/bianca_motivation-1600.webp" width="1600" height="1082" loading="lazy" decoding="async" srcset="assets/projects/bianca/bianca_motivation-960.webp 960w, assets/projects/bianca/bianca_motivation-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
+        </figure>
+      </section>
+
+      <section class="project-section" aria-labelledby="proposition-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">02 / Desk Research</p>
+          <div class="project-section__copy">
+            <h2 id="proposition-title">Aesthetics in the act of use</h2>
+            <div class="project-section__description">
+              <p>Ross and Wensveen describe aesthetics as something that unfolds through bodily action and product behavior.
+                This perspective informed Bianca’s focus on the act of using a refrigerator: the reach, the contact, and the movement of opening.
+                The design intent was to extend the sensory character of that familiar encounter through light.</p>
+            </div>
+          </div>
+        </header>
+        <figure class="project-figure">
+          <img alt="reference" src="assets/projects/bianca/desk_research-1920.webp" width="1920" height="807" loading="lazy" decoding="async" srcset="assets/projects/bianca/desk_research-960.webp 960w, assets/projects/bianca/desk_research-1920.webp 1920w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
+          <figcaption>
+            <p>Research precedent — The AEI lamp uses changing light behavior to invite a helping gesture from the user.</p>
+            <p class="project-sources">Ross, P. R., &amp; Wensveen, S. A. G. (2010). <a href="https://www.ijdesign.org/index.php/IJDesign/article/view/765/297" target="_blank" rel="noopener">Designing Behavior in Interaction: Using Aesthetic Experience as a Mechanism for Design.</a> International Journal of Design, 4(2), 3–13.</p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="project-section bi-implementation" id="implementation" aria-labelledby="implementation-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">03 / Implementation</p>
+          <div class="project-section__copy">
+            <h2 id="implementation-title">Shaping the experience<br>through prototyping</h2>
+            <div class="project-section__description">
+              <p>I developed the Arduino code and electronics and co-built the full-scale prototype. Testing the sensing approach led us to refine when the interaction began and which light responses the final build could support.</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="bi-implementation-block" aria-labelledby="approach-response-title">
+          <div class="bi-implementation-media">
+            <figure>
+              <figcaption>Intended response: a gradual ambient glow as the hand approaches.</figcaption>
+              <img class="bi-implementation-visual bi-implementation-visual--video" alt="Concept sketch of a hand approaching a softly glowing refrigerator door, then touching it to produce colored light." src="assets/projects/bianca/idea_practice-3840.webp" width="3840" height="2160" loading="lazy" decoding="async" />
+            </figure>
+            <figure>
+              <figcaption id="sensor-practice-caption">Early distance-sensor experiment for a response during approach.</figcaption>
+              <video class="bi-implementation-visual bi-implementation-visual--video" width="1280" height="720" data-lazy-video data-autoplay hidden muted loop playsinline controls preload="none" poster="assets/projects/bianca/sensor_practice_poster.webp" aria-describedby="sensor-practice-caption" aria-label="Early distance-sensor experiment">
+                <source data-src="assets/projects/bianca/sensor_practice-web.mp4" type="video/mp4" />
+                <a href="assets/projects/bianca/sensor_practice-web.mp4">Watch the distance-sensor experiment.</a>
+              </video>
+              <noscript data-video-fallback>
+                <video class="bi-implementation-visual bi-implementation-visual--video" width="1280" height="720" muted loop playsinline controls preload="none" poster="assets/projects/bianca/sensor_practice_poster.webp" aria-describedby="sensor-practice-caption" aria-label="Early distance-sensor experiment">
+                  <source src="assets/projects/bianca/sensor_practice-web.mp4" type="video/mp4" />
+                  <a href="assets/projects/bianca/sensor_practice-web.mp4">Watch the distance-sensor experiment.</a>
+                </video>
+              </noscript>
+            </figure>
+          </div>
+          <header class="project-section__intro">
+            <div class="project-section__copy">
+              <h3 id="approach-response-title">Response before contact</h3>
+              <div class="project-section__description">
+                <p>The initial idea was for the door to begin glowing softly as someone reached toward it. A distance sensor would connect their approach to a gradual, low-intensity ambient glow.</p>
+                <p>Early experiments explored this response, but unreliable detection, malfunctions, and faulty sensor units led us to remove distance sensing and retain pressure input at the handle. This shifted the start of the experience from the approach to the moment of contact.</p>
+              </div>
+            </div>
+          </header>
+        </div>
+
+        <div class="bi-implementation-block" aria-labelledby="building-response-title">
+          <div class="bi-implementation-media">
+            <figure>
+              <figcaption>Assembling the electronics and integrating the lighting into the full-scale body and doors.</figcaption>
+                <img alt="Assembling the electronics and integrating the lighting into the full-scale body and doors." src="assets/projects/bianca/bianca_making-1540.webp" width="1540" height="1081" loading="lazy" decoding="async" srcset="assets/projects/bianca/bianca_making-800.webp 800w, assets/projects/bianca/bianca_making-1540.webp 1540w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
+            </figure>
+          </div>
+          <header class="project-section__intro">
+            <div class="project-section__copy">
+              <h3 id="building-response-title">Building the response</h3>
+              <div class="project-section__description">
+                <p>The final prototype illuminated an area corresponding to where the handle was pressed. I adapted LED library examples and developed the Arduino code to produce the light responses, including automatic random pattern selection with each use.</p>
+                <p>We fabricated the body and doors, mounted the LEDs, and assembled the electronics. Bringing these parts together at full scale allowed us to demonstrate the connection between the handle action and the visible response.</p>
+              </div>
+            </div>
+          </header>
+        </div>
+      </section>
+
+      <section class="project-section" id="design-outcome" aria-labelledby="outcome-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">04 / Design Outcome</p>
+          <div class="project-section__copy">
+            <h2 id="outcome-title">A familiar action,<br>a changing response</h2>
+            <div class="project-section__description">
+              <p>The full-scale prototype brings light into the act of opening a refrigerator. Pressing different points on the handle illuminates corresponding areas of the door, while a light pattern is selected automatically at random with each use.</p>
+              <p>These responses were designed to make the brief encounter with the door more noticeable through touch, movement, and light. The film shows the working prototype in use.</p>
+            </div>
+          </div>
+        </header>
+        <figure class="project-figure project-film bi-outcome-film">
+          <figcaption id="bianca-demo-caption">Bianca / Full demonstration of the working prototype.</figcaption>
+          <video controls playsinline preload="none" poster="assets/projects/bianca/bianca_demo_poster.webp" aria-label="Bianca prototype demonstration" aria-describedby="bianca-demo-caption">
+            <source src="assets/projects/bianca/bianca_demo-web.mp4" type="video/mp4" />
+            Your browser cannot play this film. <a href="assets/projects/bianca/bianca_demo-web.mp4">Watch the Bianca demonstration.</a>
+          </video>
+        </figure>
+      </section>
+
+      <section class="project-section project-outcome" aria-labelledby="reflection-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">05 / Reflection</p>
+          <div class="project-section__copy">
+            <h2 id="reflection-title"></h2>
+            <div class="project-section__description">
+              <p>Building Bianca made sensing reliability a concrete part of experience design.
+                Removing distance sensing changed when the interaction could begin.
+                This taught me to evaluate a sensing approach through the experience it could consistently support, including the timing of its response.
+              </p>
+              <p>
+                If I revisited Bianca, I would build on the perspective of aesthetics in use through further research and empirical user evaluation.
+                By comparing experiences with and without light feedback over repeated use, I would examine whether the responses truly enrich the act
+                of opening a refrigerator, while also identifying potential distraction or discomfort.
+              </p>
+            </div>
+          </div>
+        </header>
+      </section>
+    </div>
+  </main>
+
+  <nav class="project-pagination" aria-label="Project navigation">
+    <a class="project-pagination__link" href="projects.html"><span class="project-pagination__label"><span class="project-pagination__text">Back to</span></span><span class="project-pagination__title">All Projects</span></a>
+    <a class="project-pagination__link" href="project-silverlining.html"><span class="project-pagination__label"><span class="project-pagination__text">Next project</span></span><span class="project-pagination__title">Silverlining →</span></a>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="container--max footer__inner">
+      <div class="footer__brand"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /> <span>© 2026</span></div>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/vvj.works/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/woojun-jung-80945a301" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.9-2.9s-2.2 1.4-2.2 2.8V21H9z"/></svg></a>
+        <a href="https://x.com/woojoonjung" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7.1-8.1L2.2 3h6.1l4.2 5.6zM16.4 19.2h1.66L7.7 4.7H5.9z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

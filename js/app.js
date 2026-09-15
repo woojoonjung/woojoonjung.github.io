@@ -122,6 +122,246 @@
     track(function () { io.disconnect(); });
   }
 
+  /* ---------- Project media ---------- */
+  function initProjectMedia() {
+    var page = document.querySelector("main.project-detail");
+    if (!page) return;
+
+    // DOMParser also creates fallback nodes during a client-side page swap.
+    page.querySelectorAll("noscript[data-video-fallback]").forEach(function (fallback) {
+      fallback.remove();
+    });
+    var videos = page.querySelectorAll("video");
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    page.querySelectorAll("video[data-lazy-video]").forEach(function (video) {
+      var loaded = false;
+      var inView = false;
+      var disposed = false;
+      var loadObserver = null;
+      var playbackObserver = null;
+      video.hidden = false;
+      video.muted = true;
+
+      function updatePlayback() {
+        if (disposed) return;
+        if (!inView || document.hidden) {
+          video.pause();
+        } else if (loaded && !reduceMotion && video.hasAttribute("data-autoplay")) {
+          var playing = video.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        }
+      }
+
+      function loadSource() {
+        if (loaded || disposed) return;
+        loaded = true;
+        video.querySelectorAll("source[data-src]").forEach(function (source) {
+          source.src = source.getAttribute("data-src");
+          source.removeAttribute("data-src");
+        });
+        video.load();
+        updatePlayback();
+      }
+
+      if ("IntersectionObserver" in window) {
+        loadObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            loadSource();
+            loadObserver.unobserve(video);
+          });
+        }, { rootMargin: "400px 0px" });
+        playbackObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            inView = entry.isIntersecting;
+            updatePlayback();
+          });
+        });
+        loadObserver.observe(video);
+        playbackObserver.observe(video);
+      }
+
+      // Keep native manual playback available without observers or animation.
+      if (reduceMotion || !loadObserver) loadSource();
+      document.addEventListener("visibilitychange", updatePlayback);
+      track(function () {
+        disposed = true;
+        if (loadObserver) loadObserver.disconnect();
+        if (playbackObserver) playbackObserver.disconnect();
+        document.removeEventListener("visibilitychange", updatePlayback);
+      });
+    });
+    track(function () {
+      videos.forEach(function (video) { video.pause(); });
+    });
+  }
+
+  /* ---------- Blog essay toggles ---------- */
+  function initEssayToggles() {
+    if (prefersReduced || !canFly) return;
+
+    document.querySelectorAll(".essay-toggle").forEach(function (details) {
+      var summary = details.querySelector(".essay-toggle__summary");
+      var bodies = Array.prototype.slice.call(
+        details.querySelectorAll(".essay-toggle__body")
+      );
+      var busy = false;
+      if (!summary) return;
+
+      function bodyFade(from, to, duration) {
+        return Promise.all(bodies.map(function (body) {
+          var animation = body.animate(
+            [{ opacity: from }, { opacity: to }],
+            { duration: duration, easing: easeToken(), fill: "both" }
+          );
+          return animation.finished.catch(function () {});
+        }));
+      }
+
+      function clearMotion() {
+        details.style.height = "";
+        details.classList.remove("is-animating", "is-opening", "is-closing");
+        details.getAnimations().forEach(function (animation) { animation.cancel(); });
+        bodies.forEach(function (body) {
+          body.getAnimations().forEach(function (animation) { animation.cancel(); });
+        });
+        busy = false;
+      }
+
+      function openDetails() {
+        var collapsedHeight = details.getBoundingClientRect().height;
+        details.open = true;
+        var expandedHeight = details.getBoundingClientRect().height;
+
+        details.classList.add("is-animating", "is-opening");
+        details.style.height = collapsedHeight + "px";
+
+        var slide = details.animate(
+          [{ height: collapsedHeight + "px" }, { height: expandedHeight + "px" }],
+          {
+            duration: readScrollToken("--dur-slow", 520),
+            easing: easeToken(),
+            fill: "both"
+          }
+        );
+
+        slide.finished
+          .then(function () {
+            details.style.height = expandedHeight + "px";
+            details.classList.remove("is-animating");
+            return bodyFade(0, 1, readScrollToken("--dur-base", 320));
+          })
+          .then(clearMotion)
+          .catch(clearMotion);
+      }
+
+      function closeDetails() {
+        details.classList.add("is-closing");
+
+        bodyFade(1, 0, readScrollToken("--dur-fast", 180))
+          .then(function () {
+            var expandedHeight = details.getBoundingClientRect().height;
+
+            /* Measure the native closed height without allowing an intervening
+               paint, then restore open while the divider slides upward. */
+            details.open = false;
+            var collapsedHeight = details.getBoundingClientRect().height;
+            details.open = true;
+
+            details.classList.add("is-animating");
+            details.style.height = expandedHeight + "px";
+            var slide = details.animate(
+              [{ height: expandedHeight + "px" }, { height: collapsedHeight + "px" }],
+              {
+                duration: readScrollToken("--dur-slow", 520),
+                easing: easeToken(),
+                fill: "both"
+              }
+            );
+            return slide.finished;
+          })
+          .then(function () {
+            details.open = false;
+            clearMotion();
+          })
+          .catch(clearMotion);
+      }
+
+      summary.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (busy) return;
+        busy = true;
+        if (details.open) closeDetails();
+        else openDetails();
+      });
+    });
+  }
+
+  /* ---------- Dr.Snap prototype walkthrough ---------- */
+  function initDrSnapDemoTabs() {
+    var browser = document.querySelector("#design-outcome .ds-demo-browser");
+    if (!browser) return;
+    var tablist = browser.querySelector('.ds-demo-tabs[role="tablist"]');
+    if (!tablist) return;
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function (tab) {
+      return document.getElementById(tab.getAttribute("aria-controls"));
+    });
+    if (!tabs.length || panels.some(function (panel) { return !panel || !browser.contains(panel); })) return;
+
+    function pausePanel(panel) {
+      panel.querySelectorAll("video").forEach(function (video) { video.pause(); });
+    }
+
+    function selectTab(index, focus) {
+      tabs.forEach(function (tab, i) {
+        var selected = i === index;
+        tab.setAttribute("aria-selected", selected ? "true" : "false");
+        tab.tabIndex = selected ? 0 : -1;
+        if (!selected) pausePanel(panels[i]);
+        panels[i].hidden = !selected;
+      });
+      if (!focus) return;
+      var tab = tabs[index];
+      tab.focus({ preventScroll: true });
+      // Reveal a keyboard-selected step inside the horizontal strip only.
+      // scrollIntoView would also move the page away from the walkthrough.
+      var strip = tablist.getBoundingClientRect();
+      var step = tab.getBoundingClientRect();
+      if (step.left < strip.left) tablist.scrollLeft += step.left - strip.left;
+      else if (step.right > strip.right) tablist.scrollLeft += step.right - strip.right;
+    }
+
+    function clicked(event) {
+      var index = tabs.indexOf(event.target.closest('[role="tab"]'));
+      if (index !== -1) selectTab(index, false);
+    }
+
+    function keyed(event) {
+      var index = tabs.indexOf(event.target.closest('[role="tab"]'));
+      if (index === -1 || event.altKey || event.ctrlKey || event.metaKey) return;
+      var next;
+      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft") next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      selectTab(next, true);
+    }
+
+    var initial = tabs.findIndex(function (tab) { return tab.getAttribute("aria-selected") === "true"; });
+    selectTab(initial === -1 ? 0 : initial, false);
+    tablist.addEventListener("click", clicked);
+    tablist.addEventListener("keydown", keyed);
+    track(function () {
+      tablist.removeEventListener("click", clicked);
+      tablist.removeEventListener("keydown", keyed);
+      panels.forEach(pausePanel);
+    });
+  }
+
   /* ---------- Landing → profile morph (index only) ---------- */
   function initMorph() {
     var name = document.getElementById("morphName");
@@ -432,7 +672,7 @@
   }
 
   /* ---------- Single-document router ----------
-     The three pages are separate .html files, but instead of letting the
+     The four pages are separate .html files, but instead of letting the
      browser do a full cross-document navigation (reload + re-parse CSS +
      re-run this script + Lenis re-init), we fetch the target's HTML, swap the
      <body> in place, and wrap that swap in a SAME-document view transition.
@@ -440,12 +680,12 @@
      Why this and not the cross-document `@view-transition` (still in site.css
      as the no-JS fallback): one persistent Lenis instance and one animation
      engine drive *every* transition, so landing<->profile (scroll-morph) and
-     landing<->research/projects (page swap) finally feel like one notebook —
+     landing<->research/projects/blog (page swap) finally feel like one notebook —
      and same-document view transitions are far more widely supported than
      cross-document ones. The shared `view-transition-name`s already on
      .site-header__logo / .morph__name / .nav-pill make the shell morph for
      free; we just reuse them. */
-  var INTERNAL = /(^|\/)(index|research|projects)\.html$/;
+  var INTERNAL = /(^|\/)(index|research|projects|blog)\.html$/;
   var pageCache = {};
   var canFly = typeof document.createElement("div").animate === "function";
 
@@ -701,6 +941,9 @@
   function bootPage() {
     runCleanups();
     initReveal();
+    initProjectMedia();
+    initEssayToggles();
+    initDrSnapDemoTabs();
     initMorph();
     initTagline();
     initInterestsFloat();

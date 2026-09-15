@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Dr.Snap</title>
+  <meta name="description" content="Dr.Snap, a multimodal dermatology decision-support project by Woojun Jung." />
+  <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/project-detail.css" />
+  <link rel="stylesheet" href="css/project-drsnap.css" />
+</head>
+<body data-page="project-detail">
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="research.html"><span class="nav-pill__label">Research</span></a>
+      <a href="projects.html" aria-current="page"><span class="nav-pill__label">Projects</span></a>
+      <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
+    </nav>
+  </header>
+
+  <main class="project-detail drsnap-page">
+    <nav class="project-back-nav project-wrap" aria-label="Back to projects">
+      <a class="project-back" href="projects.html">← All projects</a>
+    </nav>
+    <section class="project-hero project-wrap" aria-labelledby="project-title">
+      <div class="project-hero__copy">
+        <p class="project-kicker">Interaction Design · 2024</p>
+        <h1 id="project-title">Dr.Snap</h1>
+        <p class="project-hero__statement">How can AI help people understand a skin concern before a clinic visit?</p>
+        <p class="project-hero__summary">When a clinic visit is hard to arrange, people still need help making sense of their skin concerns.
+          Dr.Snap brings the intake conversation before the visit, using photos, symptom descriptions, and follow-up questions to provide
+          initial guidance while keeping diagnosis and treatment with a clinician.</p>
+        <dl class="project-meta">
+          <div><dt>Status</dt><dd>Functional prototype</dd></div>
+          <div><dt>Duration</dt><dd>Sep. 2024 - Dec. 2024 (4 months)</dd></div>
+          <div class="project-meta__contribution">
+            <dt>Contributions</dt>
+            <dd class="project-contributions">
+              <div>
+                <p>Shared equally: Desk Research</p>
+              </div>
+              <div>
+                <p>Woojun Jung: Interaction design, Prototype development</p>
+                <p>Youngseo Kim: Docker setup, Web scraping</p>
+              </div>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <figure class="project-hero__image">
+        <img src="assets/projects/DrSnap.png" alt="Dr.Snap dermatology decision-support interface" width="1102" height="960" loading="eager" decoding="async" fetchpriority="high" />
+        <!-- Replace with the strongest project image or a short muted demo video. -->
+      </figure>
+    </section>
+
+    <div class="project-wrap" id="project-content">
+      <section class="project-section ds-motivation" id="motivation" aria-labelledby="motivation-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">01 / Motivation</p>
+          <div class="project-section__copy">
+            <h2 id="motivation-title">Seeking answers<br />before a clinic visit</h2>
+            <div class="project-section__description">
+              <p>A skin concern can arise in the middle of a working day, far from a clinic, or while caring for a child. We explored how people could begin to understand their symptoms when a visit was difficult to arrange.</p>
+            </div>
+          </div>
+        </header>
+
+        <figure class="ds-scenarios" aria-labelledby="scenarios-caption">
+          <div class="ds-scenario-list">
+            <article class="ds-scenario" aria-labelledby="scenario-work-title">
+              <div class="ds-persona ds-persona--work">
+                <img alt="" src="assets/projects/drsnap/user_1_urban-960.webp" width="960" height="960" loading="lazy" decoding="async" srcset="assets/projects/drsnap/user_1_urban-480.webp 480w, assets/projects/drsnap/user_1_urban-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 620px) calc(100vw - 48px), (max-width: 980px) 224px, 280px" />
+                <div class="ds-persona__copy">
+                  <span class="ds-persona__number" aria-hidden="true">01</span>
+                  <h3 id="scenario-work-title">A busy<br />professional</h3>
+                </div>
+              </div>
+              <div class="ds-scenario__story">
+                <ol class="ds-journey" aria-label="Busy professional scenario">
+                  <li><span class="ds-label">Situation</span><p>Work fills the day,<br>with few clinics open after hours.</p></li>
+                  <li><span class="ds-label">Response</span><p>Puts off a visit as<br>work takes priority.</p></li>
+                </ol>
+              </div>
+              <dl class="ds-barrier" aria-label="Barrier">
+                <div class="ds-node ds-node--barrier"><dt>Barrier</dt><dd>Limited<br />time</dd></div>
+              </dl>
+            </article>
+
+            <article class="ds-scenario" aria-labelledby="scenario-distance-title">
+              <div class="ds-persona ds-persona--distance">
+                <img alt="" src="assets/projects/drsnap/user_2_rural-960.webp" width="960" height="960" loading="lazy" decoding="async" srcset="assets/projects/drsnap/user_2_rural-480.webp 480w, assets/projects/drsnap/user_2_rural-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 620px) calc(100vw - 48px), (max-width: 980px) 224px, 280px" />
+                <div class="ds-persona__copy">
+                  <span class="ds-persona__number" aria-hidden="true">02</span>
+                  <h3 id="scenario-distance-title">A resident<br />far from care</h3>
+                </div>
+              </div>
+              <div class="ds-scenario__story">
+                <ol class="ds-journey" aria-label="Resident far from care scenario">
+                  <li><span class="ds-label">Situation</span><p>Even the nearest clinic<br>takes time to reach.</p></li>
+                  <li><span class="ds-label">Response</span><p>Downplays the concern and<br>delays a visit.</p></li>
+                </ol>
+              </div>
+              <dl class="ds-barrier" aria-label="Barrier">
+                <div class="ds-node ds-node--barrier"><dt>Barrier</dt><dd>Distance<br />to care</dd></div>
+              </dl>
+            </article>
+
+            <article class="ds-scenario" aria-labelledby="scenario-parent-title">
+              <div class="ds-persona ds-persona--parent">
+                <img alt="" src="assets/projects/drsnap/user_3_mother-960.webp" width="960" height="960" loading="lazy" decoding="async" srcset="assets/projects/drsnap/user_3_mother-480.webp 480w, assets/projects/drsnap/user_3_mother-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 620px) calc(100vw - 48px), (max-width: 980px) 224px, 280px" />
+                <div class="ds-persona__copy">
+                  <span class="ds-persona__number" aria-hidden="true">03</span>
+                  <h3 id="scenario-parent-title">A first-time<br />parent</h3>
+                </div>
+              </div>
+              <div class="ds-scenario__story">
+                <ol class="ds-journey" aria-label="First-time parent scenario">
+                  <li><span class="ds-label">Situation</span><p>Looks for a clinic<br>that can see the child quickly.</p></li>
+                  <li><span class="ds-label">Response</span><p>Cannot find pediatric care<br>without a wait.</p></li>
+                </ol>
+              </div>
+              <dl class="ds-barrier" aria-label="Barrier">
+                <div class="ds-node ds-node--barrier"><dt>Barrier</dt><dd>Waiting<br />for care</dd></div>
+              </dl>
+            </article>
+          </div>
+          <p class="ds-design-question">How might people get initial guidance on a skin concern<br>when a clinic visit is hard to arrange?</p>
+        </figure>
+      </section>
+
+      <section class="project-section ds-service-review" id="market-research" aria-labelledby="service-review-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">02 / Prior Approaches</p>
+          <div class="project-section__copy">
+            <h2 id="service-review-title">How have others<br>addressed these barriers?</h2>
+            <div class="project-section__description">
+              <p>We examined remote consultation services as existing attempts to make care more accessible. Reviews collected for the project helped us understand where these approaches still fell short for users.</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="ds-service-review__body">
+          <div class="ds-services" aria-label="Service review summaries">
+            <article class="ds-service" aria-labelledby="doctornow-title">
+              <img src="assets/projects/drsnap/service_1.png" alt="" width="260" height="260" loading="lazy" decoding="async" />
+              <div>
+                <h3 id="doctornow-title">DoctorNow</h3>
+                <ul>
+                  <li>Concerns about consultation cost and the doctor’s manner.</li>
+                  <li>No call at the scheduled time, with no update about the delay.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="ds-service" aria-labelledby="goodoc-title">
+              <img src="assets/projects/drsnap/service_2.png" alt="" width="260" height="260" loading="lazy" decoding="async" />
+              <div>
+                <h3 id="goodoc-title">Goodoc</h3>
+                <ul>
+                  <li>A 40-minute wait after check-in, when the doctor had already left.</li>
+                  <li>Not reliable since the doctor can only diagnose through phone calls.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <div class="ds-service-concerns" aria-label="Painpoints">
+            <!-- <h3 class="ds-label" id="service-concerns-title">Painpoints</h3> -->
+            <dl class="ds-concern-map">
+              <div class="ds-concern-flow">
+                <dt>Human-provided<br>experience</dt>
+                <dd><span>Uncertainty in<br>service experience</span></dd>
+              </div>
+              <div class="ds-concern-flow">
+                <dt>Phone-based<br>consultation</dt>
+                <dd><span>Uncertainty from<br>verbal reports alone</span></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <p class="ds-source">Review summaries adapted from 2024. Translated from Korean.</p>
+
+        <p class="ds-design-question">What if AI provided the initial guidance?</p>
+      </section>
+
+      <section class="project-section ds-design-process" id="design-process" aria-labelledby="proposition-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">03 / Workflow Analysis</p>
+          <div class="project-section__copy">
+            <h2 id="proposition-title">Finding AI’s role<br />in how people seek answers</h2>
+            <div class="project-section__description">
+              <p>We had a direction: AI with symptom images and written descriptions. But concerns about reliability led us to define its role. We mapped the journey from noticing a skin concern to receiving care, looking for where AI could offer immediate support while encouraging a clinic visit.</p>
+            </div>
+          </div>
+        </header>
+
+        <figure class="ds-care-comparison" aria-labelledby="care-comparison-caption">
+          <figcaption class="ds-figure-heading">
+            <span id="care-comparison-caption">Existing workflows</span>
+          </figcaption>
+          <article class="ds-care-route">
+            <header class="ds-care-route__header">
+              <h3>Offline clinic use</h3>
+            </header>
+            <ol class="ds-care-steps ds-care-steps--clinic">
+              <li><span class="ds-care-step__number" aria-hidden="true">01</span><p>Notice a<br />skin concern</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">02</span><p>Book an<br />appointment</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">03</span><p>Visit the<br />clinic</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">04</span><p>Complete an intake questionnaire</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">05</span><p>Consultation</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">06</span><p>Diagnosis &amp;<br />prescription</p></li>
+            </ol>
+          </article>
+          <article class="ds-care-route">
+            <header class="ds-care-route__header">
+              <h3>Standalone AI use</h3>
+            </header>
+            <ol class="ds-care-steps ds-care-steps--ai">
+              <li><span class="ds-care-step__number" aria-hidden="true">01</span><p>Notice a<br />skin concern</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">02</span><p>Ask a<br />chatbot</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">03</span><p>Receive an immediate answer or diagnosis</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">04</span><p>Decide what to do without clinician review</p></li>
+            </ol>
+          </article>
+        </figure>
+
+        <div class="ds-intake-decision">
+          <header class="project-section__copy">
+            <h3 id="workflow-analysis-title">Designing for immediacy<br />and reliability</h3>
+            <div class="project-section__description">
+              <p>The clinic journey offered professional assessment but required appointments and travel. Standalone AI could respond immediately, yet left users to act on answers without clinical review.</p>
+            </div>
+          </header>
+        </div>
+
+        <figure class="ds-proposed-workflow" aria-labelledby="proposed-workflow-caption">
+          <figcaption class="ds-figure-heading">
+            <span id="proposed-workflow-caption">Proposed workflow</span>
+          </figcaption>
+          <div class="ds-care-route ds-workflow-map">
+            <ol class="ds-care-steps ds-care-steps--proposed">
+              <li><span class="ds-care-step__number" aria-hidden="true">01</span><p>Notice a<br />skin concern</p></li>
+              <li class="ds-care-step--expanded">
+                <div class="ds-expanded-node">
+                  <span class="ds-care-step__number" aria-hidden="true">02</span>
+                  <p id="ai-intake-node-title">AI-guided intake</p>
+                </div>
+                <div class="ds-intake-expansion">
+                  <div class="ds-intake-zoom" aria-hidden="true">
+                    <svg class="ds-intake-zoom__left" focusable="false"><line x1="100%" y1="0" x2="0" y2="100%" /></svg>
+                    <svg class="ds-intake-zoom__right" focusable="false"><line x1="0" y1="0" x2="100%" y2="100%" /></svg>
+                  </div>
+                  <ol class="ds-care-steps ds-care-steps--intake" aria-labelledby="ai-intake-node-title">
+                    <li><span class="ds-care-step__number" aria-hidden="true">02.1</span><p>Share images<br />and symptoms</p></li>
+                    <li><span class="ds-care-step__number" aria-hidden="true">02.2</span><p>Answer synthesized<br />questionnaire</p></li>
+                    <li><span class="ds-care-step__number" aria-hidden="true">02.3</span><p>Receive initial<br />guidance</p></li>
+                    <li><span class="ds-care-step__number" aria-hidden="true">02.4</span><p>Continue with<br />follow-up questions</p></li>
+                    <li><span class="ds-care-step__number" aria-hidden="true">02.5</span><p>Book and share<br />the intake summary</p></li>
+                  </ol>
+                </div>
+              </li>
+              <li><span class="ds-care-step__number" aria-hidden="true">03</span><p>Visit the<br />clinic</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">04</span><p>Consultation</p></li>
+              <li><span class="ds-care-step__number" aria-hidden="true">05</span><p>Diagnosis &amp;<br />prescription</p></li>
+            </ol>
+          </div>
+        </figure>
+
+        <div class="ds-intake-decision">
+          <header class="project-section__copy">
+            <h3>Moving intake<br />before the visit</h3>
+            <div class="project-section__description">
+              <p>We focused on the intake questionnaire as a way to turn an initial concern into structured symptom information. Moving this step before the visit created an opportunity to ask follow-up questions, offer initial guidance, and prepare a summary for the consultation.</p>
+            </div>
+          </header>
+        </div>
+
+      </section>
+
+      <section class="project-section ds-design-outcome" id="design-outcome" aria-labelledby="outcome-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">04 / Design Outcome</p>
+          <div class="project-section__copy">
+            <h2 id="outcome-title">Multi-turn questionnaire<br />followed by an appointment</h2>
+            <div class="project-section__description">
+              <p>We translated the AI-guided intake into five interactions: sharing a concern, clarifying symptoms, reviewing the response, asking further questions, and booking a clinic visit.</p>
+              <p class="project-note">Prototype recordings in Korean.</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="ds-demo-browser">
+          <div class="ds-demo-tabs" role="tablist" aria-label="AI-guided intake stages" aria-orientation="horizontal">
+            <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-input" aria-controls="demo-panel-input" aria-selected="true" tabindex="0">
+              <span class="ds-care-step__number">02.1</span><span>Share images<br />and symptoms</span>
+            </button>
+            <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-intake" aria-controls="demo-panel-intake" aria-selected="false" tabindex="-1">
+              <span class="ds-care-step__number">02.2</span><span>Answer synthesized<br />questionnaire</span>
+            </button>
+            <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-response" aria-controls="demo-panel-response" aria-selected="false" tabindex="-1">
+              <span class="ds-care-step__number">02.3</span><span>Receive initial<br />guidance</span>
+            </button>
+            <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-followup" aria-controls="demo-panel-followup" aria-selected="false" tabindex="-1">
+              <span class="ds-care-step__number">02.4</span><span>Continue with<br />follow-up questions</span>
+            </button>
+            <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-handoff" aria-controls="demo-panel-handoff" aria-selected="false" tabindex="-1">
+              <span class="ds-care-step__number">02.5</span><span>Book and share<br />the intake summary</span>
+            </button>
+          </div>
+
+          <div class="ds-demo-list">
+          <article class="ds-demo" id="demo-panel-input" role="tabpanel" aria-labelledby="demo-tab-input" tabindex="0">
+            <div class="ds-demo__copy">
+              <span class="ds-label">02.1</span>
+              <h3 id="demo-input-title">Share images<br />and symptoms</h3>
+              <p>Users describe their symptoms in their own words and attach a photo. The two inputs bring together what the skin looks like and what the user is experiencing.</p>
+            </div>
+            <figure class="ds-demo__media">
+              <video controls playsinline preload="none" width="2342" height="1774" poster="assets/projects/drsnap/1_landingpage_poster.webp" aria-labelledby="demo-input-title" aria-describedby="demo-input-caption">
+                <source src="assets/projects/drsnap/1_landingpage.mp4" type="video/mp4" />
+                <a href="assets/projects/drsnap/1_landingpage.mp4">Watch the initial input recording.</a>
+              </video>
+              <figcaption class="project-note" id="demo-input-caption">A written symptom description and a skin photo begin the conversation.</figcaption>
+            </figure>
+          </article>
+
+          <article class="ds-demo" id="demo-panel-intake" role="tabpanel" aria-labelledby="demo-tab-intake" tabindex="0" hidden>
+            <div class="ds-demo__copy">
+              <span class="ds-label">02.2</span>
+              <h3 id="demo-intake-title">Answer synthesized<br />questionnaire</h3>
+              <p>Before generating an answer, the AI asks for more symptom information through a focused question. The initial image and description remain visible while the user responds.</p>
+            </div>
+            <figure class="ds-demo__media">
+              <video controls playsinline preload="none" width="2342" height="1774" poster="assets/projects/drsnap/2_questionaire_poster.webp" aria-labelledby="demo-intake-title" aria-describedby="demo-intake-caption">
+                <source src="assets/projects/drsnap/2_questionaire.mp4" type="video/mp4" />
+                <a href="assets/projects/drsnap/2_questionaire.mp4">Watch the guided question recording.</a>
+              </video>
+              <figcaption class="project-note" id="demo-intake-caption">The user answers a question about dryness and cracking with an O / X choice.</figcaption>
+            </figure>
+          </article>
+
+          <article class="ds-demo" id="demo-panel-response" role="tabpanel" aria-labelledby="demo-tab-response" tabindex="0" hidden>
+            <div class="ds-demo__copy">
+              <span class="ds-label">02.3</span>
+              <h3 id="demo-response-title">Receive initial<br />guidance</h3>
+              <p>The response presents a symptom summary, a suggested condition, and an explanation with next actions. This structure brings the collected information and the AI’s interpretation together for review.</p>
+            </div>
+            <figure class="ds-demo__media">
+              <video controls playsinline preload="none" width="2342" height="1774" poster="assets/projects/drsnap/3_diagnosis_poster.webp" aria-labelledby="demo-response-title" aria-describedby="demo-response-caption">
+                <source src="assets/projects/drsnap/3_diagnosis.mp4" type="video/mp4" />
+                <a href="assets/projects/drsnap/3_diagnosis.mp4">Watch the AI response recording.</a>
+              </video>
+              <figcaption class="project-note" id="demo-response-caption">The prototype displays the symptom summary, condition information, and care-related guidance.</figcaption>
+            </figure>
+          </article>
+
+          <article class="ds-demo" id="demo-panel-followup" role="tabpanel" aria-labelledby="demo-tab-followup" tabindex="0" hidden>
+            <div class="ds-demo__copy">
+              <span class="ds-label">02.4</span>
+              <h3 id="demo-followup-title">Continue with<br />follow-up questions</h3>
+              <p>After reading the response, users can ask about what still concerns them. Follow-up questions keep the conversation open, with the earlier context available on the same screen.</p>
+            </div>
+            <figure class="ds-demo__media">
+              <video controls playsinline preload="none" width="2342" height="1774" poster="assets/projects/drsnap/4_furtherqa_poster.webp" aria-labelledby="demo-followup-title" aria-describedby="demo-followup-caption">
+                <source src="assets/projects/drsnap/4_furtherqa.mp4" type="video/mp4" />
+                <a href="assets/projects/drsnap/4_furtherqa.mp4">Watch the follow-up question recording.</a>
+              </video>
+              <figcaption class="project-note" id="demo-followup-caption">Selecting “Continue the conversation,” the user asks, “Is it contagious?”</figcaption>
+            </figure>
+          </article>
+
+          <article class="ds-demo" id="demo-panel-handoff" role="tabpanel" aria-labelledby="demo-tab-handoff" tabindex="0" hidden>
+            <div class="ds-demo__copy">
+              <span class="ds-label">02.5</span>
+              <h3 id="demo-handoff-title">Book and share<br />the intake summary</h3>
+              <p>The proposed next step connects the intake to a clinic visit: book an appointment and share the symptom summary with the clinician.</p>
+            </div>
+            <figure class="ds-demo__media">
+              <img alt="A person wrapped in a blanket looking at their phone." src="assets/projects/drsnap/02_5-1600.webp" width="1600" height="1200" loading="lazy" decoding="async" srcset="assets/projects/drsnap/02_5-800.webp 800w, assets/projects/drsnap/02_5-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
+              <figcaption class="project-note" id="demo-followup-caption">Appointment booking and sharing the intake summary with a clinic were not implemented in the prototype.</figcaption>
+            </figure>
+          </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-section ds-development" id="development" aria-labelledby="development-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">05 / Development</p>
+          <div class="project-section__copy">
+            <h2 id="development-title">Building the<br />AI-guided intake</h2>
+            <div class="project-section__description">
+              <p>Behind the conversation, the prototype connects symptom retrieval, image analysis, and question generation. We built this pipeline to turn an initial description into candidate conditions, then ask for information that could help distinguish between them.</p>
+            </div>
+          </div>
+        </header>
+
+        <section class="ds-dev-subsection" aria-labelledby="architecture-title">
+          <figure class="ds-dev-figure" aria-label="Prototype architecture connecting the browser, application backend, and external services">
+            <figcaption class="project-note">Prototype architecture · <a href="https://github.com/woojoonjung/20242R0136COSE48002" target="_blank" rel="noopener">View source on GitHub</a></figcaption>
+            <div class="ds-architecture">
+              <div class="ds-architecture__group ds-architecture__group--browser">
+                <p class="ds-label">Browser</p>
+                <div class="ds-tech-node">
+                  <h4>React · Vite · TailwindCSS</h4>
+                  <p>Symptom input and conversation interface</p>
+                </div>
+              </div>
+              <div class="ds-architecture__group ds-architecture__group--backend">
+                <p class="ds-label">Application backend</p>
+                <div class="ds-architecture__environment">
+                  <div class="ds-tech-node ds-tech-node--fastapi">
+                    <h4>FastAPI</h4>
+                    <p>Request handling</p>
+                  </div>
+                  <div class="ds-architecture__modules">
+                    <div class="ds-tech-node">
+                      <h4>Retrieval</h4>
+                      <p>Korean S-BERT · FAISS</p>
+                    </div>
+                    <div class="ds-tech-node ds-tech-node--dialogue">
+                      <h4>Dialogue orchestration</h4>
+                      <p>Candidate selection · Follow-up question synthesis</p>
+                    </div>
+                  </div>
+                  <p class="project-note">Docker execution environment</p>
+                </div>
+              </div>
+              <div class="ds-architecture__group ds-architecture__group--services">
+                <p class="ds-label">External services</p>
+                <div class="ds-architecture__services">
+                  <div class="ds-tech-node">
+                    <h4>Google Cloud Vision</h4>
+                    <p>Web Detection</p>
+                  </div>
+                  <div class="ds-tech-node">
+                    <h4>OpenAI</h4>
+                    <p>GPT-4o</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </figure>
+          <header class="project-section__copy">
+            <h3 id="architecture-title">System architecture</h3>
+            <div class="project-section__description">
+              <p>A React interface sends the user’s inputs to a Python backend through FastAPI. The backend coordinates local retrieval and external APIs, carrying the resulting context into each turn of the conversation.</p>
+            </div>
+          </header>
+        </section>
+
+        <section class="ds-dev-subsection" aria-labelledby="candidate-pipeline-title">
+          <figure class="ds-dev-figure" aria-label="Knowledge preparation and two input paths leading to three candidate conditions">
+            <figcaption class="project-note">Knowledge source: <a href="https://www.amc.seoul.kr/asan/healthinfo/disease/diseaseList.do?partId=B000019" target="_blank" rel="noopener">Asan disease encyclopedia</a> · Embeddings: <a href="https://huggingface.co/jhgan/ko-sroberta-multitask" target="_blank" rel="noopener">ko-sroberta-multitask</a> · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/main/backend/ml/retriever.py" target="_blank" rel="noopener">Retrieval implementation</a></figcaption>
+            <div class="ds-input-pipeline">
+              <div class="ds-retrieval-layout">
+                <section class="ds-knowledge-prep" aria-labelledby="knowledge-prep-title">
+                  <h4 class="ds-pipeline-heading ds-label" id="knowledge-prep-title">Knowledge preparation for retrieval</h4>
+                  <ol class="ds-knowledge-stack">
+                    <li>
+                      <img src="assets/projects/drsnap/asan.png" alt="" />
+                      <div><h5>Symptom Descriptions</h5><p>Asan disease encyclopedia</p></div>
+                    </li>
+                    <li>
+                      <img src="assets/projects/drsnap/huggingface.png" alt="" />
+                      <div><h5>Text Embeddings</h5><p>Korean S-BERT · 768 dimensions</p></div>
+                    </li>
+                    <li>
+                      <img src="assets/projects/drsnap/faiss.png" alt="" />
+                      <div><h5>Search Index</h5><p>FAISS · cosine similarity</p></div>
+                    </li>
+                  </ol>
+                </section>
+                <section class="ds-candidate-selection" aria-labelledby="candidate-selection-title">
+                  <h4 class="ds-pipeline-heading ds-label" id="candidate-selection-title">Candidate selection</h4>
+                  <div class="ds-selection-flow">
+                    <article class="ds-selection-path ds-selection-path--text" aria-labelledby="text-input-path-title">
+                      <h5 class="ds-modality-label" id="text-input-path-title"><img src="assets/projects/drsnap/icon-text.svg" alt="" />Text</h5>
+                      <div class="ds-selection-row">
+                        <div class="ds-selection-node ds-selection-node--input"><p>Written Symptoms</p></div>
+                        <div class="ds-selection-process"><p>Retrieval</p></div>
+                        <div class="ds-selection-node ds-selection-node--output">
+                          <p>Candidate Conditions<br />+<br />Similarity scores</p>
+                          <span class="ds-output-type" aria-label="Text output">txt</span>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ds-selection-path ds-selection-path--vision" aria-labelledby="image-input-path-title">
+                      <h5 class="ds-modality-label" id="image-input-path-title"><img src="assets/projects/drsnap/icon-vision.svg" alt="" />Vision</h5>
+                      <div class="ds-selection-row">
+                        <div class="ds-selection-node ds-selection-node--input"><p>Uploaded Photo</p></div>
+                        <div class="ds-selection-process"><p>Cloud Vision</p></div>
+                        <div class="ds-selection-node ds-selection-node--output">
+                          <p>Candidate Entities<br />+<br />Entity scores</p>
+                          <span class="ds-output-type" aria-label="Text output">txt</span>
+                        </div>
+                      </div>
+                    </article>
+                    <div class="ds-selection-result">
+                      <h5>Three candidate conditions</h5>
+                      <p>GPT-4o considers both inputs<br />and selects from text-retrieved conditions.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <details class="ds-symptom-example project-evidence">
+                <summary>View a symptom description example</summary>
+                <div class="project-evidence__body">
+                  <p class="project-note">Adapted from the repository’s <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/data/disease_details.json#L542-L553" target="_blank" rel="noopener">atopic dermatitis record</a>. Original field names are preserved; descriptions are shortened and translated into English.</p>
+                  <pre><code>{
+  "name": "아토피성 피부염(Atopic dermatitis)",
+  "details": {
+    "정의": "A chronic, recurring form of eczema accompanied by severe itching.",
+    "원인": "Associated with genetic, environmental, immune, and skin-barrier factors.",
+<mark>    "증상": "Intense itching and sensitivity to external stimuli or allergens. Scratching can worsen eczema, and affected areas vary with age.",</mark>
+    "진단": "Based on characteristic symptoms and disease history, with supporting tests when needed.",
+    "치료": "Management focuses on avoiding triggers, skin care, and treatment selected for the patient's condition.",
+    "경과": "Symptoms may improve and recur over time; the course varies between patients."
+  }
+}</code></pre>
+                  <p class="project-note">Each retrieval entry pairs <code>name</code> with <code>details["증상"]</code> (symptoms). The full <code>details</code> object is retrieved later to provide context for the selected candidates. <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/conversation.py#L33-L43" target="_blank" rel="noopener">View retrieval preparation</a> · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/conversation.py#L128-L139" target="_blank" rel="noopener">View candidate context lookup</a></p>
+                </div>
+              </details>
+              <details class="ds-candidate-example project-evidence">
+                <summary>View an example terminal output</summary>
+                <div class="project-evidence__body">
+                <p class="project-note">Transcribed from the prototype development log and arranged to follow the two input paths above. Image scores and text similarity scores use different scales.</p>
+                <div class="ds-candidate-example__logs">
+                  <div>
+                    <p class="ds-label">Written symptoms · Retrieved conditions</p>
+                    <pre><code>*** from symptom text ***
+('Lichen simplex chronicus', 0.6910784)
+('Nummular Eczema', 0.66022104)
+('Atopic dermatitis', 0.64173764)
+('Xerosis cutis', 0.6394382)
+('Ingrowing nails', 0.63701683)
+('Hand Eczema', 0.6329086)
+('Eczema', 0.6246109)
+('Contact dermatitis', 0.6147158)
+('Exfoliative dermatitis', 0.610614)
+('Dermatopolymyositis', 0.609348)</code></pre>
+                  </div>
+                  <div>
+                    <p class="ds-label">Skin photo · Web entities</p>
+                    <pre><code>*** from symptom image ***
+('Atopic eczema', 0.4183)
+('Measles', 0.4099)
+('Cough', 0.4009)
+('Nasal congestion', 0.3884)
+('Symptom', 0.3838)
+('Fever', 0.3727)
+('Sneeze', 0.3571)
+('Rhinorrhea', 0.3262)
+('Epiphora', 0.3097)
+('Signs and symptoms', 0.306)</code></pre>
+                  </div>
+                </div>
+                <div class="ds-candidate-example__result">
+                  <p class="ds-label">Selected candidates</p>
+                  <pre><code>['Lichen simplex chronicus', 'Nummular Eczema', 'Atopic dermatitis']</code></pre>
+                </div>
+                </div>
+              </details>
+            </div>
+          </figure>
+          <header class="project-section__copy">
+            <h3 id="candidate-pipeline-title">From inputs to candidates</h3>
+            <div class="project-section__description">
+              <p>We embedded symptom descriptions scraped from Asan Medical Center’s disease encyclopedia with Korean S-BERT. FAISS searches these descriptions using cosine similarity: both document and query vectors are L2-normalized before an inner-product search.</p>
+              <p>In parallel, Cloud Vision’s Web Detection returns entity descriptions and scores for the photo. Because we did not know how these scores were calculated, we treated them only as ranking signals. We then prompted GPT-4o to consider the rankings from both inputs and select three candidate conditions from the text-retrieved list.</p>
+            </div>
+          </header>
+        </section>
+
+        <section class="ds-dev-subsection" aria-labelledby="question-generation-title">
+          <figure class="ds-dev-figure" aria-label="Candidate information and conversation history guide a repeated question and response process">
+            <figcaption class="project-note">Question example translated from Korean · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/main/backend/ml/conversation.py" target="_blank" rel="noopener">Conversation implementation</a></figcaption>
+            <div class="ds-dialogue-map">
+              <ol class="ds-dev-flow">
+                <li><h4>Candidate context</h4><p>Full disease details and prior conversation</p></li>
+                <li><h4>Generate a question</h4><p>Ask about a distinguishing symptom</p></li>
+                <li><h4>Yes or no</h4><p>The user answers one question</p></li>
+                <li><h4>Eliminate a candidate</h4><p>Use the answer and history to remove one condition</p></li>
+              </ol>
+              <p class="ds-dialogue-return">Updated candidates + conversation history inform the next question</p>
+              <div class="ds-prompt-constraints">
+                <p>Prompt constraints: (1) Focus on differences between candidates, (2) Question must be answerable with yes or no, (3) Avoid questions already asked.</p>
+              </div>
+              <details class="ds-prompt-details project-evidence">
+                <summary>View the prompt structure</summary>
+                <div class="project-evidence__body">
+                <p class="project-note">Adapted English outline of the question-generation prompt, condensed for readability.</p>
+                <pre><code>SYSTEM
+Use the prior conversation as context.
+Avoid repeating a question that has already been asked.
+
+USER — EXAMPLE
+Given the example candidate conditions, ask a question
+about a difference that could help rule out a candidate.
+
+ASSISTANT — EXAMPLE
+Do you experience severe itching?
+
+USER — CURRENT CONTEXT
+Candidate conditions: {retrieved_context}
+Ask about a distinguishing symptom.
+The question must be answerable with yes or no.</code></pre>
+                </div>
+              </details>
+            </div>
+          </figure>
+          <header class="project-section__copy">
+            <h3 id="question-generation-title">Questionaire synthesis</h3>
+            <div class="project-section__description">
+              <p>After selecting candidates, the system retrieves their full disease information. Prompts ask for a binary question<br>that targets differences between candidates, then use the response and conversation history to eliminate one candidate. This process repeats until one candidate remains.</p>
+              <p>Conversation history is passed into subsequent requests, with instructions to avoid repeating earlier questions. A one-shot example guides the question format.</p>
+            </div>
+          </header>
+        </section>
+
+        <section class="ds-dev-subsection" aria-labelledby="initial-checks-title">
+          <figure class="ds-dev-figure" aria-label="Three development examples with photo and written inputs and candidate outputs">
+            <figcaption class="project-note">Examples reproduced from the 2024 development log. Highlighting marks the expected condition in each illustrated case.</figcaption>
+            <div class="ds-prototype-checks">
+              <div class="ds-check-examples">
+                <article class="ds-check-example">
+                  <h4>Case 01</h4>
+                  <div class="ds-check-input" role="group" aria-labelledby="check-input-01">
+                    <p class="ds-label" id="check-input-01">User input</p>
+                    <img src="assets/projects/drsnap/atopic.png" alt="User-submitted photo of skin behind the knees for Case 01" width="423" height="423" loading="lazy" decoding="async" />
+                    <p class="ds-check-input__text">Dry, intensely itchy skin behind the knees, with cracking after scratching.</p>
+                  </div>
+                  <div class="ds-check-output" role="group" aria-labelledby="check-output-01">
+                    <p class="ds-label" id="check-output-01">Candidate output</p>
+                    <ul>
+                      <li>Lichen simplex chronicus</li>
+                      <li>Nummular eczema</li>
+                      <li><mark>Atopic dermatitis</mark></li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ds-check-example">
+                  <h4>Case 02</h4>
+                  <div class="ds-check-input" role="group" aria-labelledby="check-input-02">
+                    <p class="ds-label" id="check-input-02">User input</p>
+                    <img src="assets/projects/drsnap/wart.png" alt="User-submitted photo of a raised lesion on a finger for Case 02" width="666" height="666" loading="lazy" decoding="async" />
+                    <p class="ds-check-input__text">A firm, raised lesion on a finger with an uneven surface.</p>
+                  </div>
+                  <div class="ds-check-output" role="group" aria-labelledby="check-output-02">
+                    <p class="ds-label" id="check-output-02">Candidate output</p>
+                    <ul>
+                      <li>Nummular eczema</li>
+                      <li>Hand eczema</li>
+                      <li><mark>Wart</mark></li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="ds-check-example">
+                  <h4>Case 03</h4>
+                  <div class="ds-check-input" role="group" aria-labelledby="check-input-03">
+                    <p class="ds-label" id="check-input-03">User input</p>
+                    <img alt="User-submitted photo of dry, cracked skin on the back of a hand for Case 03" src="assets/projects/drsnap/eczema-1063.webp" width="1063" height="1063" loading="lazy" decoding="async" />
+                    <p class="ds-check-input__text">Redness and persistent itching on the back of the hand, with cracked, hardened skin.</p>
+                  </div>
+                  <div class="ds-check-output" role="group" aria-labelledby="check-output-03">
+                    <p class="ds-label" id="check-output-03">Candidate output</p>
+                    <ul>
+                      <li>Lichen simplex chronicus</li>
+                      <li><mark>Hand eczema</mark></li>
+                      <li>Exfoliative dermatitis</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </figure>
+          <header class="project-section__copy">
+            <h3 id="initial-checks-title">Case study</h3>
+            <div class="project-section__description">
+              <p>The initial checks reported 8 of 10 conditions as successful where hives and rash were marked unsuccessful. In the examples shown above, the expected condition appeared among the three candidates.</p>
+            </div>
+          </header>
+        </section>
+      </section>
+
+      <section class="project-section project-outcome" aria-labelledby="reflection-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">06 / Reflection</p>
+          <div class="project-section__copy">
+            <h2 id="reflection-title"></h2>
+            <div class="project-section__description">
+              <p>Building Dr.Snap showed me how the structure of an AI conversation shapes the information available for each response. Bringing photos, symptom descriptions, and follow-up questions together made this relationship tangible.</p>
+              <p><em>Unfinished handoff. </em>I believe AI should encourage people to seek professional care rather than replace clinical consultation. This made the final handoff a central part of Dr.Snap, yet I left it underdeveloped. I did not fully specify the intake summary that a clinic would receive or the interactions for booking and sharing it, and the handoff was not implemented. Looking back, this transition deserved more attention as a core part of the experience.</p>
+              <p><em>Clinical reliability. </em>Positioning Dr.Snap as initial guidance does not make low reliability acceptable in a medical context. Its reliability depends heavily on how well the underlying technology interprets images and written descriptions. I focused on interaction design and gave too little attention to these technical capabilities and limitations. Beyond the case studies presented here, the prototype would need broader, more rigorous clinical validation to establish whether it could support people safely.</p>
+            </div>
+          </div>
+        </header>
+      </section>
+    </div>
+  </main>
+
+  <nav class="project-pagination" aria-label="Project navigation">
+    <a class="project-pagination__link" href="projects.html"><span class="project-pagination__label"><span class="project-pagination__text">Back to</span></span><span class="project-pagination__title">All Projects</span></a>
+    <a class="project-pagination__link" href="project-bianca.html"><span class="project-pagination__label"><span class="project-pagination__text">Next project</span></span><span class="project-pagination__title">Bianca →</span></a>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="container--max footer__inner">
+      <div class="footer__brand"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /> <span>© 2026</span></div>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/vvj.works/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/woojun-jung-80945a301" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.9-2.9s-2.2 1.4-2.2 2.8V21H9z"/></svg></a>
+        <a href="https://x.com/woojoonjung" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7.1-8.1L2.2 3h6.1l4.2 5.6zM16.4 19.2h1.66L7.7 4.7H5.9z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/app.js?v=drsnap-demo-tabs"></script>
+</body>
+</html>

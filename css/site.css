@@ -57,10 +57,12 @@ body:has(#profile:target) .morph__dock-logo { view-transition-name: site-logo; o
 .nav-pill a:nth-child(1) .nav-pill__label { view-transition-name: nav-label-1; }
 .nav-pill a:nth-child(2) .nav-pill__label { view-transition-name: nav-label-2; }
 .nav-pill a:nth-child(3) .nav-pill__label { view-transition-name: nav-label-3; }
+.nav-pill a:nth-child(4) .nav-pill__label { view-transition-name: nav-label-4; }
 ::view-transition-group(nav-active)  { z-index: 1; }
 ::view-transition-group(nav-label-1),
 ::view-transition-group(nav-label-2),
-::view-transition-group(nav-label-3) { z-index: 2; }
+::view-transition-group(nav-label-3),
+::view-transition-group(nav-label-4) { z-index: 2; }
 
 /* Shell morph timing — matched to index scroll-morph (--dur-shell-morph) and
    Lenis anchor scroll; --ease-out parallels initMorph's easeOut cubic. */
@@ -225,7 +227,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* Keep labels above the gliding chip inside the flying clone. */
 .morph-fly.nav-pill a { z-index: 1; }
 
-/* ---------- Static site header (Profile/Research/Projects) ---------- */
+/* ---------- Static site header (Profile/Research/Projects/Blog) ---------- */
 .site-header {
   position: sticky;
   top: 0;
@@ -436,19 +438,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
   padding-top: 60px;
   padding-bottom: 180px;
 }
-@media (min-height: 1320px) {
-  /* Desktop: matches the .morph__name desktop breakpoint above.
-     The section becomes a full-viewport stage with its content centred on
-     both axes, rather than being positioned by padding. */
-  .profile-top {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5vh;
-    padding-bottom: 0;
-  }
-}
+
 .profile-photo {
   width: 200px;
   aspect-ratio: 786 / 1040;
@@ -638,8 +628,8 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
   justify-content: space-between;
   padding-block: var(--space-12);
 }
-.footer__brand { display: flex; align-items: center; gap: var(--space-2); }
-.footer__brand img { height: 22px; width: auto; opacity: 0.42; }
+.footer__brand { display: flex; align-items: center; gap: var(--space-4); }
+.footer__brand img { height: 22px; width: auto; opacity: 0.42; padding-top: var(--space-1); }
 .footer__brand span { font: var(--type-caption); color: var(--text-faint); }
 .footer__links { display: flex; gap: var(--space-16); justify-self: center; }
 .footer__links ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
@@ -658,6 +648,7 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-6);
+  row-gap: var(--space-3);
   padding-top: 0px;
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-hairline);
@@ -702,6 +693,22 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
    in over the figure. Venue / title / authors / links sit below.
    ============================================================ */
 .pub-card { display: flex; flex-direction: column; }
+
+.pub-card__question {
+  display: block;
+  width: fit-content;
+  margin-bottom: var(--space-2);
+  color: var(--ink-900);
+  font-style: italic;
+}
+
+.pub-card__question::after {
+  content: "";
+  display: block;
+  width: 32px;
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--ink-300);
+}
 
 .pub-card__media {
   position: relative;
@@ -803,9 +810,48 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
 .pub-link:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 
 /* ============================================================
+   BLOG INTRO
+   ============================================================ */
+body[data-page="blog"] main > .container--wide {
+  max-width: calc(700px + var(--gutter) * 2);
+}
+.blog-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 248px;
+  align-items: center;
+  gap: var(--space-8);
+  padding-block: var(--space-4);
+}
+.blog-intro__copy {
+  /* max-width: 600px; */
+  font: var(--type-body);
+  color: var(--text-body);
+  text-wrap: pretty;
+}
+.blog-intro__links {
+  margin-top: var(--space-6);
+  font: var(--type-caption);
+  color: var(--text-muted);
+}
+.blog-intro__links a { color: inherit; }
+.blog-intro__visual {
+  margin: 0;
+  justify-self: center;
+}
+.blog-intro__visual img {
+  display: block;
+  width: min(100%, 248px);
+  height: auto;
+  margin-inline: auto;
+  margin-bottom: var(--space-12);
+}
+.blog-intro + .blog-essay { margin-top: var(--space-4); }
+
+/* ============================================================
    ESSAY (reflection sections)
    ============================================================ */
 .essay { max-width: var(--container-wide); margin-inline: auto; }
+.blog-essay + .blog-essay { margin-top: var(--space-12); }
 .essay__lead {
   font: var(--type-label);
   padding-bottom: var(--space-3);
@@ -839,9 +885,30 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
   font-size: var(--fs-h2);
   line-height: 1;
 }
-.essay-toggle[open] .essay-toggle__summary::after { content: "-"; }
+.essay-toggle[open] .essay-toggle__summary::after {
+  content: "−";
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-h2);
+  line-height: 1;
+}
 .essay-toggle__body {
   margin-top: var(--space-4);
+}
+.essay-toggle[open] .essay-toggle__summary {
+  color: var(--ink-600);
+}
+.essay-toggle[open]:not(.is-opening):not(.is-closing) .essay-toggle__body {
+  color: var(--ink-900);
+}
+.js .essay-toggle.is-animating {
+  overflow: hidden;
+}
+.js .essay-toggle.is-opening .essay-toggle__body,
+.js .essay-toggle.is-closing .essay-toggle__body {
+  opacity: 0;
 }
 
 /* ============================================================
@@ -900,6 +967,16 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
   .work-grid, .pub-grid { grid-template-columns: repeat(2, 1fr); }
   .footer__links { gap: var(--space-10); }
 }
+@media (max-width: 760px) {
+  .blog-intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .blog-intro__copy { max-width: none; }
+  .blog-intro__visual { justify-self: center; }
+  .blog-intro__visual img { width: min(72vw, 248px); }
+  .blog-intro + .blog-essay { margin-top: var(--space-20); }
+}
 @media (max-width: 620px) {
   .section { padding-block: var(--space-20); }
   .work-grid, .pub-grid { grid-template-columns: 1fr; }
@@ -908,4 +985,31 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
   .footer__inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: var(--space-6); }
   .footer__social, .footer__links { justify-self: center; }
   textarea.field { min-height: 240px; }
+}
+@media (min-height: 450px) {
+  .section { padding-block: var(--space-1); }
+}
+@media (max-width: 450px) {
+  :root {
+    --gutter: 28px; /* left and right padding */
+  }
+  .nav-pill a { padding-inline: var(--space-3); }
+}
+@media (min-height: 1320px) {
+  /* Desktop: matches the .morph__name desktop breakpoint above.
+     The section becomes a full-viewport stage with its content centred on
+     both axes, rather than being positioned by padding. */
+  .profile-top {
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  body[data-page="research"] main.section,
+  body[data-page="projects"] main.section,
+  body[data-page="blog"] main.section {
+    min-height: 82vh;
+  }
 }

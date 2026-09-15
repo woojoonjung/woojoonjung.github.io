@@ -1,0 +1,67 @@
+/* Bianca implementation follows Silverlining's technical approach layout.
+   Shared section columns and mobile typography live in project-detail.css. */
+
+.bianca-page .bi-implementation-block {
+  margin-top: clamp(4.5rem, 7vw, 6rem);
+}
+
+.bianca-page .bi-implementation-block h3 {
+  margin: 0;
+  font: 400 clamp(1.25rem, 2vw, 1.5rem)/1.25 var(--font-serif);
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--text-strong);
+}
+
+.bianca-page .bi-implementation-media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--project-column-gap) / 3);
+}
+
+.bianca-page .bi-implementation-media > figure:only-child {
+  grid-column: 1 / -1;
+}
+
+.bianca-page .bi-implementation-block > .project-section__intro {
+  margin-top: 2rem;
+}
+
+.bianca-page .bi-implementation-visual {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--project-line);
+  background: var(--paper-warm);
+}
+
+.bianca-page .bi-implementation-visual--video {
+  aspect-ratio: 16 / 9;
+}
+
+.bianca-page :is(img, video).bi-implementation-visual {
+  display: block;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Preserve the no-JavaScript fallback without exposing its deferred twin. */
+.bianca-page video[data-lazy-video][hidden] { display: none; }
+
+.bianca-page .bi-implementation-media figcaption {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--project-muted);
+}
+
+.bianca-page .bi-outcome-film figcaption {
+  padding-top: 0;
+  margin-bottom: 0.875rem;
+}
+
+@media (max-width: 1000px) {
+  .bianca-page .bi-implementation-media {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

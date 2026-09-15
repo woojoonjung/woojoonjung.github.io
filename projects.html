@@ -17,6 +17,7 @@
       <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html" aria-current="page"><span class="nav-pill__label">Projects</span></a>
+      <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
     </nav>
   </header>
 
@@ -25,8 +26,9 @@
       <div class="filters reveal" id="projectFilters" role="tablist" aria-label="Filter projects">
         <span class="filters__label">Selected Works.</span>
         <button class="filter is-active" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter" data-filter="product" aria-pressed="false">Industrial Design</button>
         <button class="filter" data-filter="interaction" aria-pressed="false">Interaction Design</button>
+        <button class="filter" data-filter="product" aria-pressed="false">Industrial Design</button>
+        <button class="filter" data-filter="physical" aria-pressed="false">Physical Computing</button>
       </div>
 
       <div class="work-grid" id="workGrid">
@@ -34,126 +36,35 @@
         <article class="pub-card reveal" data-cat="interaction">
           <div class="pub-card__media pub-card__media--auto">
             <img class="pub-card__fig" src="assets/projects/DrSnap.png" alt="Dr.Snap — capstone project" />
-            <!-- TODO: refine description -->
-            <div class="pub-card__abstract"><p>Dr.Snap began with a concern: busy urban residents and people living far from care were using 
-              general AI chatbots as a substitute for medical diagnosis, despite their limited reliability. Rather than offering an immediate 
-              verdict, we designed and built a multi-turn, questionnaire-driven UX workflow for more reliable diagnostic support.</p></div>
+            <div class="pub-card__abstract"><p><span class="pub-card__question">How can AI help people understand a skin concern before a clinic visit?</span>
+              We designed and built a multimodal, multi-turn questionnaire that combines symptom photos, written descriptions, and follow-up questions to provide initial guidance before a clinic visit.</p></div>
           </div>
           <div class="pub-card__body">
-            <div class="pub-card__venue">KU Capstone Competition 24, Runner-up Award</div>
-            <h3 class="pub-card__title">Dr.Snap: Multimodal Dermatology Decision-Support System for Busy Urbanites and Remote Residents</h3>
-            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Youngseo Kim, Youngsook Hwang</p>
+            <div class="pub-card__venue">2024</div>
+
+            <h3 class="pub-card__title">Dr.Snap: AI-Guided Skin Assessment</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Youngseo Kim</p>
             <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Dr.Snap case study" title="View (TBD)" data-label="View (TBD)">
+              <a class="pub-link" href="project-drsnap.html" aria-label="View Dr.Snap case study" title="View case study" data-label="View">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
               </a>
             </div>
           </div>
         </article>
 
-        <!-- <article class="pub-card reveal" data-cat="ux interaction">
-          <div class="pub-card__media pub-card__media--auto">
-            <img class="pub-card__fig" src="assets/projects/Bonfire.png" alt="Bonfire — XR-based SNS platform" />
-            <div class="pub-card__abstract"><p>TODO: description</p></div>
-          </div>
-          <div class="pub-card__body">
-            <div class="pub-card__venue">Side Project 23'</div>
-            <h3 class="pub-card__title">Bonfire: Business Proposal for XR-based SNS Platform</h3>
-            <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Bonfire case study" title="View" data-label="View">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
-              </a>
-            </div>
-          </div>
-        </article> -->
-
         <!-- <article class="pub-card reveal" data-cat="product">
           <div class="pub-card__media pub-card__media--auto">
-            <img class="pub-card__fig" src="assets/projects/Muuto.png" alt="Muuto — kitchen appliance concept" />
-            <div class="pub-card__abstract"><p>TODO: description</p></div>
-          </div>
-          <div class="pub-card__body">
-            <div class="pub-card__venue">Side Project 22'</div>
-            <h3 class="pub-card__title">Brand Study — Muuto: Kitchen Appliance Concept</h3>
-            <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Muuto case study" title="View" data-label="View">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
-              </a>
-            </div>
-          </div>
-        </article> -->
-
-        <article class="pub-card reveal" data-cat="product">
-          <div class="pub-card__media pub-card__media--auto">
             <img class="pub-card__fig" src="assets/projects/Neuro.png" alt="Neuro — BCI-Enabled VR Interaction Concept" />
-            <!-- TODO: refine description -->
             <div class="pub-card__abstract"><p>Neuro explores how brain–computer interfaces could make virtual experiences more expressive, personal, and socially connected. 
               We imagined an everyday BCI–VR wearable that translates neural signals into feedback, creative expression, and user-controlled interactions—supporting memory, 
               imagination, and communication beyond conventional screens and inputs.</p></div>
           </div>
           <div class="pub-card__body">
-            <div class="pub-card__venue">Graduation Project 21</div>
+            <div class="pub-card__venue">2021</div>
             <h3 class="pub-card__title">Neuro: BCI-Enabled VR Interaction Concept</h3>
             <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Jiwon Ryu</p>
             <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Neuro case study" title="View (TBD)" data-label="View (TBD)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-card reveal" data-cat="interaction">
-          <div class="pub-card__media pub-card__media--auto">
-            <img class="pub-card__fig" src="assets/projects/SilverLining.png" alt="Silverlining — adjustable pendant lighting" />
-            <!-- TODO: refine description -->
-            <div class="pub-card__abstract"><p>Silverlining reimagines pendant lighting as an adaptive part of everyday routines rather than a static fixture. 
-              A context-aware system combines time-based cues with task information captured through an embedded camera, adjusting the light’s position and 
-              atmosphere throughout the day. It lowers for brighter, focused illumination during daytime work, then rises into the shade for softer ambient light during 
-              rest in the evening.</p></div>
-          </div>
-          <div class="pub-card__body">
-            <div class="pub-card__venue">Side Project 21</div>
-            <h3 class="pub-card__title">Silverlining: Context-aware Adjustable Pendant Lighting Concept</h3>
-            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung*</span>, Yeongjun Song*</p>
-            <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Silverlining case study" title="View (TBD)" data-label="View (TBD)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-card reveal" data-cat="interaction">
-          <div class="pub-card__media pub-card__media--auto">
-            <img class="pub-card__fig" src="assets/projects/Bianca.png" alt="Bianca — interactive fridge prototype" />
-            <!-- TODO: refine description -->
-            <div class="pub-card__abstract"><p>Bianca explores how subtle sensory cues can enrich familiar routines at home. We prototyped an interactive 
-              refrigerator door with pressure sensors and embedded LED lighting, using touch to trigger changing light patterns. By making those responses 
-              adjustable, the project imagines a future where AI can shape ambient feedback around a person’s context.</p></div>
-          </div>
-          <div class="pub-card__body">
-            <div class="pub-card__venue">Class Project 20</div>
-            <h3 class="pub-card__title">Bianca: Interactive Fridge Prototyping with Arduino</h3>
-            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Yein Lim, Taeil Lee</p>
-            <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Bianca case study" title="View (TBD)" data-label="View (TBD)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- <article class="pub-card reveal" data-cat="ux product">
-          <div class="pub-card__media pub-card__media--auto">
-            <img class="pub-card__fig" src="assets/projects/Wink.png" alt="Wink — wearable action camera concept" />
-            <div class="pub-card__abstract"><p>TODO: description</p></div>
-          </div>
-          <div class="pub-card__body">
-            <div class="pub-card__venue">Side Project 20'</div>
-            <h3 class="pub-card__title">Wink: Wearable Action Camera Concept</h3>
-            <div class="pub-card__links">
-              <a class="pub-link" href="#" aria-label="View Wink case study" title="View" data-label="View">
+              <a class="pub-link" href="project-neuro.html" aria-label="View Neuro case study" title="View case study" data-label="View">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
               </a>
             </div>
@@ -162,8 +73,43 @@
 
         <article class="pub-card reveal" data-cat="product">
           <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/SilverLining.png" alt="Silverlining — adjustable pendant lighting" />
+            <div class="pub-card__abstract"><p><span class="pub-card__question">What if light could adapt to the way people inhabit the space around it?</span>
+              As activities move between the table and its surroundings, Silverlining explores two light distributions through the movement of one source.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">2020</div>
+            <h3 class="pub-card__title">Silverlining: Context-aware Adaptive Lighting</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Yeongjun Song</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="project-silverlining.html" aria-label="View Silverlining case study" title="View case study" data-label="View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-card reveal" data-cat="physical">
+          <div class="pub-card__media pub-card__media--auto">
+            <img class="pub-card__fig" src="assets/projects/Bianca.png" alt="Bianca — interactive fridge prototype" />
+            <div class="pub-card__abstract"><p><span class="pub-card__question">How can a familiar act become a memorable sensory exchange?</span>
+              We explored how touch, movement, and illumination can turn routine use into a responsive, atmospheric moment.</p></div>
+          </div>
+          <div class="pub-card__body">
+            <div class="pub-card__venue">2020</div>
+            <h3 class="pub-card__title">Bianca: Interactive Fridge Prototyping with Arduino</h3>
+            <p class="pub-card__authors"><span style="color: var(--ink-900);">Woojun Jung</span>, Yein Lim</p>
+            <div class="pub-card__links">
+              <a class="pub-link" href="project-bianca.html" aria-label="View Bianca case study" title="View case study" data-label="View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- <article class="pub-card reveal" data-cat="product">
+          <div class="pub-card__media pub-card__media--auto">
             <img class="pub-card__fig" src="assets/projects/PetX.png" alt="PetX — home appliance concept for pet owners" />
-            <!-- TODO: refine description -->
             <div class="pub-card__abstract"><p>BRIDGE explores how home appliances could ease the everyday gaps between single-person pet owners and the pets waiting at home. 
               We identified moments where care, cleanliness, and companionship become difficult to sustain alone, then developed a connected appliance ecosystem spanning a 
               robot cleaner, pet minibar, and entryway steam closet. I led the steam closet concept, which supports quicker departures, prepares clean clothes and pet-walking 
@@ -179,36 +125,11 @@
               </a>
             </div>
           </div>
-        </article>
+        </article> -->
 
       </div>
 
       <p class="form-status" id="emptyState" style="text-align:center;margin-top:var(--space-12);display:none;">No work in this category yet.</p>
-
-      <!-- Reflection -->
-      <section class="essay" style="margin-top: var(--space-32);">
-        <p class="essay__lead reveal">What draws me in.</p>
-        <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">Empathy — How can design ease everyday friction?</summary>
-          <p class="essay-toggle__body">I am drawn to the small moments when everyday systems fail to meet people where they are. 
-            Through observation, interviews, and surveys, I like uncovering the subtle frustrations that often go unnoticed: a 
-            task that feels unnecessarily complicated, information that arrives too late, or a system that asks too much of people 
-            in an already demanding moment. From there, I translate those insights into experiences that make things feel clearer, 
-            lighter, and more natural. Whether through a product, interface, or service, I am interested in designing systems that 
-            respond to real needs rather than abstract assumptions.</p>
-        </details>
-
-        <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">Narrative — How can design enrich human experience?</summary>
-          <p class="essay-toggle__body">I am also interested in design as more than a way to solve problems. 
-            It can shape how people notice, feel, remember, and connect with the world around them.  This 
-            means designing not only individual interactions, but also the relationship between them: how 
-            sequential moments build into a narrative, how simultaneous sensory cues reinforce one another, 
-            and how an experience can create resonance or evoke a meaningful memory. I am interested in using 
-            form, material, interaction, and atmosphere to expand and connect our senses, making ordinary 
-            moments feel more immersive and meaningful.</p>
-        </details>
-      </section>
     </div>
   </main>
 

@@ -49,6 +49,7 @@
       <a href="#profile"><span class="nav-pill__label">Profile</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
+      <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
     </nav>
     <div class="scroll-cue" id="scrollCue">Scroll to Explore ↓</div>
   </div>
@@ -65,6 +66,7 @@
       <a href="#profile" aria-current="page"><span class="nav-pill__label">Profile</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
+      <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
     </nav>
   </header>
 
@@ -79,10 +81,10 @@
         <div class="row reveal">
           <div class="row__label">Biography.</div>
           <div class="row__body">
-            <p>I am a graduate student at the DAIS Lab, Korea University, advised by Prof. Susik Yoon.
-              My primary research focus is <a href="research.html?topic=ml-dm">Representation Learning, Reinforcement Learning,</a> and
+            <p>I am a graduate student at the DAIS Lab, Korea University, advised by Prof. Susik Yoon.<br><div style="margin-top: 8px;"></div>
+              My primary research focus is <a href="research.html?topic=ml-dm">Representation Learning</a> and
               <a href="research.html">Human–AI Interaction</a>, with a central interest in building systems that
-              enable effective human–AI collaboration. With a background in both industrial design and computer
+              enable effective human–AI collaboration.<br><div style="margin-top: 8px;"></div>With a background in both industrial design and computer
               science, I strive to bridge technical rigor with human-centered design.</p>
           </div>
         </div>
@@ -98,7 +100,7 @@
         </div>
 
         <div class="row reveal">
-          <div class="row__label">References.</div>
+          <div class="row__label">Links.</div>
           <div class="row__body">
             <div class="ref-links">
               <a href="assets/Woojun_Jung_CV.pdf" target="_blank" rel="noopener">CV</a>
@@ -108,13 +110,19 @@
               <a href="https://x.com/woojoonjung" target="_blank" rel="noopener">X</a>
             </div>
           </div>
+          <div class="row__label">Contact.</div>
+          <div class="row__body">
+            <div class="ref-links">
+              <a href="mailto:woojoon@korea.ac.kr" target="_blank" rel="noopener">E-mail: woojoon@korea.ac.kr</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+
     <!-- Interests: intro pins to the viewport centre while captioned cards drift up past it -->
-    <section class="interests" id="interests">
-      <!-- Pinned, centred intro (eases from top → centre on entry) -->
+    <!-- <section class="interests" id="interests">
       <div class="interests__center">
         <div class="interests__intro">
           <div class="interests__label">Interests.</div>
@@ -126,46 +134,45 @@
         </div>
       </div>
 
-      <!-- Floating cards: JS randomises size + position on each load; captions sit below each card -->
       <div class="interests__field" id="interestsField">
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/research/NAVI.png" alt="Research figure: tabular representation" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">NAVI</span><span class="float-card__tag">Representation Learning</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">NAVI</span><span class="float-card__tag">Representation Learning</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/research/HAETAE.png" alt="Research figure: in-domain table pretraining" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">HAETAE</span><span class="float-card__tag">Representation Learning</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">HAETAE</span><span class="float-card__tag">Representation Learning</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/research/StreamBench.png" alt="Research figure: massive document stream evaluation" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">StreamBench</span><span class="float-card__tag">LLM Evaluation</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">StreamBench</span><span class="float-card__tag">LLM Evaluation</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/projects/DrSnap.png" alt="Project: DrSnap capstone project" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Dr.Snap</span><span class="float-card__tag">Interaction Design</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">Dr.Snap</span><span class="float-card__tag">Interaction Design</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/projects/PetX.png" alt="Project: PetX home appliance concept" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">PetX</span><span class="float-card__tag">Industrial Design</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">PetX</span><span class="float-card__tag">Industrial Design</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/projects/Bianca.png" alt="Project: Bianca interactive fridge" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Bianca</span><span class="float-card__tag">Interaction Design</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">Bianca</span><span class="float-card__tag">Interaction Design</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/projects/Neuro.png" alt="Project: Neuro BCI HMD concept" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Neuro</span><span class="float-card__tag">Industrial Design</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">Neuro</span><span class="float-card__tag">Industrial Design</span></figcaption>
         </figure>
         <figure class="float-card">
           <div class="float-card__media"><img src="assets/projects/SilverLining.png" alt="Project: Silverlining time-of-day adjustable pendant lighting" /></div>
-          <!-- <figcaption class="float-card__meta"><span class="float-card__name">Silverlining</span><span class="float-card__tag">Industrial Design</span></figcaption> -->
+          <figcaption class="float-card__meta"><span class="float-card__name">Silverlining</span><span class="float-card__tag">Industrial Design</span></figcaption>
         </figure>
       </div>
-    </section>
+    </section> -->
 
     <!-- Contact -->
-    <div style="height: var(--space-16);"></div>
-    <section class="section" id="contact">
+    <!-- <div style="height: var(--space-16);"></div> -->
+    <!-- <section class="section" id="contact">
       <div class="container">
         <div class="row reveal">
           <div class="row__label">Contact.</div>
@@ -189,6 +196,7 @@
         </div>
       </form>
     </section>
+    -->
   </main>
 
   <!-- ===================== FOOTER ===================== -->
