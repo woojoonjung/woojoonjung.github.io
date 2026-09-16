@@ -23,6 +23,13 @@
   grid-column: 1 / -1;
 }
 
+/* Scale implementation images with their intrinsic proportions. */
+.bianca-page .bi-implementation-media img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .bianca-page .bi-implementation-block > .project-section__intro {
   margin-top: 2rem;
 }

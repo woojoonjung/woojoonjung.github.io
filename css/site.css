@@ -911,6 +911,28 @@ body[data-page="blog"] main > .container--wide {
 }
 .blog-intro + .blog-essay { margin-top: var(--space-4); }
 
+.news-list {
+  list-style: none;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-1);
+}
+.news-item {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  font-size: var(--fs-sm);
+  gap: var(--space-2);
+  color: var(--text-body);
+}
+.news-item__date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-cap);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 /* ============================================================
    ESSAY (reflection sections)
    ============================================================ */

@@ -85,9 +85,9 @@ body[data-page="project-detail"] .site-header {
 .project-detail .project-back:hover { color: var(--text-strong); }
 
 .project-detail .project-hero h1 {
-  margin-top: 0.5rem;
-  font: 400 clamp(3.5rem, 6.4vw, 5.5rem)/1.05 var(--font-sans);
-  letter-spacing: -0.035em;
+  margin-top: 1.3rem;
+  font: 500 clamp(2.5rem, 4.8vw, 3.8rem)/1.05 var(--font-sans);
+  letter-spacing: -0.01em;
 }
 
 .project-detail .project-hero__statement {
