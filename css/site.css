@@ -1008,6 +1008,10 @@ body[data-page="blog"] main > .container--wide {
     transform var(--dur-fade) var(--ease-vt-reveal);
 }
 .js .reveal.is-in { opacity: 1; transform: none; }
+/* News starts at the top and follows with a subtle 40ms stagger per item. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .news-item.reveal { transition-delay: var(--news-reveal-delay, 0ms); }
+}
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; }
 }

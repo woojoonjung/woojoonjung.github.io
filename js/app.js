@@ -133,6 +133,11 @@
       els.forEach(function (el) { el.classList.add("is-in"); });
       return;
     }
+    document.querySelectorAll(".news-list").forEach(function (list) {
+      list.querySelectorAll(".news-item.reveal").forEach(function (item, index) {
+        item.style.setProperty("--news-reveal-delay", (index * 10) + "ms");
+      });
+    });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
