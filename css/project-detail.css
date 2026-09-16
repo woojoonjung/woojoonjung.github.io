@@ -322,6 +322,10 @@ body[data-page="project-detail"] .site-header {
 
 .project-detail .project-evidence__body { padding-block: 1rem 1.75rem; }
 
+/* Related process sections share the existing disclosure style in stacked rows. */
+.project-detail .project-evidence-group { margin-top: 3rem; }
+.project-detail .project-evidence-group > .project-evidence { margin-top: 0; }
+
 /* Design questions, film, and reflection. */
 .project-detail .project-question {
   max-width: 80ch;

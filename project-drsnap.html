@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/site.css" />
-  <link rel="stylesheet" href="css/project-detail.css" />
+  <link rel="stylesheet" href="css/project-detail.css?v=process-toggles" />
   <link rel="stylesheet" href="css/project-drsnap.css" />
 </head>
 <body data-page="project-detail">
@@ -385,132 +385,133 @@
           </article>
           </div>
         </div>
-      </section>
 
-      <section class="project-section ds-development" id="development" aria-labelledby="development-title">
-        <header class="project-section__intro">
-          <p class="project-kicker">05 / Development</p>
-          <div class="project-section__copy">
-            <h2 id="development-title">Building the<br />AI-guided intake</h2>
-            <div class="project-section__description">
-              <p>Behind the conversation, the prototype connects symptom retrieval, image analysis, and question generation. We built this pipeline to turn an initial description into candidate conditions, then ask for information that could help distinguish between them.</p>
-            </div>
-          </div>
-        </header>
-
-        <section class="ds-dev-subsection" aria-labelledby="architecture-title">
-          <figure class="ds-dev-figure" aria-label="Prototype architecture connecting the browser, application backend, and external services">
-            <figcaption class="project-note">Prototype architecture · <a href="https://github.com/woojoonjung/20242R0136COSE48002" target="_blank" rel="noopener">View source on GitHub</a></figcaption>
-            <div class="ds-architecture">
-              <div class="ds-architecture__group ds-architecture__group--browser">
-                <p class="ds-label">Browser</p>
-                <div class="ds-tech-node">
-                  <h4>React · Vite · TailwindCSS</h4>
-                  <p>Symptom input and conversation interface</p>
-                </div>
-              </div>
-              <div class="ds-architecture__group ds-architecture__group--backend">
-                <p class="ds-label">Application backend</p>
-                <div class="ds-architecture__environment">
-                  <div class="ds-tech-node ds-tech-node--fastapi">
-                    <h4>FastAPI</h4>
-                    <p>Request handling</p>
+        <div class="project-evidence-group">
+          <details class="project-evidence">
+            <summary>View Development Process</summary>
+            <section class="project-evidence__body ds-development" id="development" aria-labelledby="development-title">
+              <header class="project-section__intro">
+                <div class="project-section__copy">
+                  <h2 id="development-title">Building the<br />AI-guided intake</h2>
+                  <div class="project-section__description">
+                    <p>Behind the conversation, the prototype connects symptom retrieval, image analysis, and question generation. We built this pipeline to turn an initial description into candidate conditions, then ask for information that could help distinguish between them.</p>
                   </div>
-                  <div class="ds-architecture__modules">
-                    <div class="ds-tech-node">
-                      <h4>Retrieval</h4>
-                      <p>Korean S-BERT · FAISS</p>
+                </div>
+              </header>
+
+              <section class="ds-dev-subsection" aria-labelledby="architecture-title">
+                <figure class="ds-dev-figure" aria-label="Prototype architecture connecting the browser, application backend, and external services">
+                  <figcaption class="project-note">Prototype architecture · <a href="https://github.com/woojoonjung/20242R0136COSE48002" target="_blank" rel="noopener">View source on GitHub</a></figcaption>
+                  <div class="ds-architecture">
+                    <div class="ds-architecture__group ds-architecture__group--browser">
+                      <p class="ds-label">Browser</p>
+                      <div class="ds-tech-node">
+                        <h4>React · Vite · TailwindCSS</h4>
+                        <p>Symptom input and conversation interface</p>
+                      </div>
                     </div>
-                    <div class="ds-tech-node ds-tech-node--dialogue">
-                      <h4>Dialogue orchestration</h4>
-                      <p>Candidate selection · Follow-up question synthesis</p>
+                    <div class="ds-architecture__group ds-architecture__group--backend">
+                      <p class="ds-label">Application backend</p>
+                      <div class="ds-architecture__environment">
+                        <div class="ds-tech-node ds-tech-node--fastapi">
+                          <h4>FastAPI</h4>
+                          <p>Request handling</p>
+                        </div>
+                        <div class="ds-architecture__modules">
+                          <div class="ds-tech-node">
+                            <h4>Retrieval</h4>
+                            <p>Korean S-BERT · FAISS</p>
+                          </div>
+                          <div class="ds-tech-node ds-tech-node--dialogue">
+                            <h4>Dialogue orchestration</h4>
+                            <p>Candidate selection · Follow-up question synthesis</p>
+                          </div>
+                        </div>
+                        <p class="project-note">Docker execution environment</p>
+                      </div>
                     </div>
-                  </div>
-                  <p class="project-note">Docker execution environment</p>
-                </div>
-              </div>
-              <div class="ds-architecture__group ds-architecture__group--services">
-                <p class="ds-label">External services</p>
-                <div class="ds-architecture__services">
-                  <div class="ds-tech-node">
-                    <h4>Google Cloud Vision</h4>
-                    <p>Web Detection</p>
-                  </div>
-                  <div class="ds-tech-node">
-                    <h4>OpenAI</h4>
-                    <p>GPT-4o</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </figure>
-          <header class="project-section__copy">
-            <h3 id="architecture-title">System architecture</h3>
-            <div class="project-section__description">
-              <p>A React interface sends the user’s inputs to a Python backend through FastAPI. The backend coordinates local retrieval and external APIs, carrying the resulting context into each turn of the conversation.</p>
-            </div>
-          </header>
-        </section>
-
-        <section class="ds-dev-subsection" aria-labelledby="candidate-pipeline-title">
-          <figure class="ds-dev-figure" aria-label="Knowledge preparation and two input paths leading to three candidate conditions">
-            <figcaption class="project-note">Knowledge source: <a href="https://www.amc.seoul.kr/asan/healthinfo/disease/diseaseList.do?partId=B000019" target="_blank" rel="noopener">Asan disease encyclopedia</a> · Embeddings: <a href="https://huggingface.co/jhgan/ko-sroberta-multitask" target="_blank" rel="noopener">ko-sroberta-multitask</a> · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/main/backend/ml/retriever.py" target="_blank" rel="noopener">Retrieval implementation</a></figcaption>
-            <div class="ds-input-pipeline">
-              <div class="ds-retrieval-layout">
-                <section class="ds-knowledge-prep" aria-labelledby="knowledge-prep-title">
-                  <h4 class="ds-pipeline-heading ds-label" id="knowledge-prep-title">Knowledge preparation for retrieval</h4>
-                  <ol class="ds-knowledge-stack">
-                    <li>
-                      <img src="assets/projects/drsnap/asan.png" alt="" />
-                      <div><h5>Symptom Descriptions</h5><p>Asan disease encyclopedia</p></div>
-                    </li>
-                    <li>
-                      <img src="assets/projects/drsnap/huggingface.png" alt="" />
-                      <div><h5>Text Embeddings</h5><p>Korean S-BERT · 768 dimensions</p></div>
-                    </li>
-                    <li>
-                      <img src="assets/projects/drsnap/faiss.png" alt="" />
-                      <div><h5>Search Index</h5><p>FAISS · cosine similarity</p></div>
-                    </li>
-                  </ol>
-                </section>
-                <section class="ds-candidate-selection" aria-labelledby="candidate-selection-title">
-                  <h4 class="ds-pipeline-heading ds-label" id="candidate-selection-title">Candidate selection</h4>
-                  <div class="ds-selection-flow">
-                    <article class="ds-selection-path ds-selection-path--text" aria-labelledby="text-input-path-title">
-                      <h5 class="ds-modality-label" id="text-input-path-title"><img src="assets/projects/drsnap/icon-text.svg" alt="" />Text</h5>
-                      <div class="ds-selection-row">
-                        <div class="ds-selection-node ds-selection-node--input"><p>Written Symptoms</p></div>
-                        <div class="ds-selection-process"><p>Retrieval</p></div>
-                        <div class="ds-selection-node ds-selection-node--output">
-                          <p>Candidate Conditions<br />+<br />Similarity scores</p>
-                          <span class="ds-output-type" aria-label="Text output">txt</span>
+                    <div class="ds-architecture__group ds-architecture__group--services">
+                      <p class="ds-label">External services</p>
+                      <div class="ds-architecture__services">
+                        <div class="ds-tech-node">
+                          <h4>Google Cloud Vision</h4>
+                          <p>Web Detection</p>
+                        </div>
+                        <div class="ds-tech-node">
+                          <h4>OpenAI</h4>
+                          <p>GPT-4o</p>
                         </div>
                       </div>
-                    </article>
-                    <article class="ds-selection-path ds-selection-path--vision" aria-labelledby="image-input-path-title">
-                      <h5 class="ds-modality-label" id="image-input-path-title"><img src="assets/projects/drsnap/icon-vision.svg" alt="" />Vision</h5>
-                      <div class="ds-selection-row">
-                        <div class="ds-selection-node ds-selection-node--input"><p>Uploaded Photo</p></div>
-                        <div class="ds-selection-process"><p>Cloud Vision</p></div>
-                        <div class="ds-selection-node ds-selection-node--output">
-                          <p>Candidate Entities<br />+<br />Entity scores</p>
-                          <span class="ds-output-type" aria-label="Text output">txt</span>
-                        </div>
-                      </div>
-                    </article>
-                    <div class="ds-selection-result">
-                      <h5>Three candidate conditions</h5>
-                      <p>GPT-4o considers both inputs<br />and selects from text-retrieved conditions.</p>
                     </div>
                   </div>
-                </section>
-              </div>
-              <details class="ds-symptom-example project-evidence">
-                <summary>View a symptom description example</summary>
-                <div class="project-evidence__body">
-                  <p class="project-note">Adapted from the repository’s <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/data/disease_details.json#L542-L553" target="_blank" rel="noopener">atopic dermatitis record</a>. Original field names are preserved; descriptions are shortened and translated into English.</p>
-                  <pre><code>{
+                </figure>
+                <header class="project-section__copy">
+                  <h3 id="architecture-title">System architecture</h3>
+                  <div class="project-section__description">
+                    <p>A React interface sends the user’s inputs to a Python backend through FastAPI. The backend coordinates local retrieval and external APIs, carrying the resulting context into each turn of the conversation.</p>
+                  </div>
+                </header>
+              </section>
+
+              <section class="ds-dev-subsection" aria-labelledby="candidate-pipeline-title">
+                <figure class="ds-dev-figure" aria-label="Knowledge preparation and two input paths leading to three candidate conditions">
+                  <figcaption class="project-note">Knowledge source: <a href="https://www.amc.seoul.kr/asan/healthinfo/disease/diseaseList.do?partId=B000019" target="_blank" rel="noopener">Asan disease encyclopedia</a> · Embeddings: <a href="https://huggingface.co/jhgan/ko-sroberta-multitask" target="_blank" rel="noopener">ko-sroberta-multitask</a> · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/main/backend/ml/retriever.py" target="_blank" rel="noopener">Retrieval implementation</a></figcaption>
+                  <div class="ds-input-pipeline">
+                    <div class="ds-retrieval-layout">
+                      <section class="ds-knowledge-prep" aria-labelledby="knowledge-prep-title">
+                        <h4 class="ds-pipeline-heading ds-label" id="knowledge-prep-title">Knowledge preparation for retrieval</h4>
+                        <ol class="ds-knowledge-stack">
+                          <li>
+                            <img src="assets/projects/drsnap/asan.png" alt="" />
+                            <div><h5>Symptom Descriptions</h5><p>Asan disease encyclopedia</p></div>
+                          </li>
+                          <li>
+                            <img src="assets/projects/drsnap/huggingface.png" alt="" />
+                            <div><h5>Text Embeddings</h5><p>Korean S-BERT · 768 dimensions</p></div>
+                          </li>
+                          <li>
+                            <img src="assets/projects/drsnap/faiss.png" alt="" />
+                            <div><h5>Search Index</h5><p>FAISS · cosine similarity</p></div>
+                          </li>
+                        </ol>
+                      </section>
+                      <section class="ds-candidate-selection" aria-labelledby="candidate-selection-title">
+                        <h4 class="ds-pipeline-heading ds-label" id="candidate-selection-title">Candidate selection</h4>
+                        <div class="ds-selection-flow">
+                          <article class="ds-selection-path ds-selection-path--text" aria-labelledby="text-input-path-title">
+                            <h5 class="ds-modality-label" id="text-input-path-title"><img src="assets/projects/drsnap/icon-text.svg" alt="" />Text</h5>
+                            <div class="ds-selection-row">
+                              <div class="ds-selection-node ds-selection-node--input"><p>Written Symptoms</p></div>
+                              <div class="ds-selection-process"><p>Retrieval</p></div>
+                              <div class="ds-selection-node ds-selection-node--output">
+                                <p>Candidate Conditions<br />+<br />Similarity scores</p>
+                                <span class="ds-output-type" aria-label="Text output">txt</span>
+                              </div>
+                            </div>
+                          </article>
+                          <article class="ds-selection-path ds-selection-path--vision" aria-labelledby="image-input-path-title">
+                            <h5 class="ds-modality-label" id="image-input-path-title"><img src="assets/projects/drsnap/icon-vision.svg" alt="" />Vision</h5>
+                            <div class="ds-selection-row">
+                              <div class="ds-selection-node ds-selection-node--input"><p>Uploaded Photo</p></div>
+                              <div class="ds-selection-process"><p>Cloud Vision</p></div>
+                              <div class="ds-selection-node ds-selection-node--output">
+                                <p>Candidate Entities<br />+<br />Entity scores</p>
+                                <span class="ds-output-type" aria-label="Text output">txt</span>
+                              </div>
+                            </div>
+                          </article>
+                          <div class="ds-selection-result">
+                            <h5>Three candidate conditions</h5>
+                            <p>GPT-4o considers both inputs<br />and selects from text-retrieved conditions.</p>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <details class="ds-symptom-example project-evidence">
+                      <summary>View a symptom description example</summary>
+                      <div class="project-evidence__body">
+                        <p class="project-note">Adapted from the repository’s <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/data/disease_details.json#L542-L553" target="_blank" rel="noopener">atopic dermatitis record</a>. Original field names are preserved; descriptions are shortened and translated into English.</p>
+                        <pre><code>{
   "name": "아토피성 피부염(Atopic dermatitis)",
   "details": {
     "정의": "A chronic, recurring form of eczema accompanied by severe itching.",
@@ -521,17 +522,17 @@
     "경과": "Symptoms may improve and recur over time; the course varies between patients."
   }
 }</code></pre>
-                  <p class="project-note">Each retrieval entry pairs <code>name</code> with <code>details["증상"]</code> (symptoms). The full <code>details</code> object is retrieved later to provide context for the selected candidates. <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/conversation.py#L33-L43" target="_blank" rel="noopener">View retrieval preparation</a> · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/conversation.py#L128-L139" target="_blank" rel="noopener">View candidate context lookup</a></p>
-                </div>
-              </details>
-              <details class="ds-candidate-example project-evidence">
-                <summary>View an example terminal output</summary>
-                <div class="project-evidence__body">
-                <p class="project-note">Transcribed from the prototype development log and arranged to follow the two input paths above. Image scores and text similarity scores use different scales.</p>
-                <div class="ds-candidate-example__logs">
-                  <div>
-                    <p class="ds-label">Written symptoms · Retrieved conditions</p>
-                    <pre><code>*** from symptom text ***
+                        <p class="project-note">Each retrieval entry pairs <code>name</code> with <code>details["증상"]</code> (symptoms). The full <code>details</code> object is retrieved later to provide context for the selected candidates. <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/conversation.py#L33-L43" target="_blank" rel="noopener">View retrieval preparation</a> · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/85d5c394a087331a71debdb30879395b29e604f3/backend/ml/conversation.py#L128-L139" target="_blank" rel="noopener">View candidate context lookup</a></p>
+                      </div>
+                    </details>
+                    <details class="ds-candidate-example project-evidence">
+                      <summary>View an example terminal output</summary>
+                      <div class="project-evidence__body">
+                      <p class="project-note">Transcribed from the prototype development log and arranged to follow the two input paths above. Image scores and text similarity scores use different scales.</p>
+                      <div class="ds-candidate-example__logs">
+                        <div>
+                          <p class="ds-label">Written symptoms · Retrieved conditions</p>
+                          <pre><code>*** from symptom text ***
 ('Lichen simplex chronicus', 0.6910784)
 ('Nummular Eczema', 0.66022104)
 ('Atopic dermatitis', 0.64173764)
@@ -542,10 +543,10 @@
 ('Contact dermatitis', 0.6147158)
 ('Exfoliative dermatitis', 0.610614)
 ('Dermatopolymyositis', 0.609348)</code></pre>
-                  </div>
-                  <div>
-                    <p class="ds-label">Skin photo · Web entities</p>
-                    <pre><code>*** from symptom image ***
+                        </div>
+                        <div>
+                          <p class="ds-label">Skin photo · Web entities</p>
+                          <pre><code>*** from symptom image ***
 ('Atopic eczema', 0.4183)
 ('Measles', 0.4099)
 ('Cough', 0.4009)
@@ -556,44 +557,44 @@
 ('Rhinorrhea', 0.3262)
 ('Epiphora', 0.3097)
 ('Signs and symptoms', 0.306)</code></pre>
+                        </div>
+                      </div>
+                      <div class="ds-candidate-example__result">
+                        <p class="ds-label">Selected candidates</p>
+                        <pre><code>['Lichen simplex chronicus', 'Nummular Eczema', 'Atopic dermatitis']</code></pre>
+                      </div>
+                      </div>
+                    </details>
                   </div>
-                </div>
-                <div class="ds-candidate-example__result">
-                  <p class="ds-label">Selected candidates</p>
-                  <pre><code>['Lichen simplex chronicus', 'Nummular Eczema', 'Atopic dermatitis']</code></pre>
-                </div>
-                </div>
-              </details>
-            </div>
-          </figure>
-          <header class="project-section__copy">
-            <h3 id="candidate-pipeline-title">From inputs to candidates</h3>
-            <div class="project-section__description">
-              <p>We embedded symptom descriptions scraped from Asan Medical Center’s disease encyclopedia with Korean S-BERT. FAISS searches these descriptions using cosine similarity: both document and query vectors are L2-normalized before an inner-product search.</p>
-              <p>In parallel, Cloud Vision’s Web Detection returns entity descriptions and scores for the photo. Because we did not know how these scores were calculated, we treated them only as ranking signals. We then prompted GPT-4o to consider the rankings from both inputs and select three candidate conditions from the text-retrieved list.</p>
-            </div>
-          </header>
-        </section>
+                </figure>
+                <header class="project-section__copy">
+                  <h3 id="candidate-pipeline-title">From inputs to candidates</h3>
+                  <div class="project-section__description">
+                    <p>We embedded symptom descriptions scraped from Asan Medical Center’s disease encyclopedia with Korean S-BERT. FAISS searches these descriptions using cosine similarity: both document and query vectors are L2-normalized before an inner-product search.</p>
+                    <p>In parallel, Cloud Vision’s Web Detection returns entity descriptions and scores for the photo. Because we did not know how these scores were calculated, we treated them only as ranking signals. We then prompted GPT-4o to consider the rankings from both inputs and select three candidate conditions from the text-retrieved list.</p>
+                  </div>
+                </header>
+              </section>
 
-        <section class="ds-dev-subsection" aria-labelledby="question-generation-title">
-          <figure class="ds-dev-figure" aria-label="Candidate information and conversation history guide a repeated question and response process">
-            <figcaption class="project-note">Question example translated from Korean · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/main/backend/ml/conversation.py" target="_blank" rel="noopener">Conversation implementation</a></figcaption>
-            <div class="ds-dialogue-map">
-              <ol class="ds-dev-flow">
-                <li><h4>Candidate context</h4><p>Full disease details and prior conversation</p></li>
-                <li><h4>Generate a question</h4><p>Ask about a distinguishing symptom</p></li>
-                <li><h4>Yes or no</h4><p>The user answers one question</p></li>
-                <li><h4>Eliminate a candidate</h4><p>Use the answer and history to remove one condition</p></li>
-              </ol>
-              <p class="ds-dialogue-return">Updated candidates + conversation history inform the next question</p>
-              <div class="ds-prompt-constraints">
-                <p>Prompt constraints: (1) Focus on differences between candidates, (2) Question must be answerable with yes or no, (3) Avoid questions already asked.</p>
-              </div>
-              <details class="ds-prompt-details project-evidence">
-                <summary>View the prompt structure</summary>
-                <div class="project-evidence__body">
-                <p class="project-note">Adapted English outline of the question-generation prompt, condensed for readability.</p>
-                <pre><code>SYSTEM
+              <section class="ds-dev-subsection" aria-labelledby="question-generation-title">
+                <figure class="ds-dev-figure" aria-label="Candidate information and conversation history guide a repeated question and response process">
+                  <figcaption class="project-note">Question example translated from Korean · <a href="https://github.com/woojoonjung/20242R0136COSE48002/blob/main/backend/ml/conversation.py" target="_blank" rel="noopener">Conversation implementation</a></figcaption>
+                  <div class="ds-dialogue-map">
+                    <ol class="ds-dev-flow">
+                      <li><h4>Candidate context</h4><p>Full disease details and prior conversation</p></li>
+                      <li><h4>Generate a question</h4><p>Ask about a distinguishing symptom</p></li>
+                      <li><h4>Yes or no</h4><p>The user answers one question</p></li>
+                      <li><h4>Eliminate a candidate</h4><p>Use the answer and history to remove one condition</p></li>
+                    </ol>
+                    <p class="ds-dialogue-return">Updated candidates + conversation history inform the next question</p>
+                    <div class="ds-prompt-constraints">
+                      <p>Prompt constraints: (1) Focus on differences between candidates, (2) Question must be answerable with yes or no, (3) Avoid questions already asked.</p>
+                    </div>
+                    <details class="ds-prompt-details project-evidence">
+                      <summary>View the prompt structure</summary>
+                      <div class="project-evidence__body">
+                      <p class="project-note">Adapted English outline of the question-generation prompt, condensed for readability.</p>
+                      <pre><code>SYSTEM
 Use the prior conversation as context.
 Avoid repeating a question that has already been asked.
 
@@ -608,87 +609,90 @@ USER — CURRENT CONTEXT
 Candidate conditions: {retrieved_context}
 Ask about a distinguishing symptom.
 The question must be answerable with yes or no.</code></pre>
-                </div>
-              </details>
-            </div>
-          </figure>
-          <header class="project-section__copy">
-            <h3 id="question-generation-title">Questionaire synthesis</h3>
-            <div class="project-section__description">
-              <p>After selecting candidates, the system retrieves their full disease information. Prompts ask for a binary question<br>that targets differences between candidates, then use the response and conversation history to eliminate one candidate. This process repeats until one candidate remains.</p>
-              <p>Conversation history is passed into subsequent requests, with instructions to avoid repeating earlier questions. A one-shot example guides the question format.</p>
-            </div>
-          </header>
-        </section>
+                      </div>
+                    </details>
+                  </div>
+                </figure>
+                <header class="project-section__copy">
+                  <h3 id="question-generation-title">Questionaire synthesis</h3>
+                  <div class="project-section__description">
+                    <p>After selecting candidates, the system retrieves their full disease information. Prompts ask for a binary question<br>that targets differences between candidates, then use the response and conversation history to eliminate one candidate. This process repeats until one candidate remains.</p>
+                    <p>Conversation history is passed into subsequent requests, with instructions to avoid repeating earlier questions. A one-shot example guides the question format.</p>
+                  </div>
+                </header>
+              </section>
 
-        <section class="ds-dev-subsection" aria-labelledby="initial-checks-title">
-          <figure class="ds-dev-figure" aria-label="Three development examples with photo and written inputs and candidate outputs">
-            <figcaption class="project-note">Examples reproduced from the 2024 development log. Highlighting marks the expected condition in each illustrated case.</figcaption>
-            <div class="ds-prototype-checks">
-              <div class="ds-check-examples">
-                <article class="ds-check-example">
-                  <h4>Case 01</h4>
-                  <div class="ds-check-input" role="group" aria-labelledby="check-input-01">
-                    <p class="ds-label" id="check-input-01">User input</p>
-                    <img src="assets/projects/drsnap/atopic.png" alt="User-submitted photo of skin behind the knees for Case 01" width="423" height="423" loading="lazy" decoding="async" />
-                    <p class="ds-check-input__text">Dry, intensely itchy skin behind the knees, with cracking after scratching.</p>
+              <section class="ds-dev-subsection" aria-labelledby="initial-checks-title">
+                <figure class="ds-dev-figure" aria-label="Three development examples with photo and written inputs and candidate outputs">
+                  <figcaption class="project-note">Examples reproduced from the 2024 development log. Highlighting marks the expected condition in each illustrated case.</figcaption>
+                  <div class="ds-prototype-checks">
+                    <div class="ds-check-examples">
+                      <article class="ds-check-example">
+                        <h4>Case 01</h4>
+                        <div class="ds-check-input" role="group" aria-labelledby="check-input-01">
+                          <p class="ds-label" id="check-input-01">User input</p>
+                          <img src="assets/projects/drsnap/atopic.png" alt="User-submitted photo of skin behind the knees for Case 01" width="423" height="423" loading="lazy" decoding="async" />
+                          <p class="ds-check-input__text">Dry, intensely itchy skin behind the knees, with cracking after scratching.</p>
+                        </div>
+                        <div class="ds-check-output" role="group" aria-labelledby="check-output-01">
+                          <p class="ds-label" id="check-output-01">Candidate output</p>
+                          <ul>
+                            <li>Lichen simplex chronicus</li>
+                            <li>Nummular eczema</li>
+                            <li><mark>Atopic dermatitis</mark></li>
+                          </ul>
+                        </div>
+                      </article>
+                      <article class="ds-check-example">
+                        <h4>Case 02</h4>
+                        <div class="ds-check-input" role="group" aria-labelledby="check-input-02">
+                          <p class="ds-label" id="check-input-02">User input</p>
+                          <img src="assets/projects/drsnap/wart.png" alt="User-submitted photo of a raised lesion on a finger for Case 02" width="666" height="666" loading="lazy" decoding="async" />
+                          <p class="ds-check-input__text">A firm, raised lesion on a finger with an uneven surface.</p>
+                        </div>
+                        <div class="ds-check-output" role="group" aria-labelledby="check-output-02">
+                          <p class="ds-label" id="check-output-02">Candidate output</p>
+                          <ul>
+                            <li>Nummular eczema</li>
+                            <li>Hand eczema</li>
+                            <li><mark>Wart</mark></li>
+                          </ul>
+                        </div>
+                      </article>
+                      <article class="ds-check-example">
+                        <h4>Case 03</h4>
+                        <div class="ds-check-input" role="group" aria-labelledby="check-input-03">
+                          <p class="ds-label" id="check-input-03">User input</p>
+                          <img alt="User-submitted photo of dry, cracked skin on the back of a hand for Case 03" src="assets/projects/drsnap/eczema-1063.webp" width="1063" height="1063" loading="lazy" decoding="async" />
+                          <p class="ds-check-input__text">Redness and persistent itching on the back of the hand, with cracked, hardened skin.</p>
+                        </div>
+                        <div class="ds-check-output" role="group" aria-labelledby="check-output-03">
+                          <p class="ds-label" id="check-output-03">Candidate output</p>
+                          <ul>
+                            <li>Lichen simplex chronicus</li>
+                            <li><mark>Hand eczema</mark></li>
+                            <li>Exfoliative dermatitis</li>
+                          </ul>
+                        </div>
+                      </article>
+                    </div>
                   </div>
-                  <div class="ds-check-output" role="group" aria-labelledby="check-output-01">
-                    <p class="ds-label" id="check-output-01">Candidate output</p>
-                    <ul>
-                      <li>Lichen simplex chronicus</li>
-                      <li>Nummular eczema</li>
-                      <li><mark>Atopic dermatitis</mark></li>
-                    </ul>
+                </figure>
+                <header class="project-section__copy">
+                  <h3 id="initial-checks-title">Case study</h3>
+                  <div class="project-section__description">
+                    <p>The initial checks reported 8 of 10 conditions as successful where hives and rash were marked unsuccessful. In the examples shown above, the expected condition appeared among the three candidates.</p>
                   </div>
-                </article>
-                <article class="ds-check-example">
-                  <h4>Case 02</h4>
-                  <div class="ds-check-input" role="group" aria-labelledby="check-input-02">
-                    <p class="ds-label" id="check-input-02">User input</p>
-                    <img src="assets/projects/drsnap/wart.png" alt="User-submitted photo of a raised lesion on a finger for Case 02" width="666" height="666" loading="lazy" decoding="async" />
-                    <p class="ds-check-input__text">A firm, raised lesion on a finger with an uneven surface.</p>
-                  </div>
-                  <div class="ds-check-output" role="group" aria-labelledby="check-output-02">
-                    <p class="ds-label" id="check-output-02">Candidate output</p>
-                    <ul>
-                      <li>Nummular eczema</li>
-                      <li>Hand eczema</li>
-                      <li><mark>Wart</mark></li>
-                    </ul>
-                  </div>
-                </article>
-                <article class="ds-check-example">
-                  <h4>Case 03</h4>
-                  <div class="ds-check-input" role="group" aria-labelledby="check-input-03">
-                    <p class="ds-label" id="check-input-03">User input</p>
-                    <img alt="User-submitted photo of dry, cracked skin on the back of a hand for Case 03" src="assets/projects/drsnap/eczema-1063.webp" width="1063" height="1063" loading="lazy" decoding="async" />
-                    <p class="ds-check-input__text">Redness and persistent itching on the back of the hand, with cracked, hardened skin.</p>
-                  </div>
-                  <div class="ds-check-output" role="group" aria-labelledby="check-output-03">
-                    <p class="ds-label" id="check-output-03">Candidate output</p>
-                    <ul>
-                      <li>Lichen simplex chronicus</li>
-                      <li><mark>Hand eczema</mark></li>
-                      <li>Exfoliative dermatitis</li>
-                    </ul>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </figure>
-          <header class="project-section__copy">
-            <h3 id="initial-checks-title">Case study</h3>
-            <div class="project-section__description">
-              <p>The initial checks reported 8 of 10 conditions as successful where hives and rash were marked unsuccessful. In the examples shown above, the expected condition appeared among the three candidates.</p>
-            </div>
-          </header>
-        </section>
+                </header>
+              </section>
+            </section>
+          </details>
+        </div>
       </section>
 
       <section class="project-section project-outcome" aria-labelledby="reflection-title">
         <header class="project-section__intro">
-          <p class="project-kicker">06 / Reflection — Sep. 2026</p>
+          <p class="project-kicker">05 / Reflection — Sep. 2026</p>
           <div class="project-section__copy">
             <h2 id="reflection-title"></h2>
             <div class="project-section__description">

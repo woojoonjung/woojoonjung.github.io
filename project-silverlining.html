@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/site.css" />
-  <link rel="stylesheet" href="css/project-detail.css" />
+  <link rel="stylesheet" href="css/project-detail.css?v=process-toggles" />
   <link rel="stylesheet" href="css/project-silverlining.css" />
 </head>
 <body data-page="project-detail">
@@ -536,223 +536,228 @@
           <figcaption><span>Silverlining / Concept film</span><span>Staged experience visualization; sensing simulated.</span></figcaption>
           <p class="project-film__fallback" hidden>This browser could not play the film. <a href="assets/projects/silverlining/silverlining_demo-web.mp4">Download the video</a>.</p>
         </figure>
-      </section>
 
-      <section class="project-section sl-development" aria-labelledby="development-title">
-        <header class="project-section__intro">
-          <p class="project-kicker">07 / Development</p>
-          <div class="project-section__copy">
-            <h2 id="development-title">Translating spatial needs<br>into form and movement</h2>
-            <div class="project-section__description">
-              <p>The need for broader visibility and a clear table within a relaxed room led us to explore how one pendant could support both. We focused on the relationship between source and shade: how could their relative positions shape the reach of light and make the change between settings visible?</p>
-            </div>
-          </div>
-        </header>
-        <figure class="project-figure sl-development__figure">
-          <figcaption><span>Form exploration. Visual references at left; original design sketches at right.</span></figcaption>
-          <img alt="Pendant references and original form sketches exploring layered shades, apertures, and moving light sources." src="assets/projects/silverlining/silverlining_making_form-2400.webp" width="2400" height="1703" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_making_form-1200.webp 1200w, assets/projects/silverlining/silverlining_making_form-2400.webp 2400w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
-        </figure>
-        <div class="sl-development__interlude">
-          <h3>Shaping where the light can reach</h3>
-          <p>Form sketches explored different ways of enclosing and exposing a source through changes in the shade, its openings, and the source’s position. The relationship between source and shade offered a way to translate changing spatial needs into a physical configuration.</p>
-        </div>
-        <figure class="project-figure sl-development__figure">
-          <figcaption><span>Source travel · Shade relationship · View from below</span></figcaption>
-          <img alt="Section drawings and interaction sketches exploring the globe’s vertical movement and the view from beneath the pendant." src="assets/projects/silverlining/silverlining_making_interaction-2400.webp" width="2400" height="1568" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_making_interaction-1200.webp 1200w, assets/projects/silverlining/silverlining_making_interaction-2400.webp 2400w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
-        </figure>
-        <div class="sl-development__interlude">
-          <h3>One movement,<br>two light distributions</h3>
-          <p>We developed a globe that moves vertically within a layered shade. Lowering it exposes more of the source, allowing light to spread toward the surrounding area. Raising it brings the source within the shade, shaping a narrower downward component while leaving an upward path for light to reflect from the ceiling. These two positions became Unveil and Veil, connecting broader visibility with the combination of tabletop light and a soft ambient background.</p>
-        </div>
-      </section>
-
-      <section class="project-section sl-technical" id="technical-approach" aria-labelledby="interaction-title">
-        <header class="project-section__intro">
-          <p class="project-kicker">08 / Technical approach</p>
-          <div class="project-section__copy">
-            <h2 id="interaction-title">From presence to light</h2>
-            <div class="project-section__description">
-              <p>A camera and embedded computer are proposed within the 170 mm globe. Person detections would be interpreted across near-table and surrounding zones over time, guiding changes between Veil and Unveil while allowing people to hold their preferred setting.</p><p class="project-note sl-technical__status"></p>
-            </div>
-          </div>
-        </header>
-
-        <div class="sl-tech-block sl-tech-block--visual" aria-labelledby="hardware-title">
-          <div class="sl-hardware">
-            <figure class="sl-hardware__render">
-              <figcaption>Camera placement beneath the globe.</figcaption>
-              <div class="sl-hardware__visual">
-                <img alt="View from beneath Silverlining showing the proposed camera aperture at the bottom of the illuminated globe." src="assets/projects/silverlining/silverlining_hardware-1600.webp" width="1600" height="985" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_hardware-800.webp 800w, assets/projects/silverlining/silverlining_hardware-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1000px) calc(100vw - 48px), (max-width: 1248px) calc((100vw - 80px) / 2), 584px" />
-              </div>
-            </figure>
-            <figure class="sl-assembly">
-              <figcaption>Proposed internal arrangement · Schematic, not to scale.</figcaption>
-              <div class="sl-hardware__visual">
-                <svg class="sl-assembly__drawing" viewBox="0 0 680 420" role="img" aria-labelledby="assembly-title assembly-desc" xmlns="http://www.w3.org/2000/svg">
-                  <title id="assembly-title">Proposed arrangement inside a 170 millimetre globe</title>
-                  <desc id="assembly-desc">A cylindrical housing contains a rectangular compute board and carrier. LEDs sit around the central assembly. A camera looks down through an aperture at the bottom. A dashed upward line indicates a heat-transfer route to be engineered. This is a schematic, not a verified packing study.</desc>
-                  <g transform="translate(80 12) scale(1.12)">
-                    <g fill="none" stroke="#bdb9af" stroke-width="1.5">
-                      <path d="M220 12V49M244 12V49" />
-                      <circle cx="232" cy="181" r="130" fill="#fffdf8" />
-                      <circle cx="232" cy="181" r="122" stroke-dasharray="3 5" opacity="0.6" />
-                    </g>
-                    <g fill="#f1dfc5" stroke="#bb8f60" stroke-width="1.5">
-                      <rect x="133" y="135" width="15" height="90" rx="6" />
-                      <rect x="316" y="135" width="15" height="90" rx="6" />
-                      <path d="M140 135C173 103 291 103 324 135M140 225C173 257 291 257 324 225" fill="none" stroke-dasharray="4 5" />
-                    </g>
-                    <g stroke="#969187" stroke-width="1.5">
-                      <path d="M182 118V231C182 249 282 249 282 231V118" fill="#eeece6" />
-                      <ellipse cx="232" cy="118" rx="50" ry="13" fill="#f7f5f0" />
-                      <rect x="204" y="145" width="47" height="68" rx="2" fill="#d6d2c8" />
-                      <path d="M260 145V215M208 155H245M208 202H245" fill="none" />
-                    </g>
-                    <g fill="none" stroke="#a46537" stroke-width="1.5" stroke-dasharray="4 4">
-                      <path d="M267 147V88H244V22" />
-                    </g>
-                    <path d="m239 29 5-7 5 7" fill="none" stroke="#a46537" stroke-width="1.5" />
-                    <path d="M224 246V284M240 246V284" fill="none" stroke="#969187" stroke-width="1.5" />
-                    <rect x="210" y="288" width="44" height="19" rx="8" fill="#5e5c56" />
-                    <circle cx="232" cy="298" r="6" fill="#d7e1ed" stroke="#4c73a7" stroke-width="1.5" />
-                    <g fill="none" stroke="#bdb9af" stroke-width="1.2">
-                      <path d="M204 177H82M133 210H82M255 298H389M267 88H389" />
-                      <path d="M102 324V343M362 324V343M102 334H362" />
-                    </g>
-                    <g fill="#fffdf8" stroke="#969187" stroke-width="1.2">
-                      <circle cx="69" cy="177" r="13" /><circle cx="69" cy="210" r="13" />
-                      <circle cx="402" cy="298" r="13" /><circle cx="402" cy="88" r="13" />
-                    </g>
-                    <g fill="#56554f" font-family="monospace" font-size="12" text-anchor="middle" dominant-baseline="central">
-                      <text x="69" y="177">01</text><text x="69" y="210">02</text>
-                      <text x="402" y="298">03</text><text x="402" y="88">04</text>
-                      <text x="232" y="352">Ø 170 mm globe</text>
-                    </g>
-                  </g>
-                  <g class="sl-assembly__labels" fill="#65635d" dominant-baseline="central">
-                    <g font-size="12" text-anchor="end">
-                      <text x="132" y="210.24">Compute board + carrier</text>
-                      <text x="132" y="247.2">Peripheral LED assembly</text>
-                    </g>
-                    <g font-size="11" text-anchor="start">
-                      <text x="552" y="110.56">Proposed heat-transfer route</text>
-                      <text x="552" y="345.76">Downward-facing camera</text>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </figure>
-          </div>
-          <header class="project-section__intro">
-            <!-- <p class="project-kicker">01 / Embedded hardware</p> -->
-            <div class="project-section__copy">
-              <h3 id="hardware-title">Embedded hardware</h3>
-              <div class="project-section__description">
-                <p>A central assembly would house the compute board, with LEDs around its perimeter and a camera facing down through a separate aperture. The arrangement reserves space for connections and heat transfer.</p>
-              </div>
-            </div>
-          </header>
-        </div>
-
-        <div class="sl-tech-block sl-tech-block--visual" aria-labelledby="vision-title">
-          <figure class="sl-vision">
-            <figcaption>Intended coverage; lens and mounting height to be defined.</figcaption>
-            <div class="sl-vision__layout">
-              <img alt="Original Silverlining concept rendering with a wide blue dashed vision cone and a smaller brown dashed cone around the table. The cones illustrate intended coverage rather than a measured camera specification." src="assets/projects/silverlining/silverlining_vision_range-1600.webp" width="1600" height="1459" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_vision_range-960.webp 960w, assets/projects/silverlining/silverlining_vision_range-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 760px) calc(100vw - 48px), (max-width: 1248px) calc(60vw - 72px), 672px" />
-              <div class="sl-vision__copy">
-                <dl class="sl-zone-definitions">
-                  <div>
-                    <dt><span class="sl-zone-key sl-zone-key--camera" aria-hidden="true"></span>Camera field of view</dt>
-                    <dd><span class="sl-zone-definitions__original">“Afforded Vision Range” in the study</span>The full observable area, determined by the lens, camera position, and any obstruction.</dd>
+        <div class="project-evidence-group">
+          <details class="project-evidence">
+            <summary>View Development Process</summary>
+            <section class="project-evidence__body sl-development" aria-labelledby="development-title">
+              <header class="project-section__intro">
+                <div class="project-section__copy">
+                  <h2 id="development-title">Translating spatial needs<br>into form and movement</h2>
+                  <div class="project-section__description">
+                    <p>The need for broader visibility and a clear table within a relaxed room led us to explore how one pendant could support both. We focused on the relationship between source and shade: how could their relative positions shape the reach of light and make the change between settings visible?</p>
                   </div>
-                  <div>
-                    <dt><span class="sl-zone-key sl-zone-key--table" aria-hidden="true"></span>Near-table zone</dt>
-                    <dd><span class="sl-zone-definitions__original">“Table Vision Range” in the study</span>A calibrated region around the table, including the seating area, for identifying near-table presence.</dd>
+                </div>
+              </header>
+              <figure class="project-figure sl-development__figure">
+                <figcaption><span>Form exploration. Visual references at left; original design sketches at right.</span></figcaption>
+                <img alt="Pendant references and original form sketches exploring layered shades, apertures, and moving light sources." src="assets/projects/silverlining/silverlining_making_form-2400.webp" width="2400" height="1703" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_making_form-1200.webp 1200w, assets/projects/silverlining/silverlining_making_form-2400.webp 2400w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
+              </figure>
+              <div class="sl-development__interlude">
+                <h3>Shaping where the light can reach</h3>
+                <p>Form sketches explored different ways of enclosing and exposing a source through changes in the shade, its openings, and the source’s position. The relationship between source and shade offered a way to translate changing spatial needs into a physical configuration.</p>
+              </div>
+              <figure class="project-figure sl-development__figure">
+                <figcaption><span>Source travel · Shade relationship · View from below</span></figcaption>
+                <img alt="Section drawings and interaction sketches exploring the globe’s vertical movement and the view from beneath the pendant." src="assets/projects/silverlining/silverlining_making_interaction-2400.webp" width="2400" height="1568" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_making_interaction-1200.webp 1200w, assets/projects/silverlining/silverlining_making_interaction-2400.webp 2400w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
+              </figure>
+              <div class="sl-development__interlude">
+                <h3>One movement,<br>two light distributions</h3>
+                <p>We developed a globe that moves vertically within a layered shade. Lowering it exposes more of the source, allowing light to spread toward the surrounding area. Raising it brings the source within the shade, shaping a narrower downward component while leaving an upward path for light to reflect from the ceiling. These two positions became Unveil and Veil, connecting broader visibility with the combination of tabletop light and a soft ambient background.</p>
+              </div>
+            </section>
+          </details>
+          <details class="project-evidence">
+            <summary>View Technical Approach</summary>
+            <section class="project-evidence__body sl-technical" id="technical-approach" aria-labelledby="interaction-title">
+              <header class="project-section__intro">
+                <div class="project-section__copy">
+                  <h2 id="interaction-title">From presence to light</h2>
+                  <div class="project-section__description">
+                    <p>A camera and embedded computer are proposed within the 170 mm globe. Person detections would be interpreted across near-table and surrounding zones over time, guiding changes between Veil and Unveil while allowing people to hold their preferred setting.</p><p class="project-note sl-technical__status"></p>
                   </div>
-                  <div>
-                    <dt><span class="sl-zone-key sl-zone-key--surrounding" aria-hidden="true"></span>Surrounding zone</dt>
-                    <dd>A calibrated subset of the observable area beyond the table, covering relevant dining-area locations such as the rack and preparation or cleanup routes. Living-room seating is excluded from this switching zone, even if visible to the camera.</dd>
+                </div>
+              </header>
+
+              <div class="sl-tech-block sl-tech-block--visual" aria-labelledby="hardware-title">
+                <div class="sl-hardware">
+                  <figure class="sl-hardware__render">
+                    <figcaption>Camera placement beneath the globe.</figcaption>
+                    <div class="sl-hardware__visual">
+                      <img alt="View from beneath Silverlining showing the proposed camera aperture at the bottom of the illuminated globe." src="assets/projects/silverlining/silverlining_hardware-1600.webp" width="1600" height="985" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_hardware-800.webp 800w, assets/projects/silverlining/silverlining_hardware-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1000px) calc(100vw - 48px), (max-width: 1248px) calc((100vw - 80px) / 2), 584px" />
+                    </div>
+                  </figure>
+                  <figure class="sl-assembly">
+                    <figcaption>Proposed internal arrangement · Schematic, not to scale.</figcaption>
+                    <div class="sl-hardware__visual">
+                      <svg class="sl-assembly__drawing" viewBox="0 0 680 420" role="img" aria-labelledby="assembly-title assembly-desc" xmlns="http://www.w3.org/2000/svg">
+                        <title id="assembly-title">Proposed arrangement inside a 170 millimetre globe</title>
+                        <desc id="assembly-desc">A cylindrical housing contains a rectangular compute board and carrier. LEDs sit around the central assembly. A camera looks down through an aperture at the bottom. A dashed upward line indicates a heat-transfer route to be engineered. This is a schematic, not a verified packing study.</desc>
+                        <g transform="translate(80 12) scale(1.12)">
+                          <g fill="none" stroke="#bdb9af" stroke-width="1.5">
+                            <path d="M220 12V49M244 12V49" />
+                            <circle cx="232" cy="181" r="130" fill="#fffdf8" />
+                            <circle cx="232" cy="181" r="122" stroke-dasharray="3 5" opacity="0.6" />
+                          </g>
+                          <g fill="#f1dfc5" stroke="#bb8f60" stroke-width="1.5">
+                            <rect x="133" y="135" width="15" height="90" rx="6" />
+                            <rect x="316" y="135" width="15" height="90" rx="6" />
+                            <path d="M140 135C173 103 291 103 324 135M140 225C173 257 291 257 324 225" fill="none" stroke-dasharray="4 5" />
+                          </g>
+                          <g stroke="#969187" stroke-width="1.5">
+                            <path d="M182 118V231C182 249 282 249 282 231V118" fill="#eeece6" />
+                            <ellipse cx="232" cy="118" rx="50" ry="13" fill="#f7f5f0" />
+                            <rect x="204" y="145" width="47" height="68" rx="2" fill="#d6d2c8" />
+                            <path d="M260 145V215M208 155H245M208 202H245" fill="none" />
+                          </g>
+                          <g fill="none" stroke="#a46537" stroke-width="1.5" stroke-dasharray="4 4">
+                            <path d="M267 147V88H244V22" />
+                          </g>
+                          <path d="m239 29 5-7 5 7" fill="none" stroke="#a46537" stroke-width="1.5" />
+                          <path d="M224 246V284M240 246V284" fill="none" stroke="#969187" stroke-width="1.5" />
+                          <rect x="210" y="288" width="44" height="19" rx="8" fill="#5e5c56" />
+                          <circle cx="232" cy="298" r="6" fill="#d7e1ed" stroke="#4c73a7" stroke-width="1.5" />
+                          <g fill="none" stroke="#bdb9af" stroke-width="1.2">
+                            <path d="M204 177H82M133 210H82M255 298H389M267 88H389" />
+                            <path d="M102 324V343M362 324V343M102 334H362" />
+                          </g>
+                          <g fill="#fffdf8" stroke="#969187" stroke-width="1.2">
+                            <circle cx="69" cy="177" r="13" /><circle cx="69" cy="210" r="13" />
+                            <circle cx="402" cy="298" r="13" /><circle cx="402" cy="88" r="13" />
+                          </g>
+                          <g fill="#56554f" font-family="monospace" font-size="12" text-anchor="middle" dominant-baseline="central">
+                            <text x="69" y="177">01</text><text x="69" y="210">02</text>
+                            <text x="402" y="298">03</text><text x="402" y="88">04</text>
+                            <text x="232" y="352">Ø 170 mm globe</text>
+                          </g>
+                        </g>
+                        <g class="sl-assembly__labels" fill="#65635d" dominant-baseline="central">
+                          <g font-size="12" text-anchor="end">
+                            <text x="132" y="210.24">Compute board + carrier</text>
+                            <text x="132" y="247.2">Peripheral LED assembly</text>
+                          </g>
+                          <g font-size="11" text-anchor="start">
+                            <text x="552" y="110.56">Proposed heat-transfer route</text>
+                            <text x="552" y="345.76">Downward-facing camera</text>
+                          </g>
+                        </g>
+                      </svg>
+                    </div>
+                  </figure>
+                </div>
+                <header class="project-section__intro">
+                  <!-- <p class="project-kicker">01 / Embedded hardware</p> -->
+                  <div class="project-section__copy">
+                    <h3 id="hardware-title">Embedded hardware</h3>
+                    <div class="project-section__description">
+                      <p>A central assembly would house the compute board, with LEDs around its perimeter and a camera facing down through a separate aperture. The arrangement reserves space for connections and heat transfer.</p>
+                    </div>
                   </div>
-                </dl>
-                <!-- <p class="project-note">The camera moves with the globe. Both positions need calibrated zone boundaries; automatic decisions would pause during movement.</p> -->
+                </header>
               </div>
-            </div>
-          </figure>
-          <header class="project-section__intro">
-            <div class="project-section__copy">
-              <h3 id="vision-title">Spatial reference</h3>
-              <div class="project-section__description">
-                <p>The camera image would be calibrated into a near-table zone and a surrounding dining-area zone. These regions provide a cue for choosing the light distribution; sofa occupancy would not, by itself, request broader dining-area light.</p>
+
+              <div class="sl-tech-block sl-tech-block--visual" aria-labelledby="vision-title">
+                <figure class="sl-vision">
+                  <figcaption>Intended coverage; lens and mounting height to be defined.</figcaption>
+                  <div class="sl-vision__layout">
+                    <img alt="Original Silverlining concept rendering with a wide blue dashed vision cone and a smaller brown dashed cone around the table. The cones illustrate intended coverage rather than a measured camera specification." src="assets/projects/silverlining/silverlining_vision_range-1600.webp" width="1600" height="1459" loading="lazy" decoding="async" srcset="assets/projects/silverlining/silverlining_vision_range-960.webp 960w, assets/projects/silverlining/silverlining_vision_range-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 760px) calc(100vw - 48px), (max-width: 1248px) calc(60vw - 72px), 672px" />
+                    <div class="sl-vision__copy">
+                      <dl class="sl-zone-definitions">
+                        <div>
+                          <dt><span class="sl-zone-key sl-zone-key--camera" aria-hidden="true"></span>Camera field of view</dt>
+                          <dd><span class="sl-zone-definitions__original">“Afforded Vision Range” in the study</span>The full observable area, determined by the lens, camera position, and any obstruction.</dd>
+                        </div>
+                        <div>
+                          <dt><span class="sl-zone-key sl-zone-key--table" aria-hidden="true"></span>Near-table zone</dt>
+                          <dd><span class="sl-zone-definitions__original">“Table Vision Range” in the study</span>A calibrated region around the table, including the seating area, for identifying near-table presence.</dd>
+                        </div>
+                        <div>
+                          <dt><span class="sl-zone-key sl-zone-key--surrounding" aria-hidden="true"></span>Surrounding zone</dt>
+                          <dd>A calibrated subset of the observable area beyond the table, covering relevant dining-area locations such as the rack and preparation or cleanup routes. Living-room seating is excluded from this switching zone, even if visible to the camera.</dd>
+                        </div>
+                      </dl>
+                      <!-- <p class="project-note">The camera moves with the globe. Both positions need calibrated zone boundaries; automatic decisions would pause during movement.</p> -->
+                    </div>
+                  </div>
+                </figure>
+                <header class="project-section__intro">
+                  <div class="project-section__copy">
+                    <h3 id="vision-title">Spatial reference</h3>
+                    <div class="project-section__description">
+                      <p>The camera image would be calibrated into a near-table zone and a surrounding dining-area zone. These regions provide a cue for choosing the light distribution; sofa occupancy would not, by itself, request broader dining-area light.</p>
+                    </div>
+                  </div>
+                </header>
               </div>
-            </div>
-          </header>
+
+              <div class="sl-tech-block sl-tech-block--visual" aria-labelledby="control-title">
+                <p class="sl-mode-rules__caption" id="control-rules-caption">Proposed switching rules · Thresholds and timing to be tested.</p>
+                <ol class="sl-control-flow" aria-label="Proposed process from camera image to light mode">
+                  <li><span>01 / Capture</span><strong>Camera image</strong></li>
+                  <li><span>02 / Detect</span><strong>People · YOLOv4-tiny</strong></li>
+                  <li><span>03 / Locate</span><strong>Zone assignment</strong></li>
+                  <li><span>04 / Consider</span><strong>Presence over time</strong></li>
+                  <li><span>05 / Respond</span><strong>Veil / Unveil</strong></li>
+                </ol>
+                <table class="sl-mode-rules" aria-labelledby="control-rules-caption">
+                  <thead><tr><th scope="col">Observed pattern</th><th scope="col">Proposed response</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Sustained near-table presence, with little surrounding activity</th><td><span class="sl-mode-rules__state sl-task">Veil</span></td></tr>
+                    <tr><th scope="row">Sustained presence in the surrounding zone, including when others remain at the table</th><td><span class="sl-mode-rules__state sl-ambient">Unveil</span></td></tr>
+                    <tr><th scope="row">Brief movement through a zone or across its boundary</th><td>Hold the current mode.</td></tr>
+                    <tr><th scope="row">No reliable person detections</th><td>Hold briefly, then return to Veil after a chosen timeout.</td></tr>
+                    <tr><th scope="row">Manual mode hold or globe in motion</th><td>Pause automatic switching.</td></tr>
+                  </tbody>
+                </table>
+                <header class="project-section__intro">
+                  <div class="project-section__copy">
+                    <h3 id="control-title">Presence-based control</h3>
+                    <div class="project-section__description">
+                      <p>YOLOv4-tiny is proposed for person detection. A separate decision layer would interpret where detections occur and how long they persist, rather than infer an activity or a preferred atmosphere from presence alone.</p>
+                    </div>
+                  </div>
+                </header>
+              </div>
+
+              <details class="project-evidence sl-tech-notes" id="technical-feasibility">
+                <summary>View feasibility review</summary>
+                <div class="project-evidence__body">
+                  <p class="sl-tech-notes__intro"><strong>This review informs a proposed architecture.<br>Physical integration, thermal performance, detection accuracy, and interaction behavior remain untested.</strong><span class="project-note sl-technical__status">components available in 2020</span></p>
+
+                  <article class="sl-tech-notes__section">
+                    <h3>Available components</h3>
+                    <p>The Raspberry Pi Camera Module 2, <a href="https://www.raspberrypi.com/news/new-8-megapixel-camera-board-sale-25/" target="_blank" rel="noopener">released in 2016</a>, measures approximately 25 × 24 × 9 mm. Its standard lens has a 62.2° horizontal and 48.8° vertical field of view, according to the <a href="https://www.raspberrypi.com/documentation/accessories/camera.html" target="_blank" rel="noopener">official specifications</a>.</p>
+                    <p>The <a href="https://developer.nvidia.com/embedded/jetson-nano" target="_blank" rel="noopener">Jetson Nano module</a> measures 69.6 × 45 mm; a carrier board, connectors, and cooling add to its footprint. NVIDIA’s <a href="https://developer.nvidia.com/blog/jetson-nano-ai-computing/" target="_blank" rel="noopener">2019 platform introduction</a> also documents Camera Module 2 support. These components provide candidates for integration within the 170 mm globe, rather than proof that a complete assembly fits. Nano’s 5 W / 10 W modes describe its computing power budget, not the total power required by the lamp.</p>
+                  </article>
+
+                  <article class="sl-tech-notes__section">
+                    <h3>Packaging and heat</h3>
+                    <p>A cylindrical internal structure could accommodate the rectangular computing boards, with LEDs arranged around it and the camera attached below. The spatial study must include the carrier board, wiring, diffuser thickness, camera window, and moving mechanism. The central structure could also block light or cast shadows across the globe.</p>
+                    <p>The LED assembly and computing unit each need a deliberate path for heat to leave the enclosure; arranging them together does not establish adequate cooling. <a href="https://docs.nvidia.com/jetson/l4t/Tegra%20Linux%20Driver%20Package%20Development%20Guide/power_management_nano.html" target="_blank" rel="noopener">NVIDIA’s power and thermal guidance</a> and <a href="https://lumileds.com/wp-content/uploads/files/WP31.pdf" target="_blank" rel="noopener">Lumileds’ LED thermal guidance</a> inform this review. No safe operating temperature or cooling performance has been demonstrated for the proposed assembly.</p>
+                  </article>
+
+                  <article class="sl-tech-notes__section">
+                    <h3>Vision and calibration</h3>
+                    <p>The near-table zone includes the table and its seating positions. The surrounding zone covers selected dining-area locations outside it, excluding the sofa area rather than treating everything beyond the table as a trigger for Unveil. Both are calibrated regions within one camera image. The lens field of view describes what can enter that image; useful detection coverage also depends on mounting height, occlusion, lighting, and the visibility of people. The illustrated coverage is an intention, not a measured detection boundary.</p>
+                    <p>Because the camera moves with the globe, the table’s apparent size and position change between Veil and Unveil. Each position would require a calibrated zone map. Detection-based switching would pause during movement and resume after the camera reaches a stable position.</p>
+                  </article>
+
+                  <article class="sl-tech-notes__section">
+                    <h3>Detection and control</h3>
+                    <p><a href="https://arxiv.org/abs/2011.08036" target="_blank" rel="noopener">YOLOv4-tiny</a> is a compact object detector proposed for the Jetson Nano. Its <a href="https://github.com/AlexeyAB/darknet/issues/6067" target="_blank" rel="noopener">June 2020 release announcement</a> reports inference on Nano using tkDNN/TensorRT, supporting its selection as a candidate for on-device processing. Runtime compatibility and thermal performance would still need validation in the assembled lamp.</p>
+                    <p>It would detect people; separate logic would assign detections to zones and evaluate their persistence over time. Detection confidence is not a person count, and the proposal does not subtract two confidence scores to select a mode.</p>
+                    <p>Sustained presence in the surrounding zone could request Unveil, including when others remain at the table. Short passages would retain the current mode, and a manual hold would take priority. Confidence thresholds, dwell times, and mixed-zone behavior need testing. Returning to Veil after no reliable detections is a fallback rule, not proof of absence. Person detection also does not establish intent or a preferred atmosphere. No YOLOv4-tiny speed or accuracy has been measured on the proposed Nano configuration.</p>
+                  </article>
+                </div>
+              </details>
+            </section>
+          </details>
         </div>
-
-        <div class="sl-tech-block sl-tech-block--visual" aria-labelledby="control-title">
-          <p class="sl-mode-rules__caption" id="control-rules-caption">Proposed switching rules · Thresholds and timing to be tested.</p>
-          <ol class="sl-control-flow" aria-label="Proposed process from camera image to light mode">
-            <li><span>01 / Capture</span><strong>Camera image</strong></li>
-            <li><span>02 / Detect</span><strong>People · YOLOv4-tiny</strong></li>
-            <li><span>03 / Locate</span><strong>Zone assignment</strong></li>
-            <li><span>04 / Consider</span><strong>Presence over time</strong></li>
-            <li><span>05 / Respond</span><strong>Veil / Unveil</strong></li>
-          </ol>
-          <table class="sl-mode-rules" aria-labelledby="control-rules-caption">
-            <thead><tr><th scope="col">Observed pattern</th><th scope="col">Proposed response</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Sustained near-table presence, with little surrounding activity</th><td><span class="sl-mode-rules__state sl-task">Veil</span></td></tr>
-              <tr><th scope="row">Sustained presence in the surrounding zone, including when others remain at the table</th><td><span class="sl-mode-rules__state sl-ambient">Unveil</span></td></tr>
-              <tr><th scope="row">Brief movement through a zone or across its boundary</th><td>Hold the current mode.</td></tr>
-              <tr><th scope="row">No reliable person detections</th><td>Hold briefly, then return to Veil after a chosen timeout.</td></tr>
-              <tr><th scope="row">Manual mode hold or globe in motion</th><td>Pause automatic switching.</td></tr>
-            </tbody>
-          </table>
-          <header class="project-section__intro">
-            <div class="project-section__copy">
-              <h3 id="control-title">Presence-based control</h3>
-              <div class="project-section__description">
-                <p>YOLOv4-tiny is proposed for person detection. A separate decision layer would interpret where detections occur and how long they persist, rather than infer an activity or a preferred atmosphere from presence alone.</p>
-              </div>
-            </div>
-          </header>
-        </div>
-
-        <details class="project-evidence sl-tech-notes" id="technical-feasibility">
-          <summary>View feasibility review</summary>
-          <div class="project-evidence__body">
-            <p class="sl-tech-notes__intro"><strong>This review informs a proposed architecture.<br>Physical integration, thermal performance, detection accuracy, and interaction behavior remain untested.</strong><span class="project-note sl-technical__status">components available in 2020</span></p>
-
-            <article class="sl-tech-notes__section">
-              <h3>Available components</h3>
-              <p>The Raspberry Pi Camera Module 2, <a href="https://www.raspberrypi.com/news/new-8-megapixel-camera-board-sale-25/" target="_blank" rel="noopener">released in 2016</a>, measures approximately 25 × 24 × 9 mm. Its standard lens has a 62.2° horizontal and 48.8° vertical field of view, according to the <a href="https://www.raspberrypi.com/documentation/accessories/camera.html" target="_blank" rel="noopener">official specifications</a>.</p>
-              <p>The <a href="https://developer.nvidia.com/embedded/jetson-nano" target="_blank" rel="noopener">Jetson Nano module</a> measures 69.6 × 45 mm; a carrier board, connectors, and cooling add to its footprint. NVIDIA’s <a href="https://developer.nvidia.com/blog/jetson-nano-ai-computing/" target="_blank" rel="noopener">2019 platform introduction</a> also documents Camera Module 2 support. These components provide candidates for integration within the 170 mm globe, rather than proof that a complete assembly fits. Nano’s 5 W / 10 W modes describe its computing power budget, not the total power required by the lamp.</p>
-            </article>
-
-            <article class="sl-tech-notes__section">
-              <h3>Packaging and heat</h3>
-              <p>A cylindrical internal structure could accommodate the rectangular computing boards, with LEDs arranged around it and the camera attached below. The spatial study must include the carrier board, wiring, diffuser thickness, camera window, and moving mechanism. The central structure could also block light or cast shadows across the globe.</p>
-              <p>The LED assembly and computing unit each need a deliberate path for heat to leave the enclosure; arranging them together does not establish adequate cooling. <a href="https://docs.nvidia.com/jetson/l4t/Tegra%20Linux%20Driver%20Package%20Development%20Guide/power_management_nano.html" target="_blank" rel="noopener">NVIDIA’s power and thermal guidance</a> and <a href="https://lumileds.com/wp-content/uploads/files/WP31.pdf" target="_blank" rel="noopener">Lumileds’ LED thermal guidance</a> inform this review. No safe operating temperature or cooling performance has been demonstrated for the proposed assembly.</p>
-            </article>
-
-            <article class="sl-tech-notes__section">
-              <h3>Vision and calibration</h3>
-              <p>The near-table zone includes the table and its seating positions. The surrounding zone covers selected dining-area locations outside it, excluding the sofa area rather than treating everything beyond the table as a trigger for Unveil. Both are calibrated regions within one camera image. The lens field of view describes what can enter that image; useful detection coverage also depends on mounting height, occlusion, lighting, and the visibility of people. The illustrated coverage is an intention, not a measured detection boundary.</p>
-              <p>Because the camera moves with the globe, the table’s apparent size and position change between Veil and Unveil. Each position would require a calibrated zone map. Detection-based switching would pause during movement and resume after the camera reaches a stable position.</p>
-            </article>
-
-            <article class="sl-tech-notes__section">
-              <h3>Detection and control</h3>
-              <p><a href="https://arxiv.org/abs/2011.08036" target="_blank" rel="noopener">YOLOv4-tiny</a> is a compact object detector proposed for the Jetson Nano. Its <a href="https://github.com/AlexeyAB/darknet/issues/6067" target="_blank" rel="noopener">June 2020 release announcement</a> reports inference on Nano using tkDNN/TensorRT, supporting its selection as a candidate for on-device processing. Runtime compatibility and thermal performance would still need validation in the assembled lamp.</p>
-              <p>It would detect people; separate logic would assign detections to zones and evaluate their persistence over time. Detection confidence is not a person count, and the proposal does not subtract two confidence scores to select a mode.</p>
-              <p>Sustained presence in the surrounding zone could request Unveil, including when others remain at the table. Short passages would retain the current mode, and a manual hold would take priority. Confidence thresholds, dwell times, and mixed-zone behavior need testing. Returning to Veil after no reliable detections is a fallback rule, not proof of absence. Person detection also does not establish intent or a preferred atmosphere. No YOLOv4-tiny speed or accuracy has been measured on the proposed Nano configuration.</p>
-            </article>
-          </div>
-        </details>
       </section>
 
       <section class="project-section project-outcome sl-reflection" aria-labelledby="outcome-title">
         <header class="project-section__intro">
-          <p class="project-kicker">09 / Reflection — Sep. 2026</p>
+          <p class="project-kicker">07 / Reflection — Sep. 2026</p>
           <div class="project-section__copy">
             <h2 id="outcome-title"></h2>
             <div class="project-section__description">
