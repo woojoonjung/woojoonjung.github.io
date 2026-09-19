@@ -53,7 +53,7 @@
           </li>
           <li class="news-item reveal">
             <time class="news-item__date" datetime="2025-10-01">[26.05]</time>
-            <span>A paper on tabular representation accepted to ICML 2026.</span>
+            <span>A paper on tabular embedding accepted to ICML 2026.</span>
           </li>
           <li class="news-item reveal">
             <time class="news-item__date" datetime="2025-10-01">[25.10]</time>
@@ -64,7 +64,7 @@
             <span>Won the Master's Research Fellowship from the National Research Foundation of Korea.</span>
           </li>
           <li class="news-item reveal">
-            <time class="news-item__date" datetime="2025-08-01">[25.08]</time>
+            <time class="news-item__date" datetime="2025-08-01">[25.07]</time>
             <span>Attending SIGIR 2025 Main Conference ✈️</span>
           </li>
           <li class="news-item reveal">
@@ -83,28 +83,78 @@
       </section>
 
       <section class="essay blog-essay">
-        <p class="essay__lead section-label reveal">Notes.</p>
+        <div class="notes-heading reveal">
+          <p class="essay__lead section-label">Notes.</p>
+          <!-- <ul class="notes-legend" aria-label="Note categories">
+            <li>
+              <span class="note-category note-category--representation" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 3v3M3 11v5m18-5v5"/>
+                  <rect x="5" y="6" width="14" height="14" rx="3"/>
+                  <path d="M9 11v2m6-2v2m-6 3h6"/>
+                </svg>
+              </span>
+              Representation Learning
+            </li>
+            <li>
+              <span class="note-category note-category--interaction" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path stroke-width="1.5" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+                </svg>
+              </span>
+              Human-AI Interaction
+            </li>
+            <li>
+              <span class="note-category note-category--design" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.6-3.2 1.7 1.7 0 0 1 1.4-2.7h1A4 4 0 0 0 21 11c0-4.4-4-8-9-8Z"/>
+                  <circle cx="7.5" cy="10" r=".75"/>
+                  <circle cx="11" cy="6.5" r=".75"/>
+                  <circle cx="16" cy="8" r=".75"/>
+                </svg>
+              </span>
+              Design
+            </li>
+          </ul> -->
+        </div>
+
+        <!-- <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--representation" title="Representation Learning">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v3M3 11v5m18-5v5"/>
+                <rect x="5" y="6" width="14" height="14" rx="3"/>
+                <path d="M9 11v2m6-2v2m-6 3h6"/>
+              </svg>
+              <span class="note-category__label">Representation Learning</span>
+            </span>
+            Can humans and machines share a perceptual space?
+          </summary>
+          <p class="essay-toggle__body">
+            Human perception unfolds through multiple senses and over time.
+            A gesture changes how an expression is understood; a sequence of observations reveals a change that no single moment makes clear.
+            The context people perceive emerges through relationships among these signals, shaped by what has happened and what they expect to happen next.
+          </p>
+          <p class="essay-toggle__body">
+            Learning from multimodal and time-series data requires models to relate signals that differ in structure, temporal resolution, and reliability.
+            Meaning depends on when events occur, how they unfold, and how cues across senses reinforce or change one another’s interpretation.
+            Foundation models should be able to reason over these relationships and connect them with the context people use to understand a situation.
+            This could create a shared perceptual space: a common basis for recognizing what is happening, what is changing, and what matters in the moment.
+          </p>
+        </details> -->
 
         <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">Can machines make sense of the world as humans do?</summary>
-          <p class="essay-toggle__body">
-            Aligning human and machine perception feels foundational to me. Machines that perceive the world more like we do can better interpret context, intention, and meaning.
-          </p>
-          <p class="essay-toggle__body">For me, this question first became concrete through tables. Decades of
-            human knowledge—scientific records, medical data, institutional logic—are encoded in tabular form,
-            often carrying implicit domain expertise that is difficult for machines to recover. How can we make
-            that knowledge legible to AI? This question led to my work on HAETAE (SIGIR 25) and NAVI (ICML 26).
-          </p>
-          <p class="essay-toggle__body">
-            More broadly, humans make sense of the world by combining sensory experience with accumulated knowledge.
-            We integrate sight, sound, touch, taste, and smell, then interpret them through concepts, memories,
-            and shared systems of meaning. I am interested in how machines can connect these heterogeneous signals
-            into coherent representations of the world.
-          </p>
-        </details>
-
-        <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">Can machines understand what lives between people?</summary>
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--representation" title="Representation Learning">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v3M3 11v5m18-5v5"/>
+                <rect x="5" y="6" width="14" height="14" rx="3"/>
+                <path d="M9 11v2m6-2v2m-6 3h6"/>
+              </svg>
+              <span class="note-category__label">Representation Learning</span>
+            </span>
+            Can machines understand what lives between people?
+          </summary>
           <p class="essay-toggle__body">
             Where world understanding asks whether machines can interpret the reality around us, human understanding
             asks whether they can interpret the realities that exist within and between people. Much of what shapes
@@ -120,27 +170,90 @@
         </details>
 
         <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">How should machines' understanding return to us? </summary>
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--representation" title="Representation Learning">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v3M3 11v5m18-5v5"/>
+                <rect x="5" y="6" width="14" height="14" rx="3"/>
+                <path d="M9 11v2m6-2v2m-6 3h6"/>
+              </svg>
+              <span class="note-category__label">Representation Learning</span>
+            </span>
+            Does understanding language mean understanding tables?
+          </summary>
           <p class="essay-toggle__body">
-            A model may recognize a pattern in a medical record, infer a hidden relationship
-            in data, or adapt to the context of a particular person—but none of that matters unless it can become understandable,
-            usable, and appropriately timed.
+            Working with tables has made me question an assumption that is easy to make about language models:
+            if they learn to understand language from vast amounts of unstructured text, should understanding a table follow naturally?
+            Both prose and tables can be represented as sequences of discrete tokens.
+            Yet interpreting a table requires recovering relationships expressed through rows, columns, headers, and conventions that may never be explained in words.
           </p>
           <p class="essay-toggle__body">
-            The translation layer between machine representations and human experience is where representation becomes interaction. What should be surfaced,
-            and what should remain in the background? When is a number enough, when is an explanation needed, and when might an interface,
-            visualization, gesture, or ambient cue communicate more effectively? The answer depends not only on what the system knows,
-            but on what a person needs in that moment.
+            How these elements are assembled into a context can shape what information a model is able to use.
+            A representation may retain every value while obscuring which header it belongs to, what its units imply, or which comparisons are meaningful.
+            Information can be present without the relationships needed to reason with it being clear.
+            Language competence alone therefore gives us no reason to take reliable tabular understanding for granted.
+            The question is how models can recognize and reason through the structures that make the data meaningful.
           </p>
           <p class="essay-toggle__body">
-            In this sense, human augmentation is not simply about exposing what a model sees. It is about composing a shared perceptual
-            space: one where machine understanding can support people’s judgment, communication, and connection without overwhelming or
-            replacing them. This is not a question models alone can answer—it requires prototypes, interfaces, and people to test them with.
+            This matters because structured data reflect accumulated human practice.
+            What people and organizations choose to record, how they define categories, and which distinctions they preserve can reflect expertise developed over decades.
+            Some of that knowledge is visible in the data’s organization; other assumptions remain implicit in the practices behind it.
+            Understanding structured data can help make these traces of human knowledge usable by AI.
+            It offers a way to connect the values a model reads with the experience, conventions, and judgments needed to interpret them.
           </p>
         </details>
 
         <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">How can we ease everyday friction?</summary>
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--interaction" title="Human-AI Interaction">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path stroke-width="1.5" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+              </svg>
+              <span class="note-category__label">Human-AI Interaction</span>
+            </span>
+            Is interaction just a way to access machine intelligence?
+          </summary>
+          <p class="essay-toggle__body">
+            I see the translation layer between machine representations and human experience as a starting point for system design.
+            What should be surfaced, what should remain in the background, and how should people be able to respond?
+            These choices shape not only a person’s experience, but also what the system can learn.
+            What information might these exchanges elicit, and what should the system learn from it?
+            Those questions should inform both the learning objectives and the algorithms themselves.
+            I believe systems can have greater impact when learning and interaction are designed together, each helping shape the other from the outset.
+          </p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--interaction" title="Human-AI Interaction">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path stroke-width="1.5" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
+              </svg>
+              <span class="note-category__label">Human-AI Interaction</span>
+            </span>
+            Is human augmentation only about helping us know more?
+          </summary>
+          <p class="essay-toggle__body">
+            Expanding a person’s ability to communicate is as important as expanding what they know.
+            A system might help someone convey an experience that is difficult to put into words, make their reasoning visible to others,
+            or explore where their interpretations differ. The question is therefore not only what a person can understand with a machine’s help,
+            but what people can express, discuss, and come to understand together. Exploring these possibilities requires building prototypes and designing and testing these experiences with people.
+          </p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--design" title="Design">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.6-3.2 1.7 1.7 0 0 1 1.4-2.7h1A4 4 0 0 0 21 11c0-4.4-4-8-9-8Z"/>
+                <circle cx="7.5" cy="10" r=".75"/>
+                <circle cx="11" cy="6.5" r=".75"/>
+                <circle cx="16" cy="8" r=".75"/>
+              </svg>
+              <span class="note-category__label">Design</span>
+            </span>
+            How can we ease everyday friction?
+          </summary>
           <p class="essay-toggle__body">I am drawn to the small moments when everyday systems fail to meet people where they are.
             Through observation, interviews, and surveys, I like uncovering the subtle frustrations that often go unnoticed: a
             task that feels unnecessarily complicated, information that arrives too late, or a system that asks too much of people
@@ -150,7 +263,18 @@
         </details>
 
         <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">How can we enrich human experience?</summary>
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--design" title="Design">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.6-3.2 1.7 1.7 0 0 1 1.4-2.7h1A4 4 0 0 0 21 11c0-4.4-4-8-9-8Z"/>
+                <circle cx="7.5" cy="10" r=".75"/>
+                <circle cx="11" cy="6.5" r=".75"/>
+                <circle cx="16" cy="8" r=".75"/>
+              </svg>
+              <span class="note-category__label">Design</span>
+            </span>
+            How can we enrich human experience?
+          </summary>
           <p class="essay-toggle__body">Design can shape how people notice, feel, remember, and connect with the world around them. This
             means designing not only individual interactions, but also the relationship between them: how
             sequential moments build into a narrative, how simultaneous sensory cues reinforce one another,
