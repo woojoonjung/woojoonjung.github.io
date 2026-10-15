@@ -96,7 +96,7 @@
       if (!target) return;
       e.preventDefault();
       siteLenis.scrollTo(target, {
-        duration: hash === "#profile" ? profileDur : duration
+        duration: hash === "#home" ? profileDur : duration
       });
     });
 
@@ -124,6 +124,172 @@
     } else {
       onWindow("resize", measureHeader);
     }
+  }
+
+  /* ---------- Optional Profile extensions ----------
+     Leave the original layout completely alone until extra sections exist. */
+  function initProfileExtension() {
+    var profile = document.querySelector(".profile-top");
+    var extra = profile && profile.querySelector(".profile-extra");
+    if (!extra || !extra.childElementCount) return;
+    var header = document.querySelector(".site-header");
+    var container = profile.querySelector(".container");
+    var photo = container.querySelector(".profile-photo");
+    var rows = Array.prototype.filter.call(container.children, function (el) {
+      return el.classList.contains("row");
+    });
+    if (!header || !photo || rows.length !== 2) return;
+    var desktop = window.matchMedia("(min-width: 1024px)");
+    var frame = 0;
+    var disposed = false;
+
+    function setPixels(name, value) {
+      var next = value + "px";
+      if (profile.style.getPropertyValue(name) !== next) profile.style.setProperty(name, next);
+    }
+    function measure() {
+      if (disposed) return;
+      if (desktop.matches) {
+        var headerHeight = header.getBoundingClientRect().height;
+        var photoHeight = photo.getBoundingClientRect().height;
+        var gap = parseFloat(getComputedStyle(container).rowGap) || 24;
+        // Preserve both gaps in the original three-row grid. Only heights
+        // are read, so reveal and page-transition translations do not matter.
+        var baseline = Math.max(photoHeight, rows[0].getBoundingClientRect().height + rows[1].getBoundingClientRect().height + 2 * gap);
+        var edge = parseFloat(getComputedStyle(profile).getPropertyValue("--space-6")) || 24;
+        var space = Math.max(0, (window.innerHeight - 2 * headerHeight - 2 * edge - baseline) / 2);
+        setPixels("--profile-baseline-height", baseline);
+        setPixels("--profile-top-gap", edge + space);
+        setPixels("--profile-bottom-gap", headerHeight + edge + space);
+        setPixels("--profile-sticky-top", headerHeight + edge + space);
+        profile.classList.add("has-profile-extra");
+        profile.classList.toggle("is-profile-pinned", window.innerHeight >= headerHeight + 2 * edge + photoHeight);
+      } else {
+        profile.classList.remove("has-profile-extra", "is-profile-pinned");
+      }
+      if (siteLenis) siteLenis.resize();
+    }
+    function schedule() {
+      if (disposed || frame) return;
+      frame = requestAnimationFrame(function () { frame = 0; measure(); });
+    }
+    measure();
+    onWindow("resize", schedule);
+    if ("ResizeObserver" in window) {
+      var observer = new ResizeObserver(schedule);
+      [header, photo].concat(rows).forEach(function (el) { observer.observe(el); });
+      track(function () { observer.disconnect(); });
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    track(function () {
+      disposed = true;
+      if (frame) cancelAnimationFrame(frame);
+    });
+  }
+
+  /* ---------- Fixed fades over Profile's right column ---------- */
+  function initProfileContentFade() {
+    var profile = document.querySelector(".profile-top");
+    var extra = profile && profile.querySelector(".profile-extra");
+    if (!extra || !extra.childElementCount) return;
+    var container = profile.querySelector(".container");
+    var photo = container.querySelector(".profile-photo");
+    var header = document.querySelector(".site-header");
+    var rows = Array.prototype.filter.call(container.children, function (el) {
+      return el.classList.contains("row");
+    });
+    if (!photo || !header || rows.length !== 2) return;
+
+    // Outside <main>, so page-transition transforms cannot move the window.
+    var overlay = document.createElement("div");
+    overlay.className = "profile-content-fade";
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.hidden = true;
+    ["top", "bottom"].forEach(function (edge) {
+      var panel = document.createElement("div");
+      panel.className = "profile-content-fade__edge profile-content-fade__edge--" + edge;
+      overlay.appendChild(panel);
+    });
+    document.body.appendChild(overlay);
+    var frame = 0;
+    var disposed = false;
+    var clearTop = 0;
+    var clearBottom = 0;
+
+    function setPixels(element, name, value) {
+      var next = value + "px";
+      if (element.style.getPropertyValue(name) !== next) element.style.setProperty(name, next);
+    }
+    function measure() {
+      if (disposed) return;
+      var enabled = profile.classList.contains("is-profile-pinned");
+      if (enabled) {
+        var first = rows[0].getBoundingClientRect();
+        var gap = parseFloat(getComputedStyle(container).rowGap) || 24;
+        var fadeStyle = getComputedStyle(overlay);
+        var topFadeSize = parseFloat(fadeStyle.getPropertyValue("--profile-fade-top-size"));
+        var bottomFadeSize = parseFloat(fadeStyle.getPropertyValue("--profile-fade-bottom-size"));
+        // Heights and the existing resting-position token are independent of
+        // scroll and reveal transforms. Do not use the scrolling row's top.
+        clearTop = parseFloat(getComputedStyle(profile).getPropertyValue("--profile-sticky-top"));
+        clearBottom = clearTop + Math.max(photo.getBoundingClientRect().height,
+          first.height + gap + rows[1].getBoundingClientRect().height);
+        enabled = clearTop >= topFadeSize && clearBottom + bottomFadeSize <= window.innerHeight;
+        if (enabled) {
+          setPixels(overlay, "--profile-fade-left", first.left);
+          setPixels(overlay, "--profile-fade-width", first.width);
+          setPixels(overlay, "--profile-fade-top", clearTop);
+          setPixels(overlay, "--profile-fade-bottom", clearBottom);
+          setPixels(profile, "--profile-fade-tail", window.innerHeight - clearBottom + 4);
+        }
+      }
+      overlay.hidden = !enabled;
+      profile.classList.toggle("has-profile-fade", enabled);
+      if (siteLenis) siteLenis.resize();
+    }
+    function schedule() {
+      if (disposed || frame) return;
+      frame = requestAnimationFrame(function () { frame = 0; measure(); });
+    }
+    var keyboardFocus = false;
+    onWindow("keydown", function (event) {
+      if (event.key === "Tab") keyboardFocus = true;
+    }, true);
+    onWindow("pointerdown", function () {
+      keyboardFocus = false;
+    }, { capture: true, passive: true });
+
+    function revealFocus(event) {
+      if (!keyboardFocus || overlay.hidden || !rows.some(function (row) { return row.contains(event.target); }) && !extra.contains(event.target)) return;
+      var rect = event.target.getBoundingClientRect();
+      var delta = 0;
+      if (rect.top < clearTop) delta = rect.top - clearTop - 4;
+      else if (rect.bottom > clearBottom) delta = rect.bottom - clearBottom + 4;
+      else return;
+      // Only reveal obscured keyboard focus, moving to the nearest clear
+      // edge with room for its outline. Pointer focus never moves the page.
+      var target = Math.max(0, window.scrollY + delta);
+      if (siteLenis) siteLenis.scrollTo(target, { immediate: true });
+      else window.scrollTo({ top: target, behavior: "instant" });
+    }
+
+    measure();
+    onWindow("resize", schedule);
+    profile.addEventListener("focusin", revealFocus);
+    if ("ResizeObserver" in window) {
+      var observer = new ResizeObserver(schedule);
+      [header, photo].concat(rows).forEach(function (el) { observer.observe(el); });
+      track(function () { observer.disconnect(); });
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    track(function () {
+      disposed = true;
+      if (frame) cancelAnimationFrame(frame);
+      profile.removeEventListener("focusin", revealFocus);
+      profile.classList.remove("has-profile-fade");
+      profile.style.removeProperty("--profile-fade-tail");
+      overlay.remove();
+    });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -400,14 +566,14 @@
 
     // Nav highlight: nothing is active at the landing; the Profile link lights
     // up once the profile section scrolls up to the docked header.
-    var profileLink = nav.querySelector('a[href="#profile"]');
-    var profileSection = document.getElementById("profile");
+    var profileLink = nav.querySelector('a[href="#home"]');
+    var profileSection = document.getElementById("home");
 
     // Arriving straight at the profile (via the Research/Projects nav, which
-    // links to index.html#profile) should show Profile already active, so the
+    // links to index.html#home) should show Profile already active, so the
     // cross-page view transition has a `nav-active` element on this side for the
     // highlight to glide onto rather than fade in.
-    if (profileLink && location.hash === "#profile") {
+    if (profileLink && location.hash === "#home") {
       profileLink.setAttribute("aria-current", "page");
     }
 
@@ -420,12 +586,12 @@
       var scrollY = getScrollY();
       var p = clamp(scrollY / (vh * 1.0), 0, 1);
       var profileTop = profileSection ? profileSection.getBoundingClientRect().top : Infinity;
-      var profileIsDocked = location.hash === "#profile" && profileTop <= vh * 0.5;
-      // Arriving at #profile: keep the shell docked while the Profile section is
+      var profileIsDocked = location.hash === "#home" && profileTop <= vh * 0.5;
+      // Arriving at #home: keep the shell docked while the Profile section is
       // actually in view. Lenis/router swaps can briefly report a stale scroll
       // value after navigation; without this guard p dips below 1 and the hero
       // logo flashes a few pixels below the dock logo before snapping back.
-      if ((firstRender && location.hash === "#profile") || profileIsDocked) p = 1;
+      if ((firstRender && location.hash === "#home") || profileIsDocked) p = 1;
       var e = easeOut(p);
 
       // name's CSS box is laid out at hero size (see .morph__name); scale DOWN to
@@ -488,11 +654,11 @@
 
       if (profileLink && profileSection) {
         var reached = profileTop <= vh * 0.25;
-        // Don't strip the #profile-arrival highlight on the very first render:
+        // Don't strip the #home-arrival highlight on the very first render:
         // the fragment scroll may not have applied yet, and the cross-page view
         // transition snapshots this paint — we want Profile already lit then.
         if (reached) profileLink.setAttribute("aria-current", "page");
-        else if (!(firstRender && location.hash === "#profile")) profileLink.removeAttribute("aria-current");
+        else if (!(firstRender && location.hash === "#home")) profileLink.removeAttribute("aria-current");
       }
       firstRender = false;
     }
@@ -749,7 +915,7 @@
     if (newDesc && curDesc) curDesc.setAttribute("content", newDesc.getAttribute("content"));
 
     // Lenis caches scroll bounds from the old content — refresh, then place the
-    // viewport: at a #hash target if present (e.g. index.html#profile from a
+    // viewport: at a #hash target if present (e.g. index.html#home from a
     // nav tab), otherwise at the top of the fresh page. This MUST happen before
     // bootPage(): the index morph's render() positions the fixed #morphName from
     // the current scroll, so if we boot first it reads the *outgoing* page's
@@ -767,16 +933,16 @@
   /* ---------- Clone-and-fly shell morph ----------
      The visible logo differs by page/state: the static .site-header__logo on
      Research/Projects, and on the index either the hero #morphName or, once
-     docked (or arriving at #profile), the 34px #morphDockLogo. Resolve to
+     docked (or arriving at #home), the 34px #morphDockLogo. Resolve to
      whichever is actually on screen. `hash` is passed when resolving the
      INCOMING page (its is-morphing class forces logo opacity to 0, so we can't
-     read opacity — we infer dock state from the #profile hash instead). */
+     read opacity — we infer dock state from the #home hash instead). */
   function visibleLogo(hash) {
     var header = document.querySelector(".site-header__logo");
     if (header) return header;
     var dock = document.getElementById("morphDockLogo");
     var name = document.getElementById("morphName");
-    if (hash !== undefined) return hash === "#profile" ? (dock || name) : (name || dock);
+    if (hash !== undefined) return hash === "#home" ? (dock || name) : (name || dock);
     if (dock && parseFloat(getComputedStyle(dock).opacity) > 0.5) return dock;
     return name || dock;
   }
@@ -966,6 +1132,8 @@
   function bootPage() {
     runCleanups();
     initProfileLayout();
+    initProfileExtension();
+    initProfileContentFade();
     initReveal();
     initProjectMedia();
     initEssayToggles();

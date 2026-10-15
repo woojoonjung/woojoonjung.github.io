@@ -7,7 +7,7 @@
   <meta name="description" content="Dr.Snap, a multimodal dermatology decision-support project by Woojun Jung." />
   <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
   <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/site.css?v=home-anchor-1" />
   <link rel="stylesheet" href="css/project-detail.css?v=process-toggles" />
   <link rel="stylesheet" href="css/project-drsnap.css" />
 </head>
@@ -15,7 +15,7 @@
   <header class="site-header">
     <a class="site-header__logo" href="index.html" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
     <nav class="nav-pill" aria-label="Primary">
-      <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="index.html#home"><span class="nav-pill__label">Home</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html" aria-current="page"><span class="nav-pill__label">Projects</span></a>
       <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
@@ -45,7 +45,7 @@
               </div>
               <div>
                 <p>Woojun Jung: Interaction design, Prototype development</p>
-                <p>Youngseo Kim: Docker setup, Web scraping</p>
+                <p>Youngseo Kim: Docker setup, Data preparation</p>
               </div>
             </dd>
           </div>
@@ -128,7 +128,7 @@
               </dl>
             </article>
           </div>
-          <p class="ds-design-question">How might people get initial guidance on a skin concern<br>when a clinic visit is hard to arrange?</p>
+          <p class="ds-design-question" id="scenarios-caption">How might people get initial guidance on a skin concern<br>when a clinic visit is hard to arrange?</p>
         </figure>
       </section>
 
@@ -380,7 +380,7 @@
             </div>
             <figure class="ds-demo__media">
               <img alt="A person wrapped in a blanket looking at their phone." src="assets/projects/drsnap/02_5-1600.webp" width="1600" height="1200" loading="lazy" decoding="async" srcset="assets/projects/drsnap/02_5-800.webp 800w, assets/projects/drsnap/02_5-1600.webp 1600w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1248px) calc(100vw - 48px), 1200px" />
-              <figcaption class="project-note" id="demo-followup-caption">Appointment booking and sharing the intake summary with a clinic were not implemented in the prototype.</figcaption>
+              <figcaption class="project-note" id="demo-handoff-caption">Appointment booking and sharing the intake summary with a clinic were not implemented in the prototype.</figcaption>
             </figure>
           </article>
           </div>
@@ -723,6 +723,6 @@ The question must be answerable with yes or no.</code></pre>
   </footer>
 
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/app.js?v=drsnap-demo-tabs"></script>
+  <script src="js/app.js?v=home-anchor-1"></script>
 </body>
 </html>

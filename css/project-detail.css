@@ -189,7 +189,13 @@ body[data-page="project-detail"] .site-header {
   color: var(--project-body);
 }
 
-.project-detail .project-section__description > p { max-width: 49ch; }
+.project-detail .project-section__description > p {
+  max-width: 49ch;
+  text-align: justify;
+  text-align-last: left;
+  text-wrap: pretty;
+  hyphens: none;
+}
 
 .project-detail .project-section__description > p + p { margin-top: 1rem; }
 

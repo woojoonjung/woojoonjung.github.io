@@ -1,0 +1,506 @@
+{
+  "date": "2026-09-15",
+  "scope": "Project detail media only; robot and all non-project assets unchanged",
+  "originals_backup": "../personal_website_asset_originals/20260915T112328Z",
+  "tools": {
+    "Pillow": "11.3.0",
+    "FFmpeg": "7.1 (imageio-ffmpeg 0.6.0 bundled binary)"
+  },
+  "totals": {
+    "before_bytes": 159557623,
+    "after_bytes": 41436196,
+    "reduction_percent": 74.03,
+    "image_sources_optimized": 16,
+    "image_variants_generated": 29,
+    "video_sources_reencoded": 3,
+    "originals_retired_from_deployment": 23
+  },
+  "images": [
+    {
+      "source": "assets/projects/bianca/bianca_motivation.png",
+      "source_bytes": 519191,
+      "source_sha256": "49816307fddf463839fa87eba7839a6edc7ce9f97123e6c498950fe37ec826fa",
+      "quality": 88,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/bianca/bianca_motivation-960.webp",
+          "width": 960,
+          "height": 649,
+          "bytes": 37250,
+          "sha256": "99afaa56964242beaabe1bf655ecb38cc51fd4c06c4bdcdb73b42ca900d0bb6b"
+        },
+        {
+          "path": "assets/projects/bianca/bianca_motivation-1600.webp",
+          "width": 1600,
+          "height": 1082,
+          "bytes": 67074,
+          "sha256": "d27d65f53e7712b0c63e389a106b2a706da077ce10a811197d99a5a1878042dd"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/bianca/desk_research.png",
+      "source_bytes": 2765977,
+      "source_sha256": "8e9f69a55a490f8b882dabab60ebf84e3ed9199a017601859f0d52f51bb95bfd",
+      "quality": 88,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/bianca/desk_research-960.webp",
+          "width": 960,
+          "height": 404,
+          "bytes": 28310,
+          "sha256": "425075c424443cc94e09f2e32411648b6d3ae1ae75bd9b103a9ef1bb75b8edca"
+        },
+        {
+          "path": "assets/projects/bianca/desk_research-1920.webp",
+          "width": 1920,
+          "height": 807,
+          "bytes": 61398,
+          "sha256": "f4637e06238a7277174368e7fad1c27cf269506e22276396c91817175daab947"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/bianca/bianca_making.png",
+      "source_bytes": 2874036,
+      "source_sha256": "f03773f661f2c45ed71c16d7607d67eee13df9d43325c0d421620334607f7de4",
+      "quality": 86,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/bianca/bianca_making-800.webp",
+          "width": 800,
+          "height": 562,
+          "bytes": 68248,
+          "sha256": "d76b935da580515d0c0f57754081ebc284d71578114b51a15519fb34bcfcddb3"
+        },
+        {
+          "path": "assets/projects/bianca/bianca_making-1540.webp",
+          "width": 1540,
+          "height": 1081,
+          "bytes": 196028,
+          "sha256": "0a8d8f545483fb90eddf1c41b57516b1007fc5268c33f81258b30e4e5fd5c821"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/bianca/idea_practice.png",
+      "source_bytes": 960222,
+      "source_sha256": "108092b5a8fde1dc9eaec128ff8b11c80f4e9adf56f9c01fbe768f77384421d0",
+      "quality": 100,
+      "lossless": true,
+      "variants": [
+        {
+          "path": "assets/projects/bianca/idea_practice-3840.webp",
+          "width": 3840,
+          "height": 2160,
+          "bytes": 315624,
+          "sha256": "c13bb81ca8eb24dfe0a9fc8663999ab8887d36f0bf34f9c50079fc0464d202f4"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/bianca/bianca_demo_poster.png",
+      "source_bytes": 711161,
+      "source_sha256": "b0aaad19cd36de9b85eeec7031a023146faf0894f347409b0f10b0fb6466f77b",
+      "quality": 85,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/bianca/bianca_demo_poster.webp",
+          "width": 1280,
+          "height": 720,
+          "bytes": 29052,
+          "sha256": "0c22bd9ee73240c99df4ab96a03a56b6f8e09a2abc31a49b00af055013e14312"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_motivation.png",
+      "source_bytes": 4725361,
+      "source_sha256": "1701eb04f3f10912221dbec728b7a1fa850866623d2c8f913a3aa89b6ba3ebf7",
+      "quality": 86,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/silverlining/silverlining_motivation-960.webp",
+          "width": 960,
+          "height": 695,
+          "bytes": 100110,
+          "sha256": "97ffabeeef5f1dcb8b73cb0a58bf36a39f607826fcfc3744f93f7351a4e2049f"
+        },
+        {
+          "path": "assets/projects/silverlining/silverlining_motivation-1920.webp",
+          "width": 1920,
+          "height": 1389,
+          "bytes": 238660,
+          "sha256": "37a8f909dca393a4914c8240c4dbd4701cb4d9b536ead0b09bfeb3bcb2484591"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_act.png",
+      "source_bytes": 7017678,
+      "source_sha256": "5ec6a5abdc5de588ab3b497878d392aca091e1652d9a0f14e3c5e212049bdf4f",
+      "quality": 88,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/silverlining/silverlining_act-960.webp",
+          "width": 960,
+          "height": 512,
+          "bytes": 19488,
+          "sha256": "528d1efa04dd9e4465787d142a4f956ff4224833bb4d9b30f622100e617f7cc0"
+        },
+        {
+          "path": "assets/projects/silverlining/silverlining_act-1920.webp",
+          "width": 1920,
+          "height": 1024,
+          "bytes": 66326,
+          "sha256": "97f77ae9c047cdbc00279204a0014eba2274defec2f6d347e4a20e6efbc444f2"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_making_form.png",
+      "source_bytes": 4138558,
+      "source_sha256": "0590b893c5b1ded60b030020a8f644dca4ec76783d3c1b61dfd520babf093b2f",
+      "quality": 92,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/silverlining/silverlining_making_form-1200.webp",
+          "width": 1200,
+          "height": 851,
+          "bytes": 163562,
+          "sha256": "3b86c0b872167a89a4fa14125e10d8b3d58a4c01b227e5a184a34f166ca08afb"
+        },
+        {
+          "path": "assets/projects/silverlining/silverlining_making_form-2400.webp",
+          "width": 2400,
+          "height": 1703,
+          "bytes": 450400,
+          "sha256": "0687ab4fe4e5e1434ff8517c1922649cc1bdb8463e75cdc3d3c2bb9b0d197400"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_making_interaction.png",
+      "source_bytes": 2724715,
+      "source_sha256": "11749e96c60f4683b7f6ce51e12c2471059774be8b5264a71b6b038995a856c2",
+      "quality": 92,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/silverlining/silverlining_making_interaction-1200.webp",
+          "width": 1200,
+          "height": 784,
+          "bytes": 127416,
+          "sha256": "7012b7e502c912b08d17fb54bd587f77699e1a49e4052b9c25ea282d98a2202b"
+        },
+        {
+          "path": "assets/projects/silverlining/silverlining_making_interaction-2400.webp",
+          "width": 2400,
+          "height": 1568,
+          "bytes": 322092,
+          "sha256": "3d2bd788223ccf1ef228536989dd8387f438fa1da314a29998e4db9a0c1f2357"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_hardware.png",
+      "source_bytes": 1123833,
+      "source_sha256": "17e2cd34ae957044594946c58d1e5070742d788c4156585e0310cc9964c4d4c7",
+      "quality": 88,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/silverlining/silverlining_hardware-800.webp",
+          "width": 800,
+          "height": 492,
+          "bytes": 20808,
+          "sha256": "0e7ba775f829b9ba6351051c9e5ffbc222e7371b1d5ff51a81e4de8a652f5d0a"
+        },
+        {
+          "path": "assets/projects/silverlining/silverlining_hardware-1600.webp",
+          "width": 1600,
+          "height": 985,
+          "bytes": 52486,
+          "sha256": "4ebafac914984d4232ef578aa01d5015459c99738b422ab28f39575650c9cdc0"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_vision_range.png",
+      "source_bytes": 5246090,
+      "source_sha256": "e648bc8a41fd533c2961aa7aeebb0aa633f3553883fd32027f00adfea2195e28",
+      "quality": 88,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/silverlining/silverlining_vision_range-960.webp",
+          "width": 960,
+          "height": 876,
+          "bytes": 50390,
+          "sha256": "374f7cdea5d33c47b2bdfb9b2720f8ac7b7451028e0b2b7be0abb15a45b5ce1b"
+        },
+        {
+          "path": "assets/projects/silverlining/silverlining_vision_range-1600.webp",
+          "width": 1600,
+          "height": 1459,
+          "bytes": 96134,
+          "sha256": "728024cfdb348d7128097f1263b0c1fe0b14157385bb78157e9c718f401bace9"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/drsnap/user_1_urban.png",
+      "source_bytes": 1645999,
+      "source_sha256": "ec4ebd1f8aa51e368e4d616db2a4dc5d47e905f05c68b21569277a428aa797d7",
+      "quality": 86,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/drsnap/user_1_urban-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 23532,
+          "sha256": "35b4850997a80acc8b49444102aa8abf85a0db052ed92fc75f966b57fd694151"
+        },
+        {
+          "path": "assets/projects/drsnap/user_1_urban-960.webp",
+          "width": 960,
+          "height": 960,
+          "bytes": 84960,
+          "sha256": "d70f7e9239dd7a757ea6c124e16c367ff4bcdeb2d27a8792d141986fc2d28e1a"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/drsnap/user_2_rural.png",
+      "source_bytes": 2529042,
+      "source_sha256": "cc01cad17131c2c3fd142c9648962363b688a1d257efd220aba30893a0221bec",
+      "quality": 86,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/drsnap/user_2_rural-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 20170,
+          "sha256": "3b822bf0d2ebf620d9259db46ea959c502b42c4aa16d125298c5b85eb9aeb42b"
+        },
+        {
+          "path": "assets/projects/drsnap/user_2_rural-960.webp",
+          "width": 960,
+          "height": 960,
+          "bytes": 49916,
+          "sha256": "afec35ec8f733a80d6717a50699fd76cfd0d4e000f9abea341d84e2d38c0e61d"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/drsnap/user_3_mother.png",
+      "source_bytes": 5438226,
+      "source_sha256": "c4dc359e0232a960b13db7da469714489974f0f376933604eb15e08bea0118ca",
+      "quality": 86,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/drsnap/user_3_mother-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 53450,
+          "sha256": "49b32da0981d039ffcf62c0d2dcef3629a9560ed644fb00ed42e9db9cc55399a"
+        },
+        {
+          "path": "assets/projects/drsnap/user_3_mother-960.webp",
+          "width": 960,
+          "height": 960,
+          "bytes": 143084,
+          "sha256": "5876e7a739ecdc8b7776d5f989a23305c003af10ce96a87e0149a3ad3bfb1c95"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/drsnap/02_5.png",
+      "source_bytes": 1624149,
+      "source_sha256": "e862244eb2dee4d3d629153120594f4af651ba45eb8f96cf145551072f466617",
+      "quality": 86,
+      "lossless": false,
+      "variants": [
+        {
+          "path": "assets/projects/drsnap/02_5-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 26390,
+          "sha256": "a92ed350f73fd1c9bba7e74ac7e167fc690eb3188dc3bf7df9b9396594936640"
+        },
+        {
+          "path": "assets/projects/drsnap/02_5-1600.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 61902,
+          "sha256": "daf80b2757784f5b27a028a2c8f9882c217151e0f96e22b378dfadff8067a141"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/drsnap/eczema.png",
+      "source_bytes": 775714,
+      "source_sha256": "d7990e80ecd2d2e7972d962d45b08919e3abdd1f0617eb7941175d9cdcd67a3e",
+      "quality": 100,
+      "lossless": true,
+      "variants": [
+        {
+          "path": "assets/projects/drsnap/eczema-1063.webp",
+          "width": 1063,
+          "height": 1063,
+          "bytes": 489072,
+          "sha256": "6585b00a49ffdb62dc05123a3c3943e938a3054b6fbf52f886c674e4155c79af"
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "source": "assets/projects/bianca/bianca_demo.mp4",
+      "output": "assets/projects/bianca/bianca_demo-web.mp4",
+      "before_bytes": 71178294,
+      "after_bytes": 17863374,
+      "crf": 21,
+      "preset": "slow",
+      "audio": "copy",
+      "scale": null,
+      "fps": "passthrough",
+      "sha256": "e992ee3796b5d619c6207830a3b3b3ff68efe96113dcc8e39c60a99ecedf4cb5"
+    },
+    {
+      "source": "assets/projects/silverlining/silverlining_demo.mp4",
+      "output": "assets/projects/silverlining/silverlining_demo-web.mp4",
+      "before_bytes": 23741209,
+      "after_bytes": 10864401,
+      "crf": 21,
+      "preset": "slow",
+      "audio": "copy",
+      "scale": null,
+      "fps": "passthrough",
+      "sha256": "6e48d448cf6d64d1f53c90846f978d08f0bd597c01ed840f377f6218c1fed1fc"
+    },
+    {
+      "source": "assets/projects/bianca/sensor_practice.mp4",
+      "output": "assets/projects/bianca/sensor_practice-web.mp4",
+      "before_bytes": 6250446,
+      "after_bytes": 1479482,
+      "crf": 21,
+      "preset": "slow",
+      "audio": "copy",
+      "scale": "scale=1280:720:flags=lanczos",
+      "fps": "passthrough",
+      "sha256": "c56b24ee382474fc4d22bcad0cd5b71bc2e463546dd62e02f103ef0c3ad9b335"
+    }
+  ],
+  "posters_added": [
+    {
+      "path": "assets/projects/bianca/sensor_practice_poster.webp",
+      "bytes": 90988,
+      "sha256": "7e8fcd683e0f88cccc0a015f5d89999d4063ebf2aeed11671cf67e158657fe19"
+    },
+    {
+      "path": "assets/projects/silverlining/silverlining_demo_poster.webp",
+      "bytes": 54688,
+      "sha256": "20c09c4fa90fe124e657c27d9c53590497b918f103d844635d7e0b4789221f01"
+    }
+  ],
+  "retired_originals": [
+    "assets/projects/bianca/bianca_motivation.png",
+    "assets/projects/bianca/desk_research.png",
+    "assets/projects/bianca/bianca_making.png",
+    "assets/projects/bianca/idea_practice.png",
+    "assets/projects/bianca/bianca_demo_poster.png",
+    "assets/projects/silverlining/silverlining_motivation.png",
+    "assets/projects/silverlining/silverlining_act.png",
+    "assets/projects/silverlining/silverlining_making_form.png",
+    "assets/projects/silverlining/silverlining_making_interaction.png",
+    "assets/projects/silverlining/silverlining_hardware.png",
+    "assets/projects/silverlining/silverlining_vision_range.png",
+    "assets/projects/drsnap/user_1_urban.png",
+    "assets/projects/drsnap/user_2_rural.png",
+    "assets/projects/drsnap/user_3_mother.png",
+    "assets/projects/drsnap/02_5.png",
+    "assets/projects/drsnap/eczema.png",
+    "assets/projects/bianca/bianca_demo.mp4",
+    "assets/projects/silverlining/silverlining_demo.mp4",
+    "assets/projects/bianca/sensor_practice.mp4",
+    "assets/projects/drsnap/2_questionaire.mov",
+    "assets/projects/drsnap/1_landingpage.mov",
+    "assets/projects/drsnap/4_furtherqa.mov",
+    "assets/projects/drsnap/3_diagnosis.mov"
+  ],
+  "pages": [
+    {
+      "page": "project-bianca.html",
+      "before": {
+        "image_bytes": 8048366,
+        "video_bytes": 77428740
+      },
+      "after_default_sources": {
+        "image_bytes": 977943,
+        "video_bytes": 19342856
+      }
+    },
+    {
+      "page": "project-drsnap.html",
+      "before": {
+        "image_bytes": 12879571,
+        "video_bytes": 5945531
+      },
+      "after_default_sources": {
+        "image_bytes": 1695375,
+        "video_bytes": 5945531
+      }
+    },
+    {
+      "page": "project-silverlining.html",
+      "before": {
+        "image_bytes": 25521093,
+        "video_bytes": 23741209
+      },
+      "after_default_sources": {
+        "image_bytes": 1825644,
+        "video_bytes": 10864401
+      }
+    }
+  ],
+  "validation": {
+    "missing_local_asset_references": [],
+    "non_project_asset_hashes_unchanged": 10,
+    "shared_hero_images_unchanged": true,
+    "drsnap_mp4_bytes_unchanged": true,
+    "full_video_decode_and_audio_checks": [
+      {
+        "output": "assets/projects/bianca/bianca_demo-web.mp4",
+        "full_decode": "passed",
+        "audio_identical": true,
+        "fast_start": true,
+        "bytes": 17863374
+      },
+      {
+        "output": "assets/projects/silverlining/silverlining_demo-web.mp4",
+        "full_decode": "passed",
+        "audio_identical": true,
+        "fast_start": true,
+        "bytes": 10864401
+      },
+      {
+        "output": "assets/projects/bianca/sensor_practice-web.mp4",
+        "full_decode": "passed",
+        "audio_identical": true,
+        "fast_start": true,
+        "bytes": 1479482
+      }
+    ]
+  }
+}

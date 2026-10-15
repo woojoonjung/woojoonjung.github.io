@@ -7,7 +7,7 @@
   <meta name="description" content="Woojun Jung — graduate researcher at the DAIS Lab, Korea University, working across machine learning, data mining, and human–AI interaction, with a background in industrial design." />
   <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
   <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/site.css?v=home-anchor-1" />
   <script>
     // Arriving with a #hash (e.g. from the Research/Projects nav) should land
     // instantly, not animate up from the top — override the global smooth
@@ -16,7 +16,7 @@
   </script>
 </head>
 <body data-page="home" id="top">
-  <div id="profile" aria-hidden="true"></div>
+  <div id="home" aria-hidden="true"></div>
   <!-- LANDING DISABLED: the page now opens directly at the profile, under the
        static header below (same shell as research.html / projects.html).
        To restore the landing animation, uncomment the two morph segments and
@@ -46,7 +46,7 @@
       </div>
     </div>
     <nav class="morph__nav nav-pill" id="morphNav" aria-label="Primary">
-      <a href="#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="#home"><span class="nav-pill__label">Home</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
       <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
@@ -61,9 +61,9 @@
   -->
 
   <header class="site-header">
-    <a class="site-header__logo" href="#profile" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
+    <a class="site-header__logo" href="#home" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
     <nav class="nav-pill" aria-label="Primary">
-      <a href="#profile" aria-current="page"><span class="nav-pill__label">Profile</span></a>
+      <a href="#home" aria-current="page"><span class="nav-pill__label">Home</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
       <a href="blog.html"><span class="nav-pill__label">Blog</span></a>
@@ -80,10 +80,10 @@
 
         <div class="row reveal">
           <div class="row__label section-label">Biography.</div>
-          <div class="row__body">
+          <div class="row__body profile-biography">
             <p>I am a graduate student at the DAIS Lab, Korea University, advised by Prof. Susik Yoon.
               My primary research focus is <a href="research.html?topic=ml-dm">Representation Learning</a> and
-              <a href="research.html">Human–AI Interaction</a>, centered on in building systems that
+              <a href="research.html">Human–AI Interaction</a>, centered on building systems that
               enable effective human–AI collaboration. With a background in both industrial design and computer
               science, I strive to bridge technical rigor with human-centered design.</p>
           </div>
@@ -109,6 +109,56 @@
               <a href="mailto:woojoon@korea.ac.kr" target="_blank" rel="noopener">E-mail</a>
               <a href="https://www.linkedin.com/in/woojun-jung-80945a301" target="_blank" rel="noopener">LinkedIn</a>
               <a href="https://x.com/woojoonjung" target="_blank" rel="noopener">X</a>
+            </div>
+          </div>
+        </div>
+        <!-- Add future .row.reveal sections here. Keep the existing rows above intact. -->
+        <div class="profile-extra">
+          <div class="row reveal">
+            <div class="row__label section-label">News.</div>
+            <div class="row__body">
+              <ul class="news-list" role="list">
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2026-08-01">[26.08]</time>
+                  <span>Attending KDD 2026 Main Conference ✈️</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2026-07-01">[26.07]</time>
+                  <span>Attending ICML 2026 Main Conference ✈️</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2026-05-01">[26.05]</time>
+                  <span>A paper on structural cues for language models accepted to KDD 2026.</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2026-05-01">[26.05]</time>
+                  <span>A paper on tabular embedding accepted to ICML 2026.</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2025-10-01">[25.10]</time>
+                  <span>Won the second prize in the poster presentation at AI Tech Day at Korea University.</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2025-08-01">[25.08]</time>
+                  <span>Won the Master's Research Fellowship from the National Research Foundation of Korea.</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2025-07-01">[25.07]</time>
+                  <span>Attending SIGIR 2025 Main Conference ✈️</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2025-04-01">[25.04]</time>
+                  <span>A paper on the tabular embedding accepted to SIGIR 2025.</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2024-12-01">[24.12]</time>
+                  <span>Won the runner-up award in the Capstone Design Competition at Korea University.</span>
+                </li>
+                <li class="news-item">
+                  <time class="news-item__date" datetime="2024-07-01">[24.07]</time>
+                  <span>Joined the DAIS Lab at Korea University as an undergraduate researcher.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -194,29 +244,7 @@
     -->
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container--max footer__inner">
-      <div class="footer__brand"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /> <span>© 2026</span></div>
-      <!-- <nav class="footer__links" aria-label="Footer">
-        <ul>
-          <li><a href="https://scholar.google.com/citations?user=hVdeNvsAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a></li>
-          <li><a href="https://github.com/woojoonjung" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="projects.html">Projects</a></li>
-        </ul>
-      </nav> -->
-      <div class="footer__social">
-        <a href="https://www.instagram.com/vvj.works/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="https://www.linkedin.com/in/woojun-jung-80945a301" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.9-2.9s-2.2 1.4-2.2 2.8V21H9z"/></svg></a>
-        <a href="https://x.com/woojoonjung" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7.1-8.1L2.2 3h6.1l4.2 5.6zM16.4 19.2h1.66L7.7 4.7H5.9z"/></svg></a>
-      </div>
-    </div>
-  </footer>
-
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=home-anchor-1"></script>
 </body>
 </html>

@@ -7,14 +7,14 @@
   <meta name="description" content="Essays by Woojun Jung on machine understanding, human–AI collaboration, empathy, and design." />
   <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
   <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/site.css?v=home-anchor-1" />
 </head>
 <body data-page="blog">
 
   <header class="site-header">
     <a class="site-header__logo" href="index.html" aria-label="Woojun Jung — home"><img src="assets/SVG/Woojun_Jung_Logo.svg" alt="Woojun Jung" /></a>
     <nav class="nav-pill" aria-label="Primary">
-      <a href="index.html#profile"><span class="nav-pill__label">Profile</span></a>
+      <a href="index.html#home"><span class="nav-pill__label">Home</span></a>
       <a href="research.html"><span class="nav-pill__label">Research</span></a>
       <a href="projects.html"><span class="nav-pill__label">Projects</span></a>
       <a href="blog.html" aria-current="page"><span class="nav-pill__label">Blog</span></a>
@@ -36,7 +36,7 @@
         </figure>
       </section>
 
-      <section class="essay blog-essay">
+      <!-- <section class="essay blog-essay">
         <p class="essay__lead section-label reveal">News.</p>
         <ul class="news-list" role="list">
           <li class="news-item reveal">
@@ -80,7 +80,7 @@
             <span>Joined the DAIS Lab at Korea University as an undergraduate researcher.</span>
           </li>
         </ul>
-      </section>
+      </section> -->
 
       <section class="essay blog-essay">
         <div class="notes-heading reveal">
@@ -153,19 +153,18 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            Can machines understand what lives between people?
+            Thoughts on text representations
           </summary>
           <p class="essay-toggle__body">
-            Where world understanding asks whether machines can interpret the reality around us, human understanding
-            asks whether they can interpret the realities that exist within and between people. Much of what shapes
-            how we think, feel, and communicate is never stated directly: personal memories, routines, preferences,
-            emotional states, cultural references, and the shared context built over time within families, communities,
-            and relationships.
+            Human-written text carries traces of how people understand the world.
+            In describing a situation, a writer gives it a particular structure, making some relationships explicit while leaving others for the reader to recognize.
+            What the writer chooses to explain, connect, or take for granted reflects an interpretation of the situation.
           </p>
           <p class="essay-toggle__body">
-            These aspects of human life are not easily captured as a fixed set of semantic labels. They are distributed
-            across behavior, language, history, and relationships—felt rather than fully articulated. I am interested
-            in how AI systems might recognize these implicit patterns.
+            Learning from text may therefore offer indirect access to reasoning and tacit knowledge that are never fully articulated.
+            An explanation can show how evidence supports a conclusion, while a description can reveal which distinctions matter and what background knowledge is assumed.
+            These patterns can convey aspects of human thought even when the writer never describes the thinking behind them.
+            This is what interests me about text as a learning medium, and why I want to understand how representations can preserve the relationships that make these patterns available for learning.
           </p>
         </details>
 
@@ -179,27 +178,45 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            Does understanding language mean understanding tables?
+            Understanding what lives between people
           </summary>
           <p class="essay-toggle__body">
-            Working with tables has made me question an assumption that is easy to make about language models:
-            if they learn to understand language from vast amounts of unstructured text, should understanding a table follow naturally?
-            Both prose and tables can be represented as sequences of discrete tokens.
-            Yet interpreting a table requires recovering relationships expressed through rows, columns, headers, and conventions that may never be explained in words.
+            Where understanding the world asks whether machines can interpret the reality around us, understanding human
+            asks whether they can interpret the realities that exist within and between people. Much of what shapes
+            how we think, feel, and communicate is never stated directly: personal memories, routines, preferences,
+            emotional states, cultural references, and the shared context built over time within families, communities,
+            and relationships.
           </p>
           <p class="essay-toggle__body">
-            How these elements are assembled into a context can shape what information a model is able to use.
-            A representation may retain every value while obscuring which header it belongs to, what its units imply, or which comparisons are meaningful.
-            Information can be present without the relationships needed to reason with it being clear.
-            Language competence alone therefore gives us no reason to take reliable tabular understanding for granted.
-            The question is how models can recognize and reason through the structures that make the data meaningful.
+            These aspects of human life are not easily captured as a fixed set of semantic labels.
+            They are distributed across behavior, language, history, and relationships, felt rather than fully articulated.
+            Bringing together language, facial expressions, gestures, and patterns of behavior over time may help AI systems recognize these implicit patterns.
+            Such understanding could provide a basis for human–AI symbiosis, helping systems adapt to people’s lives and relationships as those contexts develop and change.
+          </p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--representation" title="Representation Learning">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v3M3 11v5m18-5v5"/>
+                <rect x="5" y="6" width="14" height="14" rx="3"/>
+                <path d="M9 11v2m6-2v2m-6 3h6"/>
+              </svg>
+              <span class="note-category__label">Representation Learning</span>
+            </span>
+            How AI forms 'beliefs'
+          </summary>
+          <p class="essay-toggle__body">
+            I think of an AI model’s beliefs as working judgments about what is true or likely, given the available information.
+            These judgments guide interpretation and action, and their dependencies matter when evidence changes.
+            Revising an assumption should prompt reconsideration of the conclusions that rely on it, while allowing those with sufficient independent support to remain.
+            Sometimes the appropriate update is a change in confidence rather than a reversal; uncertainty should reflect the strength and limits of the available support.
           </p>
           <p class="essay-toggle__body">
-            This matters because structured data reflect accumulated human practice.
-            What people and organizations choose to record, how they define categories, and which distinctions they preserve can reflect expertise developed over decades.
-            Some of that knowledge is visible in the data’s organization; other assumptions remain implicit in the practices behind it.
-            Understanding structured data can help make these traces of human knowledge usable by AI.
-            It offers a way to connect the values a model reads with the experience, conventions, and judgments needed to interpret them.
+            Language provides a way to express these judgments, but producing a claim is not the same as relying on it.
+            Autoregressive modeling defines a distribution over token sequences, but token probabilities alone do not establish coherent beliefs or calibrated confidence in the claims those sequences express.
+            What interests me is whether a claim expressed in one answer meaningfully constrains subsequent judgments, and whether revisions carry through to the judgments that depend on it.
           </p>
         </details>
 
@@ -211,15 +228,18 @@
               </svg>
               <span class="note-category__label">Human-AI Interaction</span>
             </span>
-            Is interaction just a way to access machine intelligence?
+            Who’s learning through an interface?
           </summary>
           <p class="essay-toggle__body">
             I see the translation layer between machine representations and human experience as a starting point for system design.
-            What should be surfaced, what should remain in the background, and how should people be able to respond?
-            These choices shape not only a person’s experience, but also what the system can learn.
-            What information might these exchanges elicit, and what should the system learn from it?
-            Those questions should inform both the learning objectives and the algorithms themselves.
-            I believe systems can have greater impact when learning and interaction are designed together, each helping shape the other from the outset.
+            For people, the interface should help them understand the system’s behavior, evaluate its responses, and stay in control of the interaction.
+            What a system makes visible and how people can respond to it shape the feedback available to the model.
+            A rejected answer may be factually wrong or simply miss the person’s goal, and the interface can help reveal that difference.
+          </p>
+          <p class="essay-toggle__body">
+            These distinctions should inform learning objectives and algorithms from the outset.
+            In turn, the model’s uncertainty can guide what it asks or reveals next, giving people opportunities to clarify their goals or correct its interpretation.
+            Learning and interaction can be designed together, with each response reflecting the system’s understanding while shaping what it has a chance to learn next.
           </p>
         </details>
 
@@ -231,7 +251,7 @@
               </svg>
               <span class="note-category__label">Human-AI Interaction</span>
             </span>
-            Is human augmentation only about helping us know more?
+            Scope of human augmentation
           </summary>
           <p class="essay-toggle__body">
             Expanding a person’s ability to communicate is as important as expanding what they know.
@@ -252,14 +272,19 @@
               </svg>
               <span class="note-category__label">Design</span>
             </span>
-            How can we ease everyday friction?
+            Empathy needs a method
           </summary>
-          <p class="essay-toggle__body">I am drawn to the small moments when everyday systems fail to meet people where they are.
-            Through observation, interviews, and surveys, I like uncovering the subtle frustrations that often go unnoticed: a
-            task that feels unnecessarily complicated, information that arrives too late, or a system that asks too much of people
-            in an already demanding moment. From there, I translate those insights into experiences that make things feel clearer,
-            lighter, and more natural. Whether through a product, interface, or service, I am interested in designing systems that
-            respond to real needs rather than abstract assumptions.</p>
+          <p class="essay-toggle__body">
+            A design can look convincing while resting on a mistaken understanding of the people it is meant to support.
+            User studies help examine those assumptions, with different methods answering different questions.
+            Observations can reveal routines and workarounds, interviews can explore the reasons behind them, and surveys can compare reported experiences across a broader group.
+          </p>
+          <p class="essay-toggle__body">
+            When evaluating a prototype, the choice of participants, tasks, and measures should follow the question being investigated.
+            Task completion and errors can reveal difficulties, while participants’ explanations can help interpret those outcomes.
+            Unexpected behavior or conflicting feedback calls for a closer look at the assumptions behind the design.
+            Sometimes the most useful result of a study is a reason to rethink what the design was trying to solve.
+          </p>
         </details>
 
         <details class="essay-toggle reveal">
@@ -273,7 +298,7 @@
               </svg>
               <span class="note-category__label">Design</span>
             </span>
-            How can we enrich human experience?
+            Designing narratives
           </summary>
           <p class="essay-toggle__body">Design can shape how people notice, feel, remember, and connect with the world around them. This
             means designing not only individual interactions, but also the relationship between them: how
@@ -298,6 +323,6 @@
   </footer>
 
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=home-anchor-1"></script>
 </body>
 </html>

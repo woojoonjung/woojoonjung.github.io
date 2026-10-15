@@ -31,15 +31,15 @@ html.lenis.lenis-smooth iframe { pointer-events: none; }
 .morph__name {                       /* index (landing + docked) */
   view-transition-name: site-logo;
 }
-/* Cross-page navs into Profile always land on index.html#profile. At that first
+/* Cross-page navs into Profile always land on index.html#home. At that first
    paint — BEFORE app.js runs its scroll handoff — the docked 34px logo must
    already be the `site-logo` snapshot; otherwise the unnamed dock logo falls
    into the page-content group and ghosts in via the fade (and the hero
    #morphName would be captured instead). `:has(:target)` pins the docked handoff
    in pure CSS so the snapshot is correct regardless of JS timing; JS then keeps
    it in sync once the user scrolls. */
-body:has(#profile:target) .morph__name      { view-transition-name: none; opacity: 0; }
-body:has(#profile:target) .morph__dock-logo { view-transition-name: site-logo; opacity: 1; }
+body:has(#home:target) .morph__name      { view-transition-name: none; opacity: 0; }
+body:has(#home:target) .morph__dock-logo { view-transition-name: site-logo; opacity: 1; }
 .nav-pill {                          /* static pill AND index .morph__nav.nav-pill */
   view-transition-name: site-nav;
 }
@@ -157,12 +157,12 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 .container--wide { max-width: calc(var(--container-wide) + var(--gutter) * 2); }
 .container--max  { max-width: calc(var(--container-max) + var(--gutter) * 2); }
 
-.section { 
-  padding-block: var(--space-6); 
+.section {
+  padding-block: var(--space-6);
   margin-top: var(--space-6);
 }
-.band { 
-  background: var(--surface-band); 
+.band {
+  background: var(--surface-band);
   margin-top: var(--space-40);
   padding-top: var(--space-32);
   padding-bottom: var(--space-40);
@@ -470,19 +470,34 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
   text-align: left;
   padding-top: 0px;
 }
-.row__body { font: var(--type-body); color: var(--text-body); text-wrap: pretty; }
+.row__body { font: var(--type-body); color: var(--text-body); }
+.profile-top .profile-biography > p,
+.blog-intro__copy > p,
+.blog-essay .essay-toggle__body {
+  text-align: justify;
+  text-align-last: left;
+  text-wrap: pretty;
+  hyphens: none;
+}
+.profile-top .news-item > span,
+.blog-intro__copy > p,
+.blog-essay .essay-toggle__body {
+  -webkit-hyphens: auto;
+  text-wrap: wrap;
+  hyphens: auto;
+}
 .row__body p + p { margin-top: var(--space-3); }
 .row__body a { color: inherit; text-decoration: underline; text-decoration-color: var(--ink-300); }
 .row__body a:hover { text-decoration-color: currentColor; }
 .edu-item + .edu-item { margin-top: var(--space-3); }
-.edu-note { 
-  color: var(--text-faint); 
+.edu-note {
+  color: var(--text-faint);
   font-size: var(--fs-cap);
   line-height: var(--lh-body);
   }
 .ref-links { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-.ref-links a { 
-  white-space: nowrap; 
+.ref-links a {
+  white-space: nowrap;
   color: var(--text-muted);
   text-decoration: underline;
   text-decoration-color: var(--ink-300);
@@ -498,7 +513,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
    also preserves the photo / biography / education / links reveal sequence. */
 @media (min-width: 1024px) {
   .profile-top {
-    --profile-width-extra: -30px;
+    --profile-width-extra: -103px;
     /* Header + Profile fill the first viewport. The extra bottom padding
        balances the header so the content is centred in the whole viewport.
        min-height lets long content grow without clipping on short screens. */
@@ -547,6 +562,83 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* @media (min-width: 1024px) and (min-height: 1320px) {
   .profile-top { padding-bottom: var(--space-6); }
 } */
+
+/* Profile extensions are opt-in. The original photo and rows keep their DOM
+   positions and layout rules, including when older styles are cached. */
+.profile-extra { padding-top: 4px; }
+.profile-extra:not(:has(> *)) { display: none; }
+@media (min-width: 1024px) {
+  .profile-extra {
+    grid-column: 2;
+    grid-row: 3;
+    display: grid;
+    gap: 24px;
+    min-width: 0;
+  }
+  .profile-extra > .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding-block: 0;
+  }
+  .profile-top.has-profile-extra {
+    display: block;
+    padding-top: var(--profile-top-gap);
+    padding-bottom: 0;
+  }
+  .has-profile-extra > .container {
+    min-height: calc(var(--profile-baseline-height) + var(--profile-bottom-gap));
+  }
+  .has-profile-extra .profile-extra {
+    padding-bottom: var(--profile-bottom-gap);
+  }
+  .has-profile-extra.is-profile-pinned .profile-photo {
+    position: sticky;
+    top: var(--profile-sticky-top);
+  }
+}
+
+/* A visual window over the right column only. These body-level overlays
+   never participate in the original photo / Biography / Links layout. */
+.profile-content-fade {
+  --profile-fade-top-size: 130px;
+  --profile-fade-bottom-size: 165px;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+.profile-content-fade[hidden] { display: none; }
+.profile-content-fade__edge {
+  position: absolute;
+  left: var(--profile-fade-left);
+  width: var(--profile-fade-width);
+  pointer-events: auto;
+  user-select: none;
+}
+.profile-content-fade__edge--top {
+  top: 0;
+  height: var(--profile-fade-top);
+  background: linear-gradient(to bottom,
+    var(--surface-page) calc(100% - var(--profile-fade-top-size)),
+    color-mix(in srgb, var(--surface-page) 0%, transparent) 100%);
+}
+.profile-content-fade__edge--bottom {
+  top: var(--profile-fade-bottom);
+  bottom: 0;
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--surface-page) 0%, transparent) 0,
+    var(--surface-page) var(--profile-fade-bottom-size));
+}
+@media (min-width: 1024px) {
+  .profile-top.has-profile-fade .profile-extra {
+    /* Let the final line reach the clear area without moving the first rows. */
+    padding-bottom: max(var(--profile-bottom-gap), var(--profile-fade-tail));
+  }
+}
 
 /* ---------- Interests: captioned cards drift up past a pinned intro ---------- */
 .interests {
@@ -916,8 +1008,9 @@ body[data-page="blog"] main > .container--wide {
   margin: var(--space-5) 0 0;
   padding: 0;
   display: grid;
-  gap: var(--space-1);
+  gap: 6px;
 }
+.row__body > .news-list { margin: 0; }
 .news-item {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -1052,6 +1145,8 @@ body[data-page="blog"] main > .container--wide {
 }
 .essay-toggle__body {
   margin-top: var(--space-4);
+  /* Align with the title on the left, with 10px more space on the right. */
+  margin-inline: calc(18px + var(--space-3)) calc(28px + var(--space-3));
 }
 .essay-toggle[open] .essay-toggle__summary {
   color: var(--ink-600);
