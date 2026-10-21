@@ -153,18 +153,16 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            Thoughts on text representations
+            What 'structure' carries
           </summary>
           <p class="essay-toggle__body">
-            Human-written text carries traces of how people understand the world.
-            In describing a situation, a writer gives it a particular structure, making some relationships explicit while leaving others for the reader to recognize.
-            What the writer chooses to explain, connect, or take for granted reflects an interpretation of the situation.
+            The structure of data (e.g., schema of a table, hierarchy of a document) can reflect the knowledge, practices, and constraints of the domain experts and organizations that produce and use it. 
+            Choices about what to record, which distinctions to preserve, and how information is organized can offer clues to expertise, established routines, and working conditions that are never fully articulated.
           </p>
           <p class="essay-toggle__body">
-            Learning from text may therefore offer indirect access to reasoning and tacit knowledge that are never fully articulated.
-            An explanation can show how evidence supports a conclusion, while a description can reveal which distinctions matter and what background knowledge is assumed.
-            These patterns can convey aspects of human thought even when the writer never describes the thinking behind them.
-            This is what interests me about text as a learning medium, and why I want to understand how representations can preserve the relationships that make these patterns available for learning.
+            The meaning of a structure depends partly on the purposes and practices that shape it. 
+            Understanding this context could help AI systems judge what information matters for a task and how it should be interpreted. 
+            These judgments could then guide assistance that reflects the priorities and constraints of the work, making it more responsive to how people use the data.
           </p>
         </details>
 
@@ -178,7 +176,33 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            Understanding what lives between people
+            How AI forms beliefs
+          </summary>
+          <p class="essay-toggle__body">
+            I think of an AI model’s beliefs as working judgments about what is true or likely, given the available information.
+            These judgments guide interpretation and action and should remain responsive to changes in the evidence.
+            When an assumption changes, the conclusions that depend on it should be reassessed while those with sufficient independent support can remain.
+            That reassessment may lead to a revised conclusion or simply a change in confidence. 
+            In either case, the uncertainty should reflect the strength and limits of the available evidence.
+          </p>
+          <p class="essay-toggle__body">
+            Language provides a way to represent these judgments, but producing a claim is not the same as relying on it.
+            Autoregressive modeling defines a distribution over token sequences, but token probabilities alone do not establish coherent beliefs or calibrated confidence in the claims those sequences express.
+            What interests me is whether a claim expressed in one answer meaningfully constrains subsequent judgments, and whether revisions carry through to the judgments that depend on it.
+          </p>
+        </details>
+
+        <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--representation" title="Representation Learning">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v3M3 11v5m18-5v5"/>
+                <rect x="5" y="6" width="14" height="14" rx="3"/>
+                <path d="M9 11v2m6-2v2m-6 3h6"/>
+              </svg>
+              <span class="note-category__label">Representation Learning</span>
+            </span>
+            Social intelligence of AI
           </summary>
           <p class="essay-toggle__body">
             Where understanding the world asks whether machines can interpret the reality around us, understanding human
@@ -197,47 +221,22 @@
 
         <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
-            <span class="note-category note-category--representation" title="Representation Learning">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3v3M3 11v5m18-5v5"/>
-                <rect x="5" y="6" width="14" height="14" rx="3"/>
-                <path d="M9 11v2m6-2v2m-6 3h6"/>
-              </svg>
-              <span class="note-category__label">Representation Learning</span>
-            </span>
-            How AI forms 'beliefs'
-          </summary>
-          <p class="essay-toggle__body">
-            I think of an AI model’s beliefs as working judgments about what is true or likely, given the available information.
-            These judgments guide interpretation and action, and their dependencies matter when evidence changes.
-            Revising an assumption should prompt reconsideration of the conclusions that rely on it, while allowing those with sufficient independent support to remain.
-            Sometimes the appropriate update is a change in confidence rather than a reversal; uncertainty should reflect the strength and limits of the available support.
-          </p>
-          <p class="essay-toggle__body">
-            Language provides a way to express these judgments, but producing a claim is not the same as relying on it.
-            Autoregressive modeling defines a distribution over token sequences, but token probabilities alone do not establish coherent beliefs or calibrated confidence in the claims those sequences express.
-            What interests me is whether a claim expressed in one answer meaningfully constrains subsequent judgments, and whether revisions carry through to the judgments that depend on it.
-          </p>
-        </details>
-
-        <details class="essay-toggle reveal">
-          <summary class="essay-toggle__summary">
             <span class="note-category note-category--interaction" title="Human-AI Interaction">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path stroke-width="1.5" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
               </svg>
               <span class="note-category__label">Human-AI Interaction</span>
             </span>
-            Who’s learning through an interface?
+            How interfaces shape learning
           </summary>
           <p class="essay-toggle__body">
-            I see the translation layer between machine representations and human experience as a starting point for system design.
-            For people, the interface should help them understand the system’s behavior, evaluate its responses, and stay in control of the interaction.
+            An interface helps people understand a system’s behavior, evaluate its responses, and stay in control of the interaction.
+            I see this translation layer between machine and human experience as a starting point for system design.
             What a system makes visible and how people can respond to it shape the feedback available to the model.
-            A rejected answer may be factually wrong or simply miss the person’s goal, and the interface can help reveal that difference.
+            A rejected answer may be factually wrong or simply miss the person’s goal, and a well-designed interface can help reveal that difference.
           </p>
           <p class="essay-toggle__body">
-            These distinctions should inform learning objectives and algorithms from the outset.
+            These distinctions inform learning objectives and algorithms from the outset.
             In turn, the model’s uncertainty can guide what it asks or reveals next, giving people opportunities to clarify their goals or correct its interpretation.
             Learning and interaction can be designed together, with each response reflecting the system’s understanding while shaping what it has a chance to learn next.
           </p>
@@ -260,6 +259,24 @@
             but what people can express, discuss, and come to understand together. Exploring these possibilities requires building prototypes and designing and testing these experiences with people.
           </p>
         </details>
+
+        <!-- <details class="essay-toggle reveal">
+          <summary class="essay-toggle__summary">
+            <span class="note-category note-category--design" title="Design">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.6-3.2 1.7 1.7 0 0 1 1.4-2.7h1A4 4 0 0 0 21 11c0-4.4-4-8-9-8Z"/>
+                <circle cx="7.5" cy="10" r=".75"/>
+                <circle cx="11" cy="6.5" r=".75"/>
+                <circle cx="16" cy="8" r=".75"/>
+              </svg>
+              <span class="note-category__label">Design</span>
+            </span>
+            Creative process, is it doomed?
+          </summary>
+          <p class="essay-toggle__body">
+            Lorem Ipsum
+          </p>
+        </details> -->
 
         <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">

@@ -438,7 +438,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 /* ---------- Profile: hanging-label rows ---------- */
 .profile-top {
-  --profile-photo-width: 207px;
+  --profile-photo-width: 198px;
   /* Laptop / tablet (default) */
   padding-top: 60px;
   padding-bottom: 180px;
@@ -530,7 +530,8 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
     display: grid;
     grid-template-columns: var(--profile-photo-width, 200px) minmax(0, 1fr);
     grid-template-rows: auto auto 1fr;
-    column-gap: clamp(48px, 5vw, 80px);
+    /* Preserve the 1500px layout on wider screens. */
+    column-gap: clamp(48px, 5vw, 75px);
     row-gap: 24px;
     align-items: start;
     max-width: calc((var(--container-max) + var(--gutter) * 2) * 2 / 3 + 30px + var(--profile-width-extra, 0px) + var(--profile-photo-width, 200px) - 200px);
@@ -604,7 +605,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
    never participate in the original photo / Biography / Links layout. */
 .profile-content-fade {
   --profile-fade-top-size: 130px;
-  --profile-fade-bottom-size: 165px;
+  --profile-fade-bottom-size: 185px;
   position: fixed;
   inset: 0;
   z-index: 50;
