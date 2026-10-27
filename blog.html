@@ -25,10 +25,10 @@
     <div class="container--wide">
       <section class="blog-intro reveal" aria-label="Introduction">
         <div class="blog-intro__copy">
-          <p>I'm drawn to how machines perceive and understand the world and people in it, and
-            communicate that understanding back — questions I've been pursuing through my research. Alongside this, I
-            design and build things: some out of a wish to fix small frictions in daily life, others simply chasing a
-            shape or feeling that seemed worth making. Together, these threads move between understanding machines and making them easier to live with.
+          <p>I'm drawn to how machines represent and understand the world and the people in it. 
+            My research has focused on representation learning and evaluation,
+            while my earlier work in design and prototyping explored how technology fits into people's everyday lives. 
+            That background shapes the questions I hope to pursue in AI, particularly how systems can learn about people through ongoing interaction and sustain long-term relationships as collaborators and companions.
             See my works in <a href="research.html">Research</a> and <a href="projects.html">Projects.</a></p>
         </div>
         <figure class="blog-intro__visual">
@@ -153,20 +153,43 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            What 'structure' carries
+            How AI forms beliefs
           </summary>
           <p class="essay-toggle__body">
-            The structure of data (e.g., schema of a table, hierarchy of a document) can reflect the knowledge, practices, and constraints of the domain experts and organizations that produce and use it. 
-            Choices about what to record, which distinctions to preserve, and how information is organized can offer clues to expertise, established routines, and working conditions that are never fully articulated.
+            I think of an AI model’s beliefs as working judgments about what is true or likely, given the available information.
+            These judgments guide interpretation and action and should remain responsive to changes in the evidence.
+            When an assumption changes, the conclusions that depend on it should be reassessed while those with sufficient independent support can remain.
+            This may require revising a conclusion or adjusting confidence in it. 
+            Then the question is what kinds of representations and computational mechanisms could support this process of maintaining and revising judgments.
           </p>
           <p class="essay-toggle__body">
-            The meaning of a structure depends partly on the purposes and practices that shape it. 
-            Understanding this context could help AI systems judge what information matters for a task and how it should be interpreted. 
-            These judgments could then guide assistance that reflects the priorities and constraints of the work, making it more responsive to how people use the data.
+            Reasoning in text can make assumptions explicit and intermediate conclusions available for subsequent steps. 
+            Language also allows a model to distinguish a tentative hypothesis from an accepted premise and to articulate the evidence supporting a claim. 
+            Yet expressing these distinctions does not ensure that they govern the model’s subsequent reasoning. 
+            A readable explanation may also omit factors that actually influenced its conclusion.
+          </p>
+          <p class="essay-toggle__body">
+            Latent reasoning explores carrying intermediate results through internal states without decoding each step into language. 
+            Text-based reasoning also involves internal computation. 
+            The distinction concerns how intermediate information is carried between reasoning steps. 
+            Latent representations offer possibilities for organizing this information beyond explicit verbal statements, but their relationship to particular judgments and degrees of confidence can be difficult to establish. 
+            In either form, understanding whether a represented judgment consistently constrains later conclusions and whether its revision changes the conclusions that rely on it is important for building trust in AI.
+          </p>
+          <p class="essay-toggle__body">
+            The form of a representation leaves open how a judgment is evaluated. 
+            Autoregressive modeling defines a distribution over token sequences, but the probability of a particular expression is not, by itself, calibrated confidence in the proposition it expresses. 
+            Such models can learn dependencies among claims, yet token prediction alone does not explicitly require those dependencies to support coherent revision when the evidence changes.
+          </p>
+          <p class="essay-toggle__body">
+            One way to make these relationships part of inference is to evaluate connected judgments jointly against the available evidence. 
+            Energy-based modeling, which can be combined with autoregressive modeling, offers a framework for this by assigning energy to configurations of judgments according to their compatibility with the evidence and one another. 
+            If the relevant dependencies are captured, new evidence could change which configurations are favored and prompt connected judgments to be reconsidered together. 
+            However, internal consistency does not ensure that judgments are well grounded, and low energy alone does not establish calibrated confidence. 
+            The challenge is to make evidential support matter to both inference and revision.
           </p>
         </details>
 
-        <details class="essay-toggle reveal">
+        <!-- <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
             <span class="note-category note-category--representation" title="Representation Learning">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -176,31 +199,29 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            How AI forms beliefs
+            What structures carry
           </summary>
           <p class="essay-toggle__body">
-            I think of an AI model’s beliefs as working judgments about what is true or likely, given the available information.
-            These judgments guide interpretation and action and should remain responsive to changes in the evidence.
-            When an assumption changes, the conclusions that depend on it should be reassessed while those with sufficient independent support can remain.
-            That reassessment may lead to a revised conclusion or simply a change in confidence. 
-            In either case, the uncertainty should reflect the strength and limits of the available evidence.
+            Data preserves traces of the world and of the processes through which people observe, interpret, and organize it. 
+            These traces may support the learning of concepts and relationships that were never explicitly described. 
+            Organizing data to make these patterns more apparent can help models learn how to make similar distinctions, connect information, and apply those connections in new situations.
           </p>
           <p class="essay-toggle__body">
-            Language provides a way to represent these judgments, but producing a claim is not the same as relying on it.
-            Autoregressive modeling defines a distribution over token sequences, but token probabilities alone do not establish coherent beliefs or calibrated confidence in the claims those sequences express.
-            What interests me is whether a claim expressed in one answer meaningfully constrains subsequent judgments, and whether revisions carry through to the judgments that depend on it.
+            Tables illustrate this possibility. 
+            Labels and values acquire meaning through their roles within a schema and their relationships to surrounding fields and records. 
+            A schema encodes choices about what to record, which distinctions to preserve, and how to organize information. 
+            These choices can reflect the knowledge, practices, and constraints of domain experts and organizations, including unstated assumptions about workflows and professional conventions. 
+            The resulting structure can therefore provide evidence about how a domain is understood and how work within it is organized.
           </p>
-        </details>
+        </details> -->
 
         <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
-            <span class="note-category note-category--representation" title="Representation Learning">
+            <span class="note-category note-category--interaction" title="Human-AI Interaction">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3v3M3 11v5m18-5v5"/>
-                <rect x="5" y="6" width="14" height="14" rx="3"/>
-                <path d="M9 11v2m6-2v2m-6 3h6"/>
+                <path stroke-width="1.5" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>
               </svg>
-              <span class="note-category__label">Representation Learning</span>
+              <span class="note-category__label">Human-AI Interaction</span>
             </span>
             Social intelligence of AI
           </summary>
@@ -231,7 +252,7 @@
           </summary>
           <p class="essay-toggle__body">
             An interface helps people understand a system’s behavior, evaluate its responses, and stay in control of the interaction.
-            I see this translation layer between machine and human experience as a starting point for system design.
+            I am interested in this translation layer between machine and human experience as a starting point for system design.
             What a system makes visible and how people can respond to it shape the feedback available to the model.
             A rejected answer may be factually wrong or simply miss the person’s goal, and a well-designed interface can help reveal that difference.
           </p>
@@ -242,7 +263,7 @@
           </p>
         </details>
 
-        <details class="essay-toggle reveal">
+        <!-- <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
             <span class="note-category note-category--interaction" title="Human-AI Interaction">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -258,7 +279,7 @@
             or explore where their interpretations differ. The question is therefore not only what a person can understand with a machine’s help,
             but what people can express, discuss, and come to understand together. Exploring these possibilities requires building prototypes and designing and testing these experiences with people.
           </p>
-        </details>
+        </details> -->
 
         <!-- <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
@@ -289,18 +310,21 @@
               </svg>
               <span class="note-category__label">Design</span>
             </span>
-            Empathy needs a method
+            Empathetic design
           </summary>
           <p class="essay-toggle__body">
-            A design can look convincing while resting on a mistaken understanding of the people it is meant to support.
-            User studies help examine those assumptions, with different methods answering different questions.
-            Observations can reveal routines and workarounds, interviews can explore the reasons behind them, and surveys can compare reported experiences across a broader group.
+            Design decisions shape what people can do, how much effort an activity requires, and how an experience fits into their lives. 
+            Empathy brings the perspectives of the people affected into those decisions: their goals, frustrations, values, and everyday constraints. 
+            What appears convenient to a designer may create additional effort for someone else or disrupt a familiar routine. 
+            Understanding these differences helps determine which problems deserve attention and what a meaningful improvement would look like in the circumstances where the design will be used.
           </p>
           <p class="essay-toggle__body">
-            When evaluating a prototype, the choice of participants, tasks, and measures should follow the question being investigated.
-            Task completion and errors can reveal difficulties, while participants’ explanations can help interpret those outcomes.
-            Unexpected behavior or conflicting feedback calls for a closer look at the assumptions behind the design.
-            Sometimes the most useful result of a study is a reason to rethink what the design was trying to solve.
+            Yet empathy needs a method, because an imagined understanding of another person can still rest on mistaken assumptions.
+            Observation can bring routines and workarounds into view, while focused interviews can explore the reasons people give for their choices and the difficulties they experience. 
+            Prototypes make a designer’s interpretation concrete, giving people something to use, question, and respond to. 
+            The choice of participants, tasks, and measures should follow the question being investigated. 
+            Unexpected behavior or conflicting feedback can then prompt a closer examination of the assumptions behind the design, leading to changes in the proposed solution or a reconsideration of the problem itself.
+            These methods help keep design responsive to the people it affects, so that their experiences can shape what is built and what counts as an improvement.
           </p>
         </details>
 

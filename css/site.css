@@ -977,7 +977,7 @@ body[data-page="blog"] main > .container--wide {
   grid-template-columns: minmax(0, 1fr) 248px;
   align-items: center;
   gap: var(--space-8);
-  padding-block: var(--space-4);
+  /* padding-block: var(--space-4); */
 }
 .blog-intro__copy {
   /* max-width: 600px; */
