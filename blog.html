@@ -28,8 +28,8 @@
           <p>I'm drawn to how machines represent and understand the world and the people in it. 
             My research has focused on representation learning and evaluation,
             while my earlier work in design and prototyping explored how technology fits into people's everyday lives. 
-            That background shapes the questions I hope to pursue in AI, particularly how systems can learn about people through ongoing interaction and sustain long-term relationships as collaborators and companions.
-            See my works in <a href="research.html">Research</a> and <a href="projects.html">Projects.</a></p>
+            Both shape the questions I want to pursue in AI: how systems can learn about people through ongoing interaction, and how they might build and sustain long-term relationships as collaborators and companions.
+            See my work in <a href="research.html">Research</a> and <a href="projects.html">Projects</a>.</p>
         </div>
         <figure class="blog-intro__visual">
           <img src="assets/robot_and_woojun.png" alt="Animated illustration of Woojun Jung with a robot" width="400" height="413" />
@@ -153,39 +153,46 @@
               </svg>
               <span class="note-category__label">Representation Learning</span>
             </span>
-            How AI forms beliefs
+            Revisable beliefs
           </summary>
           <p class="essay-toggle__body">
-            I think of an AI model’s beliefs as working judgments about what is true or likely, given the available information.
-            These judgments guide interpretation and action and should remain responsive to changes in the evidence.
-            When an assumption changes, the conclusions that depend on it should be reassessed while those with sufficient independent support can remain.
-            This may require revising a conclusion or adjusting confidence in it. 
-            Then the question is what kinds of representations and computational mechanisms could support this process of maintaining and revising judgments.
+            I think of an AI model’s beliefs as working judgments about what is true or likely, given the information at hand.
+            Beliefs guide how models percieve a situation and what they do next, so beliefs should stay responsive to changes in the evidence.
+            This is difficult because changes in an assumption leads to reassessment of the conclusions that depend on it.
+            Reassessment might mean overturning a conclusion, or simply holding it with less confidence.
           </p>
           <p class="essay-toggle__body">
-            Reasoning in text can make assumptions explicit and intermediate conclusions available for subsequent steps. 
-            Language also allows a model to distinguish a tentative hypothesis from an accepted premise and to articulate the evidence supporting a claim. 
-            Yet expressing these distinctions does not ensure that they govern the model’s subsequent reasoning. 
-            A readable explanation may also omit factors that actually influenced its conclusion.
+            Suppose a model infers from the way someone describes their week that they are a student, and from that, that they would prefer cheaper options. 
+            If they later mention their full-time job, the assumptions about price should be revisited.
+            At the same time, their preference for morning meetings, which they stated directly and independent on the status (being a student), should stay. 
+            What kind of representations and computational mechanisms could support this kind of selective revision?
           </p>
           <p class="essay-toggle__body">
-            Latent reasoning explores carrying intermediate results through internal states without decoding each step into language. 
-            Text-based reasoning also involves internal computation. 
-            The distinction concerns how intermediate information is carried between reasoning steps. 
-            Latent representations offer possibilities for organizing this information beyond explicit verbal statements, but their relationship to particular judgments and degrees of confidence can be difficult to establish. 
-            In either form, understanding whether a represented judgment consistently constrains later conclusions and whether its revision changes the conclusions that rely on it is important for building trust in AI.
+            Reasoning in text is one common candidate. 
+            Writing reasoning out makes assumptions explicit, interpretable, and keeps intermediate conclusions available for later steps. 
+            Language also lets a model mark a hypothesis as tentative rather than accepted, and spell out the evidence behind a claim. 
+            But stating these distinctions doesn’t guarantee that they govern what the model does next. 
+            A readable explanation can also leave out factors that actually drove the conclusion.
           </p>
           <p class="essay-toggle__body">
-            The form of a representation leaves open how a judgment is evaluated. 
-            Autoregressive modeling defines a distribution over token sequences, but the probability of a particular expression is not, by itself, calibrated confidence in the proposition it expresses. 
-            Such models can learn dependencies among claims, yet token prediction alone does not explicitly require those dependencies to support coherent revision when the evidence changes.
+            Latent reasoning takes a different route, carrying intermediate results through numerical representations without decoding each step into language.
+            Text-based reasoning involves internal computation too, but the difference lies in how intermediate information passes from one step to the next.
+            Latent states can organize that information in ways that don’t fit neatly into verbal statements, but it’s harder to tell which judgment a given state represents, or with how much confidence.
+            Whichever form reasoning takes, trust depends on the same things: whether a represented judgment actually constrains later conclusions, and whether revising it changes the conclusions that rest on it.
           </p>
           <p class="essay-toggle__body">
-            One way to make these relationships part of inference is to evaluate connected judgments jointly against the available evidence. 
-            Energy-based modeling, which can be combined with autoregressive modeling, offers a framework for this by assigning energy to configurations of judgments according to their compatibility with the evidence and one another. 
-            If the relevant dependencies are captured, new evidence could change which configurations are favored and prompt connected judgments to be reconsidered together. 
-            However, internal consistency does not ensure that judgments are well grounded, and low energy alone does not establish calibrated confidence. 
-            The challenge is to make evidential support matter to both inference and revision.
+            Whether reasoning is carried in text or in latent states, a separate question remains. 
+            How can a judgment be evaluated?
+            An autoregressive model defines a distribution over token sequences, but the probability of a sentence is not, by itself, a calibrated confidence in the claim it makes.
+            These models can learn dependencies among claims, yet nothing in next-token prediction explicitly requires those dependencies to support coherent revision.
+            In the example above, a model could acknowledge the new job in one sentence and still recommend the budget option in the next.
+          </p>
+          <p class="essay-toggle__body">
+            One way to build these dependencies into inference is to evaluate connected judgments jointly against the evidence. 
+            Energy-based models offer a framework for this: they assign lower energy to configurations of judgments that are more compatible with the evidence and with one another, and they can be combined with autoregressive models.
+            If the relevant dependencies are captured, new evidence could shift which configurations are favored, prompting connected judgments to be reconsidered together rather than one at a time.
+            Still, internal consistency doesn’t mean the judgments are well grounded, and low energy alone doesn’t amount to calibrated confidence.
+            The challenge, as I see it, is to make evidential support matter to both inference and revision.
           </p>
         </details>
 
@@ -226,21 +233,24 @@
             Social intelligence of AI
           </summary>
           <p class="essay-toggle__body">
-            Where understanding the world asks whether machines can interpret the reality around us, understanding human
-            asks whether they can interpret the realities that exist within and between people. Much of what shapes
-            how we think, feel, and communicate is never stated directly: personal memories, routines, preferences,
-            emotional states, cultural references, and the shared context built over time within families, communities,
-            and relationships.
+            If understanding the world asks whether machines can interpret the reality around us, understanding people asks whether they can interpret the realities within and between us.
+            Much of what guides how we think, feel, and communicate is never stated directly: personal memories, routines, preferences, emotional states, cultural references, and the shared context built up over time within families, communities, and relationships.
+            Everyday conversation leans on these constantly.
           </p>
           <p class="essay-toggle__body">
-            These aspects of human life are not easily captured as a fixed set of semantic labels.
-            They are distributed across behavior, language, history, and relationships, felt rather than fully articulated.
-            Bringing together language, facial expressions, gestures, and patterns of behavior over time may help AI systems recognize these implicit patterns.
-            Such understanding could provide a basis for human–AI symbiosis, helping systems adapt to people’s lives and relationships as those contexts develop and change.
+            When a close friend says "I'm fine", you can often tell whether they mean it, not from the words but from other non-verbal cues.
+            This sense of understanding does not come from a fixed set of semantic labels, but is distributed across behavior, language, history, and relationships, and often felt rather than fully articulated. 
+          </p>
+          <p class="essay-toggle__body">
+            This is why social understanding has to be both multimodal and longitudinal.
+            Bringing together language, facial expressions, gestures, and behavior over time may help AI systems pick up on what goes unsaid, and learn the baselines against which a change stands out.
+            But this is also where a system is most likely to be wrong, or intrusive. 
+            An inference about someone’s mood or relationships is exactly the kind of belief that should stay revisable, and people should be able to see and correct it. 
+            Held with that kind of care, such understanding could become the basis for human–AI symbiosis: systems that adapt to people’s lives and relationships as they change, rather than to a fixed profile.
           </p>
         </details>
 
-        <details class="essay-toggle reveal">
+        <!-- <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
             <span class="note-category note-category--interaction" title="Human-AI Interaction">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -261,7 +271,7 @@
             In turn, the model’s uncertainty can guide what it asks or reveals next, giving people opportunities to clarify their goals or correct its interpretation.
             Learning and interaction can be designed together, with each response reflecting the system’s understanding while shaping what it has a chance to learn next.
           </p>
-        </details>
+        </details> -->
 
         <!-- <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
@@ -324,11 +334,11 @@
             Prototypes make a designer’s interpretation concrete, giving people something to use, question, and respond to. 
             The choice of participants, tasks, and measures should follow the question being investigated. 
             Unexpected behavior or conflicting feedback can then prompt a closer examination of the assumptions behind the design, leading to changes in the proposed solution or a reconsideration of the problem itself.
-            These methods help keep design responsive to the people it affects, so that their experiences can shape what is built and what counts as an improvement.
+            These methods that make up the iterative development process help keep design responsive to the people it affects, so that their experiences can shape what is built and what counts as an improvement.
           </p>
         </details>
 
-        <details class="essay-toggle reveal">
+        <!-- <details class="essay-toggle reveal">
           <summary class="essay-toggle__summary">
             <span class="note-category note-category--design" title="Design">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -347,7 +357,7 @@
             and how an experience can create resonance or evoke a meaningful memory. I am interested in using
             form, material, interaction, and atmosphere to expand and connect our senses, making ordinary
             moments feel more immersive and meaningful.</p>
-        </details>
+        </details> -->
       </section>
     </div>
   </main>
