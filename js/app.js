@@ -390,9 +390,23 @@
 
   /* ---------- Blog essay toggles ---------- */
   function initEssayToggles() {
+    document.querySelectorAll(".essay-toggle.is-disabled").forEach(function (details) {
+      details.open = false;
+      var summary = details.querySelector(".essay-toggle__summary");
+      if (!summary) return;
+      summary.setAttribute("aria-disabled", "true");
+      summary.tabIndex = -1;
+      summary.addEventListener("click", function (event) {
+        event.preventDefault();
+      });
+      details.addEventListener("toggle", function () {
+        if (details.open) details.open = false;
+      });
+    });
+
     if (prefersReduced || !canFly) return;
 
-    document.querySelectorAll(".essay-toggle").forEach(function (details) {
+    document.querySelectorAll(".essay-toggle:not(.is-disabled)").forEach(function (details) {
       var summary = details.querySelector(".essay-toggle__summary");
       var bodies = Array.prototype.slice.call(
         details.querySelectorAll(".essay-toggle__body")
@@ -495,6 +509,13 @@
     if (!browser) return;
     var tablist = browser.querySelector('.ds-demo-tabs[role="tablist"]');
     if (!tablist) return;
+    var verticalTabs = window.matchMedia("(max-width: 540px)");
+    function syncTabOrientation() {
+      tablist.setAttribute("aria-orientation", verticalTabs.matches ? "vertical" : "horizontal");
+    }
+    syncTabOrientation();
+    verticalTabs.addEventListener("change", syncTabOrientation);
+    track(function () { verticalTabs.removeEventListener("change", syncTabOrientation); });
     var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
     var panels = tabs.map(function (tab) {
       return document.getElementById(tab.getAttribute("aria-controls"));
@@ -516,6 +537,10 @@
       if (!focus) return;
       var tab = tabs[index];
       tab.focus({ preventScroll: true });
+      if (verticalTabs.matches) {
+        tab.scrollIntoView({ block: "nearest", inline: "nearest" });
+        return;
+      }
       // Reveal a keyboard-selected step inside the horizontal strip only.
       // scrollIntoView would also move the page away from the walkthrough.
       var strip = tablist.getBoundingClientRect();
@@ -533,8 +558,8 @@
       var index = tabs.indexOf(event.target.closest('[role="tab"]'));
       if (index === -1 || event.altKey || event.ctrlKey || event.metaKey) return;
       var next;
-      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
-      else if (event.key === "ArrowLeft") next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (index + tabs.length - 1) % tabs.length;
       else if (event.key === "Home") next = 0;
       else if (event.key === "End") next = tabs.length - 1;
       else return;

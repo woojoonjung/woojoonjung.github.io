@@ -6,6 +6,13 @@
   --sl-task: #4c73a7;
 }
 
+/* Match the other hero image heights, shifting the centered crop 8px upward. */
+.silverlining-page .project-hero__image img {
+  aspect-ratio: 500 / 436;
+  object-fit: cover;
+  object-position: center calc(50% - 8px);
+}
+
 .silverlining-page .sl-ambient { color: var(--sl-ambient); }
 
 .silverlining-page .sl-task { color: var(--sl-task); }

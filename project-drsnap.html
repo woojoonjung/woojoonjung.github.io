@@ -7,7 +7,7 @@
   <meta name="description" content="Dr.Snap, a multimodal dermatology decision-support project by Woojun Jung." />
   <link rel="icon" type="image/png" href="assets/woojun_logo.png" />
   <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/site.css?v=home-anchor-1" />
+  <link rel="stylesheet" href="css/site.css?v=blog-hold-3" />
   <link rel="stylesheet" href="css/project-detail.css?v=process-toggles" />
   <link rel="stylesheet" href="css/project-drsnap.css" />
 </head>
@@ -28,7 +28,7 @@
     </nav>
     <section class="project-hero project-wrap" aria-labelledby="project-title">
       <div class="project-hero__copy">
-        <p class="project-kicker">Interaction Design · 2024</p>
+        <!-- <p class="project-kicker">Interaction Design · 2024</p> -->
         <h1 id="project-title">Dr.Snap</h1>
         <!-- <p class="project-hero__statement">How can AI help people understand a skin concern before a clinic visit?</p> -->
         <p class="project-hero__summary">When a clinic visit is hard to arrange, people still need help making sense of their skin concerns.
@@ -183,9 +183,16 @@
         </div>
         <p class="ds-source">Review summaries adapted from 2024. Translated from Korean.</p>
 
-        <p class="ds-design-question">What if AI provided the initial guidance?</p>
+        <!-- HTA integration rollback: <p class="ds-design-question">What if AI provided the initial guidance?</p> -->
+        <p class="ds-design-question">How could AI guidance connect to clinical care?</p>
       </section>
 
+      <!-- LEGACY WORKFLOW BACKUP START
+      Rollback: remove the HTA section below and uncomment this original section.
+      Original workflow CSS is retained in css/project-drsnap.css.
+      Restore the original Design Outcome copy, tablist, and 10 step labels from
+      the adjacent HTA rollback comments. The added HTA CSS block may be removed.
+      The preceding design question also has an adjacent rollback comment.
       <section class="project-section ds-design-process" id="design-process" aria-labelledby="proposition-title">
         <header class="project-section__intro">
           <p class="project-kicker">03 / Workflow Analysis</p>
@@ -279,6 +286,259 @@
         </div>
 
       </section>
+      LEGACY WORKFLOW BACKUP END -->
+
+      <!-- HTA SECTION START: remove this section to restore the legacy workflow above. -->
+      <section class="project-section ds-design-process ds-hta" id="design-process" aria-labelledby="proposition-title">
+        <header class="project-section__intro">
+          <p class="project-kicker">03 / Hierarchical Task Analysis</p>
+          <div class="project-section__copy">
+            <h2 id="proposition-title">Connecting AI guidance <br />with clinical care</h2>
+            <div class="project-section__description">
+              <p>We analyzed standalone AI use and offline clinic use separately through HTA. Following them in sequence revealed a potential repetition: symptoms shared with a chatbot may need to be entered again at clinic intake. Dr.Snap brings that intake into the AI conversation to connect guidance with care.</p>
+            </div>
+          </div>
+        </header>
+
+        <figure class="ds-hta-comparison" aria-labelledby="hta-comparison-caption">
+          <figcaption class="ds-hta-caption" id="hta-comparison-caption"><span class="ds-hta-caption__title">Existing Workflows</span><span class="ds-hta-caption__context">Standalone AI use · Immediate guidance</span></figcaption>
+          <div class="ds-hta-route ds-hta-route--existing">
+            <ol class="ds-hta-route__steps" aria-label="Standalone AI use workflow">
+              <li><span class="ds-hta-node-label">1.1</span><p>Notice a skin concern</p></li>
+              <li class="ds-hta-node--intake"><span class="ds-hta-node-label">1.2</span><p>Ask a chatbot</p></li>
+              <li><span class="ds-hta-node-label">1.3</span><p>Receive an immediate answer</p></li>
+              <li><span class="ds-hta-node-label">1.4</span><p>Decide what to do without clinician review</p></li>
+            </ol>
+          </div>
+          <div class="ds-hta-transition">
+            <span class="ds-hta-transition__stop">If seeking clinical care</span>
+          </div>
+          <div class="ds-hta-route ds-hta-route--existing ds-hta-route--clinic">
+            <div class="ds-hta-route__label">
+              <h3>Offline clinic use · Clinical assessment</h3>
+            </div>
+            <ol class="ds-hta-route__steps" aria-label="Offline clinic use workflow">
+              <li><span class="ds-hta-node-label">2.1</span><p>Book an appointment</p></li>
+              <li><span class="ds-hta-node-label">2.2</span><p>Visit the clinic</p></li>
+              <li class="ds-hta-node--intake ds-hta-node--repeated"><span class="ds-hta-node-label">2.3 · Potential repetition</span><p>Complete an intake questionnaire</p></li>
+              <li><span class="ds-hta-node-label">2.4</span><p>Consult with a clinician and get a diagnosis &amp; prescription</p></li>
+            </ol>
+          </div>
+        </figure>
+
+        <section class="ds-hta-integration" aria-labelledby="hta-integration-title">
+          <header><span class="ds-label">Integration decision</span><h3 id="hta-integration-title">Make clinic intake part of the AI conversation.</h3></header>
+          <div class="ds-hta-integration__decisions">
+            <article><span class="ds-hta-node-label">Integration point · Existing 2.3</span><h4>Combine the overlapping input</h4><p>Bring the clinic’s intake questions into the AI conversation, building on the symptoms already described in 1.2.</p></article>
+            <article><span class="ds-hta-node-label">Proposed connection to care</span><h4>Carry the intake forward</h4><p>Offer booking and a reviewable intake summary so the clinician can confirm and extend the information at the visit.</p></article>
+          </div>
+        </section>
+
+        <figure class="ds-hta-proposed" aria-labelledby="hta-proposed-caption">
+          <figcaption class="ds-hta-caption" id="hta-proposed-caption"><span class="ds-hta-caption__title">Proposed Workflow</span><span class="ds-hta-caption__context">AI conversation + clinic intake</span></figcaption>
+          <div class="ds-hta-route ds-hta-route--proposed">
+            <ol class="ds-hta-route__steps ds-hta-route__steps--hierarchical" aria-label="Integrated workflow with Dr.Snap">
+              <li class="ds-hta-task--expanded">
+                <div class="ds-hta-parent-node ds-hta-node--intake">
+                  <span class="ds-hta-node-label" id="hta-intake-parent-title">1 · AI-guided intake</span><p>Share symptoms, complete intake, and review AI guidance</p><span class="ds-hta-node-note ds-hta-node-note--merge">Existing 1.2 + 2.3 → one conversation</span>
+                </div>
+                <div class="ds-hta-expansion">
+                  <div class="ds-hta-expansion__zoom" aria-hidden="true">
+                    <svg class="ds-hta-expansion__zoom-left" focusable="false"><line x1="100%" y1="0" x2="0" y2="100%" /></svg>
+                    <svg class="ds-hta-expansion__zoom-right" focusable="false"><line x1="0" y1="0" x2="100%" y2="100%" /></svg>
+                  </div>
+                  <figure class="ds-hta-intake" aria-labelledby="hta-intake-caption">
+                    <figcaption class="ds-hta-intake__heading" id="hta-intake-caption">
+                      <span class="ds-label">Subtasks</span>
+                      <span></span>
+                    </figcaption>
+                    <ol class="ds-hta-subtasks" aria-labelledby="hta-intake-parent-title">
+                      <li><span class="ds-hta-subtask-id">1.1</span><h3>Share a photo <br />and symptoms</h3><p>Describe the concern in your own words.</p></li>
+                      <li><span class="ds-hta-subtask-id">1.2</span><h3>Answer intake <br />questions</h3><p>Compare each question with your symptoms.</p><span class="ds-hta-condition">↻ Repeat for each new question</span></li>
+                      <li><span class="ds-hta-subtask-id">1.3</span><h3>Review initial <br />guidance</h3><p>Read the symptom summary and AI’s explanation.</p></li>
+                      <li class="ds-hta-subtask--optional"><span class="ds-hta-subtask-id">1.4 · Optional</span><h3>Ask further <br />questions</h3><p>Clarify what still concerns you.</p><span class="ds-hta-condition">↻ Continue if questions remain</span></li>
+                    </ol>
+                    <!-- <div class="ds-hta-plan-summary"><span class="ds-label">Plan</span><p>Share information → answer each new intake question → review guidance. Then <strong>ask further questions</strong>, <strong>continue to visit preparation</strong>, or <strong>end the conversation</strong>.</p></div> -->
+                  </figure>
+                </div>
+              </li>
+              <li class="ds-hta-node--proposed"><span class="ds-hta-node-label">2 · Connect to care</span><p>Book a visit and share the reviewed intake summary</p><span class="ds-hta-node-note">Booking + sharing (proposed, not implemented)</span></li>
+              <li><span class="ds-hta-node-label">3 · Clinical assessment</span><p>Visit the clinic for confirmation, diagnosis, and prescription</p><span class="ds-hta-node-note">Clinician verifies the prepared intake and asks further questions</span></li>
+            </ol>
+          </div>
+        </figure>
+
+        <div class="project-evidence-group">
+          <details class="project-evidence ds-hta-details">
+            <summary>View HTA Process</summary>
+            <div class="project-evidence__body ds-task-tree" data-task-analysis>
+              <figure class="ds-task-tree__viewer">
+                <div class="ds-task-tree__viewport" data-tree-viewport data-lenis-prevent tabindex="0" role="region" aria-label="Hierarchical task analysis diagram" aria-describedby="task-tree-help">
+                  <div class="ds-task-tree__spacer" data-tree-spacer>
+                    <div class="ds-task-tree__world" data-tree-world></div>
+                  </div>
+                </div>
+                <div class="ds-task-tree__toolbar" aria-label="Task diagram controls">
+                  <div class="ds-task-tree__zoom-controls">
+                    <button type="button" data-tree-action="zoom-out" aria-label="Zoom out">−</button>
+                    <input type="range" data-tree-zoom min="1" max="150" step="1" value="75" aria-label="Diagram zoom" />
+                    <button type="button" data-tree-action="zoom-in" aria-label="Zoom in">+</button>
+                    <output data-tree-zoom-label aria-live="polite">75%</output>
+                    <button type="button" data-tree-action="reset">100%</button>
+                    <button type="button" data-tree-action="fit">Fit view</button>
+                    <button type="button" data-tree-action="expand-all">Expand all</button>
+                  </div>
+                  <div class="ds-task-tree__jumps" aria-label="Jump to a diagram branch">
+                    <button type="button" data-tree-focus="root-goal">Goal</button>
+                    <button type="button" data-tree-focus="existing-ai">Standalone AI</button>
+                    <button type="button" data-tree-focus="existing-clinic">Offline clinic</button>
+                    <!-- Proposed HTA navigation backup
+                    <button type="button" data-tree-focus="integration-decision">Integration</button>
+                    <button type="button" data-tree-focus="proposed-drsnap">Dr.Snap</button>
+                    -->
+                  </div>
+                </div>
+                <div class="ds-task-tree__legend">
+                  <!-- Proposed HTA legend backup
+                  <p><span>→ Sequence</span><span>AND Both, in either order</span><span>OR Choose a path</span><span>↻ Repeat until a condition is met</span></p>
+                  <p>Solid lines show task decomposition; dashed lines show design rationale. Plans specify execution. Potential friction and requirements are design hypotheses, not measured outcomes.</p>
+                  -->
+                  <p><span>→ Sequence</span><span>OR Choose a path</span><span>↻ Repeat until a condition is met</span></p>
+                  <p>Lines show task decomposition; plans specify execution. Potential friction identifies possible issues, not measured outcomes.</p>
+                </div>
+                <figcaption class="ds-task-tree__caption" id="task-tree-caption">
+                  <p>We performed HTA on Standalone AI use and Offline clinic use independently, then compared shared tasks to identify repeated information gathering and opportunities for integration. The analysis stops at the task and subtask level needed for workflow and interface decisions.</p>
+                  <!-- Proposed HTA caption backup
+                  <p>Explore each workflow separately, then follow the integration decision into the proposed design. Plans describe sequence, choice, repetition, and tasks that can happen in either order.</p>
+                  -->
+                  <p>Explore Standalone AI use and Offline clinic use separately, then compare where symptom information may be requested again. Plans describe sequence, choice, and repetition.</p>
+                  <p class="ds-task-tree__help" id="task-tree-help">Pinch to zoom. Scroll in either direction or drag the background. Choose a branch to explore its tasks, then expand individual cards. Expand all restores the complete tree.</p>
+                </figcaption>
+              </figure>
+              <noscript><style>.ds-task-tree__viewer { display: none; }</style></noscript>
+              <div class="ds-task-tree__fallback">
+              <section class="ds-hta-analysis" aria-labelledby="hta-scope-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">01 / Frame the analysis</span><h3 id="hta-scope-title">One broader goal, two independent paths</h3></div>
+                <div class="ds-hta-analysis__content">
+                  <p><strong>Shared goal:</strong> Understand a skin concern and decide what to do next. This goal does not require a particular system or a clinic visit.</p>
+                  <p>We analyzed Standalone AI use and Offline clinic use separately, then compared them as a possible sequence: notice a concern, ask AI, and seek clinical care if the user chooses to continue. People often stop after the AI response; a clinic visit is not an automatic next step.</p>
+                  <!-- Proposed HTA scope backup
+                  <p>The analysis stops at the task and subtask level needed to define interface support. In Existing Workflows, 1 identifies the AI path and 2 the clinic path. Proposed Workflow uses its own numbering: 1–3 identify the integrated Dr.Snap tasks.</p>
+                  -->
+                  <p>The analysis stops at the task and subtask level needed to define interface support. In Existing Workflows, 1 identifies the AI path and 2 the clinic path.</p>
+                </div>
+              </section>
+
+              <section class="ds-hta-analysis" aria-labelledby="hta-ai-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">02 / Analyze the AI path</span><h3 id="hta-ai-title">1 · Standalone AI use</h3></div>
+                <div class="ds-hta-analysis__content">
+                  <div class="ds-hta-tree">
+                    <p class="ds-hta-tree__root"><strong>Goal</strong> Get an immediate explanation and decide what to do next.</p>
+                    <ol class="ds-hta-tree__tasks">
+                      <li><h4><span>1.1</span> Notice a skin concern</h4><ol><li><strong>1.1.1</strong> Recognize a change or symptom that prompts a question.</li></ol></li>
+                      <li><h4><span>1.2</span> Ask a chatbot</h4><ol><li><strong>1.2.1</strong> Describe the symptoms.</li><li><strong>1.2.2</strong> Submit a question to the chatbot.</li></ol></li>
+                      <li><h4><span>1.3</span> Receive an immediate answer</h4><ol><li><strong>1.3.1</strong> Read the AI’s response.</li><li><strong>1.3.2</strong> Identify what remains unclear.</li></ol></li>
+                      <li><h4><span>1.4</span> Decide what to do without clinician review</h4><ol><li><strong>1.4.1</strong> Decide whether to ask a further question.</li><li><strong>1.4.2</strong> Decide whether to seek care or end the interaction.</li></ol></li>
+                    </ol>
+                  </div>
+                  <dl class="ds-hta-plans ds-hta-path-plans">
+                    <div><dt>Existing plan 1 · Overall sequence</dt><dd>1.1 → 1.2 → 1.3 → 1.4. The answer is available without first arranging a clinic visit.</dd></div>
+                    <div><dt>Existing plan 1.2–1.3 · Question and response</dt><dd>1.2.1 → 1.2.2 → 1.3.1 → 1.3.2. Describe the concern, submit it, then review the response.</dd></div>
+                    <div><dt>Existing plan 1.4 · Choice and repetition</dt><dd>If questions remain, return to 1.2 and repeat. If clinical care is chosen, continue to 2.1 in the separate clinic workflow; otherwise end the interaction.</dd></div>
+                  </dl>
+                  <p class="ds-hta-path-finding"><strong>Finding:</strong> People often stop at the decision after AI guidance. When they do seek care, the symptom information supplied in 1.2 does not carry into the clinic’s intake questionnaire.</p>
+                </div>
+              </section>
+
+              <section class="ds-hta-analysis" aria-labelledby="hta-clinic-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">03 / Analyze the clinic path</span><h3 id="hta-clinic-title">2 · Offline clinic use</h3></div>
+                <div class="ds-hta-analysis__content">
+                  <div class="ds-hta-tree">
+                    <p class="ds-hta-tree__root"><strong>Goal</strong> Obtain a clinician’s assessment and understand the next steps.</p>
+                    <ol class="ds-hta-tree__tasks">
+                      <li><h4><span>2.1</span> Book an appointment</h4><ol><li><strong>2.1.1</strong> Arrange a clinic appointment.</li></ol></li>
+                      <li><h4><span>2.2</span> Visit the clinic</h4><ol><li><strong>2.2.1</strong> Travel to and attend the appointment.</li></ol></li>
+                      <li><h4><span>2.3</span> Complete an intake questionnaire</h4><ol><li><strong>2.3.1</strong> Describe the symptoms and relevant history.</li><li><strong>2.3.2</strong> Answer the intake questions.</li></ol></li>
+                      <li><h4><span>2.4</span> Consult with a clinician and get diagnosis &amp; prescription</h4><ol><li><strong>2.4.1</strong> Clarify the concern and answer the clinician’s questions.</li><li><strong>2.4.2</strong> Discuss the diagnosis, prescription, and next steps.</li></ol></li>
+                    </ol>
+                  </div>
+                  <dl class="ds-hta-plans ds-hta-path-plans">
+                    <div><dt>Existing plan 2 · Overall sequence</dt><dd>2.1 → 2.2 → 2.3 → 2.4 in the clinic workflow examined here. A person can also enter this path directly without using AI.</dd></div>
+                    <div><dt>Existing plan 2.3 · Intake</dt><dd>2.3.1 → 2.3.2. Respond to each relevant question and correct earlier responses when needed.</dd></div>
+                    <div><dt>Existing plan 2.4 · Consultation</dt><dd>2.4.1 → 2.4.2. Repeat clarification whenever the clinician needs more information.</dd></div>
+                  </dl>
+                  <p class="ds-hta-path-finding"><strong>Potential redundancy at 2.3:</strong> Users may describe the same symptoms already shared with the chatbot in 1.2. We identified this repeated information gathering as an integration opportunity, while retaining the clinician’s confirmation and assessment in 2.4.</p>
+                </div>
+              </section>
+              <!-- <a href="https://bura.brunel.ac.uk/handle/2438/1423" target="_blank" rel="noopener">Method reference: Stanton (2006)</a> -->
+
+              <!-- PROPOSED HTA FALLBACK BACKUP START
+              <section class="ds-hta-analysis" aria-labelledby="hta-mapping-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">04 / Compare and connect</span><h3 id="hta-mapping-title">What to combine, where to connect</h3></div>
+                <div class="ds-hta-analysis__content">
+                  <dl class="ds-hta-requirements ds-hta-mapping">
+                    <div><dt>Existing 1.2 + 2.3 → Proposed task 1</dt><dd><p><strong>Integration point: the intake questionnaire.</strong> Symptom information given to the chatbot can overlap with information requested at clinic intake.</p><p><strong>Design decision:</strong> Bring intake questions into the AI conversation, alongside photo and symptom input, to prepare the information before the visit.</p></dd></div>
+                    <div><dt>Existing 1.4 → 2.1 → Proposed task 2</dt><dd><p><strong>Support the transition:</strong> After guidance, the user may choose to seek clinical care.</p><p><strong>Design decision:</strong> Offer appointment booking and a summary the user can review and share. This proposed handoff carries the prepared intake information into care.</p></dd></div>
+                    <div><dt>Existing 1.3–1.4 → Proposed tasks 1.3–1.4</dt><dd><p><strong>Preserve immediate guidance:</strong> Users still need an explanation and space for further questions.</p><p><strong>Design decision:</strong> Keep initial AI guidance and optional follow-up after the guided intake, with the choice to seek care or end the conversation.</p></dd></div>
+                    <div><dt>Existing 2.4 → Proposed task 3</dt><dd><p><strong>Preserve clinical assessment:</strong> Prepared information does not replace the clinician’s questions or judgment.</p><p><strong>Design decision:</strong> Let the clinician confirm the symptom information, ask further questions, and discuss diagnosis, treatment, and next steps.</p></dd></div>
+                  </dl>
+                  <p class="ds-hta-path-finding"><strong>Why integrate intake?</strong> Existing task 2.3 exposes the overlap between the two workflows. Preparing this information in the AI conversation creates something useful to carry into a clinic visit. Less repeated input and easier preparation are intended benefits, not measured outcomes.</p>
+                </div>
+              </section>
+
+              <section class="ds-hta-analysis" aria-labelledby="hta-tree-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">05 / Build the integrated hierarchy</span><h3 id="hta-tree-title">A connected path with Dr.Snap</h3></div>
+                <div class="ds-hta-tree">
+                  <p class="ds-hta-tree__root"><strong>0</strong> Understand a skin concern and decide what to do next.</p>
+                  <ol class="ds-hta-tree__tasks">
+                    <li><h4><span>1</span> Prepare symptoms and review initial guidance</h4><ol>
+                      <li><strong>1.1 Share a photo and symptom description.</strong><ul><li>1.1.1 Select a photo of the concern.</li><li>1.1.2 Describe the symptoms in your own words.</li><li>1.1.3 Check the inputs and submit.</li></ul></li>
+                      <li><strong>1.2 Answer intake questions.</strong><ul><li>1.2.1 Read the question.</li><li>1.2.2 Compare it with your experience.</li><li>1.2.3 Choose and submit a response.</li></ul></li>
+                      <li><strong>1.3 Review initial guidance.</strong><ul><li>1.3.1 Check the symptom summary.</li><li>1.3.2 Read the suggested condition, explanation, and next actions.</li></ul></li>
+                      <li><strong>1.4 Ask further questions, if needed.</strong><ul><li>1.4.1 Describe what remains unclear.</li><li>1.4.2 Read the response and decide whether to ask again.</li></ul></li>
+                    </ol></li>
+                    <li><h4><span>2</span> Prepare for a clinic visit <em>Proposed service connection</em></h4><ol><li><strong>2.1</strong> Choose a clinic and arrange an appointment.</li><li><strong>2.2</strong> Review the symptom information and intake summary to bring.</li><li><strong>2.3</strong> Share the prepared information with the clinic, if desired.</li></ol></li>
+                    <li><h4><span>3</span> Attend the visit and discuss the assessment</h4><ol><li><strong>3.1</strong> Travel to and attend the appointment.</li><li><strong>3.2</strong> Confirm the prepared symptom information and answer the clinician’s questions.</li><li><strong>3.3</strong> Discuss the assessment and confirm the next steps.</li></ol></li>
+                  </ol>
+                </div>
+              </section>
+
+              <section class="ds-hta-analysis" aria-labelledby="hta-plans-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">06 / Define the integrated plans</span><h3 id="hta-plans-title">Sequence, choice, and repetition</h3></div>
+                <dl class="ds-hta-plans">
+                  <div><dt>Plan 0 · Overall path</dt><dd>After 1, follow 2 → 3 if the user chooses clinical care, or end the AI interaction. The main diagram shows the care-seeking branch. A person can also enter the clinic path directly without using Dr.Snap.</dd></div>
+                  <div><dt>Plan 1.1 · Initial input</dt><dd>Complete 1.1.1 and 1.1.2 in either order, then 1.1.3. Return to the relevant input if it needs correction. This is a proposed input-order requirement.</dd></div>
+                  <div><dt>Plan 1 · Guided intake</dt><dd>1.1 → 1.2 → 1.3. Repeat 1.2.1–1.2.3 whenever another intake question is presented; move to 1.3 when guidance is available.</dd></div>
+                  <div><dt>Plan 1.4 · Optional follow-up</dt><dd>After 1.3, choose 1.4 if questions remain, continue to 2 if seeking care, or end the conversation. Repeat 1.4.1 → 1.4.2 while the user has further questions.</dd></div>
+                  <div><dt>Plan 2 · Visit preparation</dt><dd>Complete 2.1 and 2.2 in either order. Once the clinic and information are ready, offer 2.3 if the user wants to share. Booking and sharing are proposed, unimplemented features.</dd></div>
+                  <div><dt>Plan 3 · Consultation</dt><dd>3.1 → 3.2 → 3.3. Return to symptom explanation and clarification whenever the clinician requests more information.</dd></div>
+                </dl>
+              </section>
+
+              <section class="ds-hta-analysis" aria-labelledby="hta-friction-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">07 / Derive requirements</span><h3 id="hta-friction-title">Potential friction and design implications</h3></div>
+                <div class="ds-hta-analysis__content">
+                  <p class="project-note">These are design hypotheses from the task structure, not measured bottlenecks or demonstrated improvements.</p>
+                  <dl class="ds-hta-requirements">
+                    <div><dt>1.1 · Deciding what to describe</dt><dd><p>A photo may not convey everything the user experiences.</p><p><strong>Requirement:</strong> Combine a photo with a description in the user’s own words, and allow input review.</p></dd></div>
+                    <div><dt>1.2 · Interpreting repeated questions</dt><dd><p>Users must relate each question to their symptoms and may be unsure how to answer.</p><p><strong>Requirement:</strong> Keep the original context visible, avoid redundant questions, and define how to handle uncertainty or end the intake.</p></dd></div>
+                    <div><dt>1.3–1.4 · Making sense of guidance</dt><dd><p>Users may confuse their own reported information with the AI’s interpretation, or still have questions.</p><p><strong>Requirement:</strong> Distinguish the symptom summary from the interpretation and preserve context for optional follow-up.</p></dd></div>
+                    <div><dt>2–3 · Carrying information into care</dt><dd><p>Existing task 2.3 may ask users to enter symptom information already shared with AI.</p><p><strong>Requirement:</strong> Propose a reviewable intake summary and a route to an appointment, so prepared information can be confirmed and supplemented during clinical care.</p></dd></div>
+                  </dl>
+                </div>
+              </section>
+
+              <section class="ds-hta-analysis" aria-labelledby="hta-boundaries-title">
+                <div class="ds-hta-analysis__heading"><span class="ds-label">08 / Set the support boundary</span><h3 id="hta-boundaries-title">What Dr.Snap supports</h3></div>
+                <dl class="ds-hta-boundaries"><div><dt>Prototype · Task 1</dt><dd>Photo and text input, iterative questions, initial guidance, and follow-up conversation.</dd></div><div><dt>Proposed connection · Task 2</dt><dd>Appointment booking and sharing an intake summary. Not implemented in the prototype.</dd></div><div><dt>Clinical care · Task 3</dt><dd>Further questioning, assessment, diagnosis, and treatment decisions remain with the clinician.</dd></div></dl>
+              </section>
+              PROPOSED HTA FALLBACK BACKUP END -->
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+      <!-- HTA SECTION END -->
 
       <section class="project-section ds-design-outcome" id="design-outcome" aria-labelledby="outcome-title">
         <header class="project-section__intro">
@@ -286,36 +546,41 @@
           <div class="project-section__copy">
             <h2 id="outcome-title">Multi-turn questionnaire<br />followed by an appointment</h2>
             <div class="project-section__description">
-              <p>We translated the AI-guided intake into five interactions: sharing a concern, clarifying symptoms, reviewing the response, asking further questions, and booking a clinic visit.</p>
+              <!-- HTA copy rollback: <p>We translated the AI-guided intake into five interactions: sharing a concern, clarifying symptoms, reviewing the response, asking further questions, and booking a clinic visit.</p> -->
+              <p>The experience connects four intake interactions—sharing a concern, clarifying symptoms, reviewing the response, and asking further questions—with a proposed handoff to appointment booking and summary sharing.</p>
               <p class="project-note">Prototype recordings in Korean.</p>
             </div>
           </div>
         </header>
 
         <div class="ds-demo-browser">
-          <div class="ds-demo-tabs" role="tablist" aria-label="AI-guided intake stages" aria-orientation="horizontal">
+          <!-- HTA tablist rollback: <div class="ds-demo-tabs" role="tablist" aria-label="AI-guided intake stages" aria-orientation="horizontal"> -->
+          <div class="ds-demo-tabs" role="tablist" aria-label="AI-guided intake demo stages" aria-orientation="horizontal">
             <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-input" aria-controls="demo-panel-input" aria-selected="true" tabindex="0">
-              <span class="ds-care-step__number">02.1</span><span>Share images<br />and symptoms</span>
+              <!-- HTA label rollback: <span class="ds-care-step__number">02.1</span> --><span class="ds-care-step__number">1.1</span><span>Share a photo <br />and symptoms</span>
             </button>
             <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-intake" aria-controls="demo-panel-intake" aria-selected="false" tabindex="-1">
-              <span class="ds-care-step__number">02.2</span><span>Answer synthesized<br />questionnaire</span>
+              <!-- HTA label rollback: <span class="ds-care-step__number">02.2</span> --><span class="ds-care-step__number">1.2</span><span>Answer intake <br />questions</span>
             </button>
             <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-response" aria-controls="demo-panel-response" aria-selected="false" tabindex="-1">
-              <span class="ds-care-step__number">02.3</span><span>Receive initial<br />guidance</span>
+              <!-- HTA label rollback: <span class="ds-care-step__number">02.3</span> --><span class="ds-care-step__number">1.3</span><span>Review initial <br />guidance</span>
             </button>
-            <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-followup" aria-controls="demo-panel-followup" aria-selected="false" tabindex="-1">
-              <span class="ds-care-step__number">02.4</span><span>Continue with<br />follow-up questions</span>
+            <button class="ds-demo-tab ds-demo-tab--optional" type="button" role="tab" id="demo-tab-followup" aria-controls="demo-panel-followup" aria-selected="false" tabindex="-1">
+              <!-- HTA label rollback: <span class="ds-care-step__number">02.4</span> --><span class="ds-care-step__number">1.4 · Optional</span><span>Ask further <br />questions</span>
             </button>
+            <!-- HTA label rollback: <span class="ds-care-step__number">02.5</span> -->
+            <!-- HANDOFF DEMO TAB BACKUP START
             <button class="ds-demo-tab" type="button" role="tab" id="demo-tab-handoff" aria-controls="demo-panel-handoff" aria-selected="false" tabindex="-1">
-              <span class="ds-care-step__number">02.5</span><span>Book and share<br />the intake summary</span>
+              <span class="ds-care-step__number">2</span><span>Book and share<br />the intake summary</span>
             </button>
+            HANDOFF DEMO TAB BACKUP END -->
           </div>
 
           <div class="ds-demo-list">
           <article class="ds-demo" id="demo-panel-input" role="tabpanel" aria-labelledby="demo-tab-input" tabindex="0">
             <div class="ds-demo__copy">
-              <span class="ds-label">02.1</span>
-              <h3 id="demo-input-title">Share images<br />and symptoms</h3>
+              <!-- HTA label rollback: <span class="ds-label">02.1</span> --><span class="ds-label">1.1</span>
+              <h3 id="demo-input-title">Share a photo <br />and symptoms</h3>
               <p>Users describe their symptoms in their own words and attach a photo. The two inputs bring together what the skin looks like and what the user is experiencing.</p>
             </div>
             <figure class="ds-demo__media">
@@ -329,8 +594,8 @@
 
           <article class="ds-demo" id="demo-panel-intake" role="tabpanel" aria-labelledby="demo-tab-intake" tabindex="0" hidden>
             <div class="ds-demo__copy">
-              <span class="ds-label">02.2</span>
-              <h3 id="demo-intake-title">Answer synthesized<br />questionnaire</h3>
+              <!-- HTA label rollback: <span class="ds-label">02.2</span> --><span class="ds-label">1.2</span>
+              <h3 id="demo-intake-title">Answer intake <br />questions</h3>
               <p>Before generating an answer, the AI asks for more symptom information through a focused question. The initial image and description remain visible while the user responds.</p>
             </div>
             <figure class="ds-demo__media">
@@ -344,8 +609,8 @@
 
           <article class="ds-demo" id="demo-panel-response" role="tabpanel" aria-labelledby="demo-tab-response" tabindex="0" hidden>
             <div class="ds-demo__copy">
-              <span class="ds-label">02.3</span>
-              <h3 id="demo-response-title">Receive initial<br />guidance</h3>
+              <!-- HTA label rollback: <span class="ds-label">02.3</span> --><span class="ds-label">1.3</span>
+              <h3 id="demo-response-title">Review initial <br />guidance</h3>
               <p>The response presents a symptom summary, a suggested condition, and an explanation with next actions. This structure brings the collected information and the AI’s interpretation together for review.</p>
             </div>
             <figure class="ds-demo__media">
@@ -359,8 +624,8 @@
 
           <article class="ds-demo" id="demo-panel-followup" role="tabpanel" aria-labelledby="demo-tab-followup" tabindex="0" hidden>
             <div class="ds-demo__copy">
-              <span class="ds-label">02.4</span>
-              <h3 id="demo-followup-title">Continue with<br />follow-up questions</h3>
+              <!-- HTA label rollback: <span class="ds-label">02.4</span> --><span class="ds-label">1.4 · Optional</span>
+              <h3 id="demo-followup-title">Ask further <br />questions</h3>
               <p>After reading the response, users can ask about what still concerns them. Follow-up questions keep the conversation open, with the earlier context available on the same screen.</p>
             </div>
             <figure class="ds-demo__media">
@@ -372,9 +637,11 @@
             </figure>
           </article>
 
+          <!-- HTA label rollback: <span class="ds-label">02.5</span> -->
+          <!-- HANDOFF DEMO PANEL BACKUP START
           <article class="ds-demo" id="demo-panel-handoff" role="tabpanel" aria-labelledby="demo-tab-handoff" tabindex="0" hidden>
             <div class="ds-demo__copy">
-              <span class="ds-label">02.5</span>
+              <span class="ds-label">2</span>
               <h3 id="demo-handoff-title">Book and share<br />the intake summary</h3>
               <p>The proposed next step connects the intake to a clinic visit: book an appointment and share the symptom summary with the clinician.</p>
             </div>
@@ -383,12 +650,13 @@
               <figcaption class="project-note" id="demo-handoff-caption">Appointment booking and sharing the intake summary with a clinic were not implemented in the prototype.</figcaption>
             </figure>
           </article>
+          HANDOFF DEMO PANEL BACKUP END -->
           </div>
         </div>
 
         <div class="project-evidence-group">
           <details class="project-evidence">
-            <summary>View Development Process</summary>
+            <summary>View Technical Details</summary>
             <section class="project-evidence__body ds-development" id="development" aria-labelledby="development-title">
               <header class="project-section__intro">
                 <div class="project-section__copy">
@@ -723,6 +991,7 @@ The question must be answerable with yes or no.</code></pre>
   </footer>
 
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/app.js?v=home-anchor-1"></script>
+  <script src="js/app.js?v=blog-hold-1"></script>
+  <script type="module" src="js/drsnap-task-analysis.js"></script>
 </body>
 </html>

@@ -1144,6 +1144,25 @@ body[data-page="blog"] main > .container--wide {
   font-size: var(--fs-h2);
   line-height: 1;
 }
+/* Unpublished notes stay in the page, but cannot be opened. */
+.essay-toggle.is-disabled > .essay-toggle__summary {
+  cursor: default;
+  pointer-events: none;
+  padding-right: 3rem;
+}
+.essay-toggle.is-disabled > .essay-toggle__summary::after,
+.essay-toggle.is-disabled[open] > .essay-toggle__summary::after {
+  content: "(TBD)";
+  top: 50%;
+  color: var(--text-muted);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-reg);
+  line-height: 1;
+  transform: translateY(-50%);
+}
+.essay-toggle.is-disabled .essay-toggle__body {
+  display: none;
+}
 .essay-toggle__body {
   margin-top: var(--space-4);
   /* Align with the title on the left, with 10px more space on the right. */
