@@ -439,6 +439,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* ---------- Profile: hanging-label rows ---------- */
 .profile-top {
   --profile-photo-width: 198px;
+  --profile-photo-ratio: calc(786 / 1040);
   /* Laptop / tablet (default) */
   padding-top: 60px;
   padding-bottom: 180px;
@@ -446,7 +447,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 .profile-photo {
   width: var(--profile-photo-width, 200px);
-  aspect-ratio: 786 / 1040;
+  aspect-ratio: var(--profile-photo-ratio);
   margin: 0 auto var(--space-12);
   border-radius: 0px;
   overflow: hidden;
@@ -509,42 +510,28 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
   text-decoration-color: currentColor;
 }
 
-/* Keep the existing stacked layout below 1024px. The original child order
-   also preserves the photo / biography / education / links reveal sequence. */
+/* Desktop profile. The portrait and reading area share one grid row. */
 @media (min-width: 1024px) {
   .profile-top {
-    --profile-width-extra: -103px;
-    /* Header + Profile fill the first viewport. The extra bottom padding
-       balances the header so the content is centred in the whole viewport.
-       min-height lets long content grow without clipping on short screens. */
-    min-height: calc(100vh - var(--profile-header-height, 171px));
+    --profile-width-extra: -85px;
+    --profile-lift: 0px;
+    --profile-start: max(var(--space-6), calc(50dvh - var(--profile-photo-width) / var(--profile-photo-ratio) / 2 - var(--profile-header-height, 171px) - var(--profile-lift)));
     min-height: calc(100dvh - var(--profile-header-height, 171px));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: var(--space-6);
-    padding-bottom: calc(var(--profile-header-height, 171px) + var(--space-6));
+    padding-block: var(--profile-start) var(--space-6);
   }
-
   .profile-top > .container {
     display: grid;
-    grid-template-columns: var(--profile-photo-width, 200px) minmax(0, 1fr);
-    grid-template-rows: auto auto 1fr;
-    /* Preserve the 1500px layout on wider screens. */
+    grid-template-columns: var(--profile-photo-width) minmax(0, 1fr);
     column-gap: clamp(48px, 5vw, 75px);
-    row-gap: 24px;
     align-items: start;
-    max-width: calc((var(--container-max) + var(--gutter) * 2) * 2 / 3 + 30px + var(--profile-width-extra, 0px) + var(--profile-photo-width, 200px) - 200px);
+    max-width: calc((var(--container-max) + var(--gutter) * 2) * 2 / 3 + 30px + var(--profile-width-extra) + var(--profile-photo-width) - 200px);
   }
-
-  .profile-top .profile-photo {
-    grid-column: 1;
-    grid-row: 1 / span 3;
-    margin: 0;
+  .profile-top .profile-photo { margin: 0; }
+  .profile-content {
+    display: grid;
+    gap: 24px;
   }
-
-  .profile-top > .container > .row {
-    grid-column: 2;
+  .profile-content > .row {
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
     min-width: 0;
@@ -552,92 +539,36 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
     margin: 0;
     padding-block: 0;
   }
-
-  .profile-top .row__body + .row__label {
-    margin-top: var(--space-2);
-  }
-
   .profile-top .edu-break { display: none; }
 }
 
-/* @media (min-width: 1024px) and (min-height: 1320px) {
-  .profile-top { padding-bottom: var(--space-6); }
-} */
-
-/* Profile extensions are opt-in. The original photo and rows keep their DOM
-   positions and layout rules, including when older styles are cached. */
-.profile-extra { padding-top: 4px; }
-.profile-extra:not(:has(> *)) { display: none; }
-@media (min-width: 1024px) {
-  .profile-extra {
-    grid-column: 2;
-    grid-row: 3;
-    display: grid;
-    gap: 24px;
-    min-width: 0;
-  }
-  .profile-extra > .row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
-    min-width: 0;
-    max-width: none;
-    margin: 0;
-    padding-block: 0;
-  }
-  .profile-top.has-profile-extra {
-    display: block;
-    padding-top: var(--profile-top-gap);
-    padding-bottom: 0;
-  }
-  .has-profile-extra > .container {
-    min-height: calc(var(--profile-baseline-height) + var(--profile-bottom-gap));
-  }
-  .has-profile-extra .profile-extra {
-    padding-bottom: var(--profile-bottom-gap);
-  }
-  .has-profile-extra.is-profile-pinned .profile-photo {
-    position: sticky;
-    top: var(--profile-sticky-top);
+@media (min-width: 1024px) and (height > 1198px) {
+  .profile-top {
+    --profile-lift: var(--space-16);
   }
 }
 
-/* A visual window over the right column only. These body-level overlays
-   never participate in the original photo / Biography / Links layout. */
-.profile-content-fade {
-  --profile-fade-top-size: 130px;
-  --profile-fade-bottom-size: 185px;
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  overflow: hidden;
-  pointer-events: none;
-}
-.profile-content-fade[hidden] { display: none; }
-.profile-content-fade__edge {
-  position: absolute;
-  left: var(--profile-fade-left);
-  width: var(--profile-fade-width);
-  pointer-events: auto;
-  user-select: none;
-}
-.profile-content-fade__edge--top {
-  top: 0;
-  height: var(--profile-fade-top);
-  background: linear-gradient(to bottom,
-    var(--surface-page) calc(100% - var(--profile-fade-top-size)),
-    color-mix(in srgb, var(--surface-page) 0%, transparent) 100%);
-}
-.profile-content-fade__edge--bottom {
-  top: var(--profile-fade-bottom);
-  bottom: 0;
-  background: linear-gradient(to bottom,
-    color-mix(in srgb, var(--surface-page) 0%, transparent) 0,
-    var(--surface-page) var(--profile-fade-bottom-size));
-}
-@media (min-width: 1024px) {
-  .profile-top.has-profile-fade .profile-extra {
-    /* Let the final line reach the clear area without moving the first rows. */
-    padding-bottom: max(var(--profile-bottom-gap), var(--profile-fade-tail));
+@media (min-width: 1024px) and (min-height: 480px) {
+  .profile-canvas {
+    --profile-canvas-height: min(56dvh, 620px);
+    --profile-canvas-gutter: 54px;
+    --profile-canvas-lift: min(var(--space-12), calc(var(--profile-start) - var(--space-2)));
+    --profile-scrollbar-thumb: rgb(43 42 40 / 8%);
+    --profile-fade-top-size: 90px;
+    --profile-fade-bottom-size: 150px;
+    width: calc(100% + var(--profile-canvas-gutter));
+    padding-inline-end: var(--profile-canvas-gutter);
+    margin-block-start: calc(-1 * var(--profile-canvas-lift));
+    height: min(var(--profile-canvas-height), calc(100dvh - var(--profile-header-height, 171px) - var(--profile-start) - var(--space-6)));
+    overflow-y: auto;
+    scrollbar-color: var(--profile-scrollbar-thumb) transparent;
+    scroll-padding-block: var(--profile-fade-top-size) var(--profile-fade-bottom-size);
+    mask-image: linear-gradient(to bottom,
+      transparent, black min(var(--profile-scroll-before, 0px), var(--profile-fade-top-size)),
+      black calc(100% - min(var(--profile-scroll-after, 0px), var(--profile-fade-bottom-size))), transparent);
+  }
+  .profile-canvas > .profile-content {
+    margin-block-start: var(--profile-canvas-lift);
   }
 }
 
@@ -1201,15 +1132,10 @@ body[data-page="blog"] main > .container--wide {
   .js .reveal { opacity: 1; transform: none; }
 }
 
-/* Landing → Profile: the photo leads in (a longer rise, a touch quicker), then
-   biography / education / references cascade with a restrained stagger. Blocks
-   only — never per-sentence. The photo is the container's 1st child (no delay);
-   the three .row blocks follow as children 2–4. */
+/* The portrait leads the introduction, links and news. */
 .js .profile-top .profile-photo.reveal { transition-duration: 520ms; }
 .js .profile-top .profile-photo.reveal:not(.is-in) { transform: translateY(24px); }
-.js .profile-top .container > .reveal:nth-child(2) { transition-delay: 120ms; }
-.js .profile-top .container > .reveal:nth-child(3) { transition-delay: 220ms; }
-.js .profile-top .container > .reveal:nth-child(4) { transition-delay: 320ms; }
+.js .profile-canvas.reveal { transform: none; transition-delay: 120ms; }
 
 /* ---- Research: tabs lead (delay 0), then publication cards fade in left→right
    in ~90ms steps (per column, so every row staggers the same way), then the essay

@@ -126,170 +126,37 @@
     }
   }
 
-  /* ---------- Optional Profile extensions ----------
-     Leave the original layout completely alone until extra sections exist. */
-  function initProfileExtension() {
-    var profile = document.querySelector(".profile-top");
-    var extra = profile && profile.querySelector(".profile-extra");
-    if (!extra || !extra.childElementCount) return;
-    var header = document.querySelector(".site-header");
-    var container = profile.querySelector(".container");
-    var photo = container.querySelector(".profile-photo");
-    var rows = Array.prototype.filter.call(container.children, function (el) {
-      return el.classList.contains("row");
-    });
-    if (!header || !photo || rows.length !== 2) return;
-    var desktop = window.matchMedia("(min-width: 1024px)");
-    var frame = 0;
-    var disposed = false;
+  /* Fade only the edges with more profile content to read. */
+  function initProfileCanvas() {
+    var canvas = document.querySelector(".profile-canvas");
+    if (!canvas) return;
 
-    function setPixels(name, value) {
-      var next = value + "px";
-      if (profile.style.getPropertyValue(name) !== next) profile.style.setProperty(name, next);
+    function updateFades() {
+      var remaining = canvas.scrollHeight - canvas.clientHeight - canvas.scrollTop;
+      canvas.style.setProperty("--profile-scroll-before", Math.max(0, canvas.scrollTop) + "px");
+      canvas.style.setProperty("--profile-scroll-after", Math.max(0, remaining) + "px");
     }
     function measure() {
-      if (disposed) return;
-      if (desktop.matches) {
-        var headerHeight = header.getBoundingClientRect().height;
-        var photoHeight = photo.getBoundingClientRect().height;
-        var gap = parseFloat(getComputedStyle(container).rowGap) || 24;
-        // Preserve both gaps in the original three-row grid. Only heights
-        // are read, so reveal and page-transition translations do not matter.
-        var baseline = Math.max(photoHeight, rows[0].getBoundingClientRect().height + rows[1].getBoundingClientRect().height + 2 * gap);
-        var edge = parseFloat(getComputedStyle(profile).getPropertyValue("--space-6")) || 24;
-        var space = Math.max(0, (window.innerHeight - 2 * headerHeight - 2 * edge - baseline) / 2);
-        setPixels("--profile-baseline-height", baseline);
-        setPixels("--profile-top-gap", edge + space);
-        setPixels("--profile-bottom-gap", headerHeight + edge + space);
-        setPixels("--profile-sticky-top", headerHeight + edge + space);
-        profile.classList.add("has-profile-extra");
-        profile.classList.toggle("is-profile-pinned", window.innerHeight >= headerHeight + 2 * edge + photoHeight);
-      } else {
-        profile.classList.remove("has-profile-extra", "is-profile-pinned");
-      }
-      if (siteLenis) siteLenis.resize();
+      var scrollable = getComputedStyle(canvas).overflowY === "auto" && canvas.scrollHeight > canvas.clientHeight;
+      canvas.toggleAttribute("data-lenis-prevent", scrollable);
+      if (scrollable) canvas.tabIndex = 0;
+      else canvas.removeAttribute("tabindex");
+      updateFades();
     }
-    function schedule() {
-      if (disposed || frame) return;
-      frame = requestAnimationFrame(function () { frame = 0; measure(); });
-    }
+
+    canvas.addEventListener("scroll", updateFades, { passive: true });
+    document.querySelectorAll('a[href="#home"]').forEach(function (link) {
+      link.addEventListener("click", function () { canvas.scrollTop = 0; });
+    });
     measure();
-    onWindow("resize", schedule);
     if ("ResizeObserver" in window) {
-      var observer = new ResizeObserver(schedule);
-      [header, photo].concat(rows).forEach(function (el) { observer.observe(el); });
+      var observer = new ResizeObserver(measure);
+      observer.observe(canvas);
+      observer.observe(canvas.querySelector(".profile-content"));
       track(function () { observer.disconnect(); });
+    } else {
+      onWindow("resize", measure);
     }
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
-    track(function () {
-      disposed = true;
-      if (frame) cancelAnimationFrame(frame);
-    });
-  }
-
-  /* ---------- Fixed fades over Profile's right column ---------- */
-  function initProfileContentFade() {
-    var profile = document.querySelector(".profile-top");
-    var extra = profile && profile.querySelector(".profile-extra");
-    if (!extra || !extra.childElementCount) return;
-    var container = profile.querySelector(".container");
-    var photo = container.querySelector(".profile-photo");
-    var header = document.querySelector(".site-header");
-    var rows = Array.prototype.filter.call(container.children, function (el) {
-      return el.classList.contains("row");
-    });
-    if (!photo || !header || rows.length !== 2) return;
-
-    // Outside <main>, so page-transition transforms cannot move the window.
-    var overlay = document.createElement("div");
-    overlay.className = "profile-content-fade";
-    overlay.setAttribute("aria-hidden", "true");
-    overlay.hidden = true;
-    ["top", "bottom"].forEach(function (edge) {
-      var panel = document.createElement("div");
-      panel.className = "profile-content-fade__edge profile-content-fade__edge--" + edge;
-      overlay.appendChild(panel);
-    });
-    document.body.appendChild(overlay);
-    var frame = 0;
-    var disposed = false;
-    var clearTop = 0;
-    var clearBottom = 0;
-
-    function setPixels(element, name, value) {
-      var next = value + "px";
-      if (element.style.getPropertyValue(name) !== next) element.style.setProperty(name, next);
-    }
-    function measure() {
-      if (disposed) return;
-      var enabled = profile.classList.contains("is-profile-pinned");
-      if (enabled) {
-        var first = rows[0].getBoundingClientRect();
-        var gap = parseFloat(getComputedStyle(container).rowGap) || 24;
-        var fadeStyle = getComputedStyle(overlay);
-        var topFadeSize = parseFloat(fadeStyle.getPropertyValue("--profile-fade-top-size"));
-        var bottomFadeSize = parseFloat(fadeStyle.getPropertyValue("--profile-fade-bottom-size"));
-        // Heights and the existing resting-position token are independent of
-        // scroll and reveal transforms. Do not use the scrolling row's top.
-        clearTop = parseFloat(getComputedStyle(profile).getPropertyValue("--profile-sticky-top"));
-        clearBottom = clearTop + Math.max(photo.getBoundingClientRect().height,
-          first.height + gap + rows[1].getBoundingClientRect().height);
-        enabled = clearTop >= topFadeSize && clearBottom + bottomFadeSize <= window.innerHeight;
-        if (enabled) {
-          setPixels(overlay, "--profile-fade-left", first.left);
-          setPixels(overlay, "--profile-fade-width", first.width);
-          setPixels(overlay, "--profile-fade-top", clearTop);
-          setPixels(overlay, "--profile-fade-bottom", clearBottom);
-          setPixels(profile, "--profile-fade-tail", window.innerHeight - clearBottom + 4);
-        }
-      }
-      overlay.hidden = !enabled;
-      profile.classList.toggle("has-profile-fade", enabled);
-      if (siteLenis) siteLenis.resize();
-    }
-    function schedule() {
-      if (disposed || frame) return;
-      frame = requestAnimationFrame(function () { frame = 0; measure(); });
-    }
-    var keyboardFocus = false;
-    onWindow("keydown", function (event) {
-      if (event.key === "Tab") keyboardFocus = true;
-    }, true);
-    onWindow("pointerdown", function () {
-      keyboardFocus = false;
-    }, { capture: true, passive: true });
-
-    function revealFocus(event) {
-      if (!keyboardFocus || overlay.hidden || !rows.some(function (row) { return row.contains(event.target); }) && !extra.contains(event.target)) return;
-      var rect = event.target.getBoundingClientRect();
-      var delta = 0;
-      if (rect.top < clearTop) delta = rect.top - clearTop - 4;
-      else if (rect.bottom > clearBottom) delta = rect.bottom - clearBottom + 4;
-      else return;
-      // Only reveal obscured keyboard focus, moving to the nearest clear
-      // edge with room for its outline. Pointer focus never moves the page.
-      var target = Math.max(0, window.scrollY + delta);
-      if (siteLenis) siteLenis.scrollTo(target, { immediate: true });
-      else window.scrollTo({ top: target, behavior: "instant" });
-    }
-
-    measure();
-    onWindow("resize", schedule);
-    profile.addEventListener("focusin", revealFocus);
-    if ("ResizeObserver" in window) {
-      var observer = new ResizeObserver(schedule);
-      [header, photo].concat(rows).forEach(function (el) { observer.observe(el); });
-      track(function () { observer.disconnect(); });
-    }
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
-    track(function () {
-      disposed = true;
-      if (frame) cancelAnimationFrame(frame);
-      profile.removeEventListener("focusin", revealFocus);
-      profile.classList.remove("has-profile-fade");
-      profile.style.removeProperty("--profile-fade-tail");
-      overlay.remove();
-    });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -896,12 +763,12 @@
      Why this and not the cross-document `@view-transition` (still in site.css
      as the no-JS fallback): one persistent Lenis instance and one animation
      engine drive *every* transition, so landing<->profile (scroll-morph) and
-     landing<->research/projects/blog (page swap) finally feel like one notebook —
+     landing<->research/projects (page swap) finally feel like one notebook —
      and same-document view transitions are far more widely supported than
      cross-document ones. The shared `view-transition-name`s already on
      .site-header__logo / .morph__name / .nav-pill make the shell morph for
      free; we just reuse them. */
-  var INTERNAL = /(^|\/)(index|research|projects|blog)\.html$/;
+  var INTERNAL = /(^|\/)(index|research|projects)\.html$/;
   var pageCache = {};
   var canFly = typeof document.createElement("div").animate === "function";
 
@@ -1157,8 +1024,7 @@
   function bootPage() {
     runCleanups();
     initProfileLayout();
-    initProfileExtension();
-    initProfileContentFade();
+    initProfileCanvas();
     initReveal();
     initProjectMedia();
     initEssayToggles();
