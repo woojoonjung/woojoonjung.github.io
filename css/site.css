@@ -513,8 +513,8 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* Desktop profile. The portrait and reading area share one grid row. */
 @media (min-width: 1024px) {
   .profile-top {
-    --profile-width-extra: -85px;
-    --profile-lift: 0px;
+    --profile-width-extra: -80px;
+    --profile-lift: 10px;
     --profile-start: max(var(--space-6), calc(50dvh - var(--profile-photo-width) / var(--profile-photo-ratio) / 2 - var(--profile-header-height, 171px) - var(--profile-lift)));
     min-height: calc(100dvh - var(--profile-header-height, 171px));
     padding-block: var(--profile-start) var(--space-6);
@@ -550,7 +550,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 @media (min-width: 1024px) and (min-height: 480px) {
   .profile-canvas {
-    --profile-canvas-height: min(56dvh, 620px);
+    --profile-canvas-height: min(60dvh, 540px);
     --profile-canvas-gutter: 54px;
     --profile-canvas-lift: min(var(--space-12), calc(var(--profile-start) - var(--space-2)));
     --profile-scrollbar-thumb: rgb(43 42 40 / 8%);
