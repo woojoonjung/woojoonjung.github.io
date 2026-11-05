@@ -475,8 +475,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 .profile-top .profile-biography > p,
 .blog-intro__copy > p,
 .blog-essay .essay-toggle__body {
-  text-align: justify;
-  text-align-last: left;
+  text-align: left;
   text-wrap: pretty;
   hyphens: none;
 }
@@ -513,7 +512,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* Desktop profile. The portrait and reading area share one grid row. */
 @media (min-width: 1024px) {
   .profile-top {
-    --profile-width-extra: -80px;
+    --profile-width-extra: -50px;
     --profile-lift: 10px;
     --profile-start: max(var(--space-6), calc(50dvh - var(--profile-photo-width) / var(--profile-photo-ratio) / 2 - var(--profile-header-height, 171px) - var(--profile-lift)));
     min-height: calc(100dvh - var(--profile-header-height, 171px));
@@ -771,6 +770,8 @@ textarea.field { min-height: 340px; resize: vertical; line-height: var(--lh-body
 /* ============================================================
    WORK GRID (Projects) — cards share .pub-card, see below
    ============================================================ */
+body[data-page="projects"] main { text-align: left; }
+
 .work-grid,
 .pub-grid {
   display: grid;

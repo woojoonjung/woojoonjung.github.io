@@ -150,7 +150,7 @@
   padding: 0.875rem 0.625rem;
   border: 1px dashed var(--ink-400);
   border-radius: 50%;
-  text-align: center;
+  text-align: left;
 }
 
 .drsnap-page .ds-node dt {
@@ -239,7 +239,7 @@
 
 .drsnap-page .ds-service-concerns > .ds-label {
   margin-bottom: 1.5rem;
-  text-align: center;
+  text-align: left;
   font-size: 0.625rem;
 }
 
@@ -261,7 +261,7 @@
   color: var(--project-body);
   font-size: 0.8125rem;
   line-height: 1.55;
-  text-align: center;
+  text-align: left;
 }
 
 .drsnap-page .ds-concern-flow dt {
@@ -406,7 +406,7 @@
   color: var(--project-muted);
   font-size: 0.875rem;
   line-height: 1.5;
-  text-align: right;
+  text-align: left;
 }
 
 .drsnap-page .ds-care-steps {
@@ -431,7 +431,7 @@
   padding: 1rem 0.75rem;
   border: 1px solid var(--project-line);
   color: var(--project-body);
-  text-align: center;
+  text-align: left;
 }
 
 .drsnap-page .ds-care-steps > li:not(:last-child)::after {
@@ -601,7 +601,7 @@
 }
 .drsnap-page .ds-hta-caption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; color: var(--text-strong); font-size: 1.0625rem; }
 .drsnap-page .ds-hta-caption__title { font-weight: 600; }
-.drsnap-page .ds-hta-caption__context { min-width: 0; max-width: 65%; margin-left: auto; text-align: right; font: 400 0.6875rem/1.6 var(--font-mono); color: var(--ink-400); }
+.drsnap-page .ds-hta-caption__context { min-width: 0; max-width: 65%; margin-left: auto; text-align: left; font: 400 0.6875rem/1.6 var(--font-mono); color: var(--ink-400); }
 .drsnap-page .ds-hta-route {
   display: grid;
   grid-template-columns: 10.5rem minmax(0, 1fr);
@@ -616,7 +616,7 @@
 .drsnap-page :is(.ds-hta-route--existing, .ds-hta-route--proposed) .ds-hta-route__label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
 .drsnap-page :is(.ds-hta-route--existing, .ds-hta-route--proposed) .ds-hta-route__label h3 { font-size: 1rem; }
 .drsnap-page :is(.ds-hta-route--existing, .ds-hta-route--proposed) .ds-hta-route__label p { margin-top: 0; }
-.drsnap-page .ds-hta-route--existing .ds-hta-route__label { justify-content: flex-end; text-align: right; }
+.drsnap-page .ds-hta-route--existing .ds-hta-route__label { justify-content: flex-end; text-align: left; }
 .drsnap-page .ds-hta-route--existing .ds-hta-route__label h3 { font: 400 0.6875rem/1.6 var(--font-mono); color: var(--ink-400); }
 .drsnap-page .ds-hta-route--clinic { position: relative; display: block; }
 .drsnap-page .ds-hta-route--clinic .ds-hta-route__label { position: absolute; right: 0; bottom: calc(100% + 0.75rem); max-width: 70%; }
@@ -667,7 +667,7 @@
 .drsnap-page .ds-hta-node-note--merge { padding-top: 0.625rem; border-top: 1px solid color-mix(in srgb, var(--ds-intervention) 25%, transparent); }
 .drsnap-page .ds-hta-route__steps > .ds-hta-node--proposed { border-style: dashed; background: transparent; }
 .drsnap-page .ds-hta-comparison__note { max-width: 86ch; margin: 1rem 0 0 12rem; font-size: 0.8125rem; line-height: 1.6; color: var(--project-muted); }
-.drsnap-page .ds-hta-transition { --hta-turn-inset: calc((100% - 3 * 1.75rem) / 8); position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.375rem; padding-block: 1.75rem 2.75rem; text-align: center; }
+.drsnap-page .ds-hta-transition { --hta-turn-inset: calc((100% - 3 * 1.75rem) / 8); position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.375rem; padding-block: 1.75rem 2.75rem; text-align: left; }
 .drsnap-page .ds-hta-transition::before { content: ""; position: absolute; top: 0; right: var(--hta-turn-inset); left: var(--hta-turn-inset); height: 2.375rem; border-right: 1px dashed var(--project-muted); border-bottom: 1px dashed var(--project-muted); }
 .drsnap-page .ds-hta-transition::after { content: ""; position: absolute; top: 2.375rem; bottom: 0.25rem; left: var(--hta-turn-inset); border-left: 1px dashed var(--project-muted); }
 .drsnap-page .ds-hta-transition__stop { z-index: 1; padding-inline: 1rem; background: var(--paper-warm); color: var(--text-strong); font-size: 0.8125rem; font-weight: 500; }
@@ -699,7 +699,7 @@
 }
 .drsnap-page .ds-hta-integration::before { bottom: 100%; }
 .drsnap-page .ds-hta-integration::after { top: 100%; }
-.drsnap-page .ds-hta-integration > header { text-align: center; }
+.drsnap-page .ds-hta-integration > header { text-align: left; }
 .drsnap-page .ds-hta-integration > header .ds-label { color: var(--ds-intervention); }
 .drsnap-page .ds-hta-integration h3 { margin-top: 0.5rem; font-size: 1.25rem; line-height: 1.4; }
 .drsnap-page .ds-hta-integration h3 br { display: none; }
@@ -970,7 +970,7 @@
   padding: 2rem;
   border: 1px dashed var(--ds-intervention);
   background: #fbfaf7;
-  text-align: center;
+  text-align: left;
 }
 
 .drsnap-page .ds-handoff-plan > .ds-label { color: var(--ds-intervention); }
@@ -1036,7 +1036,7 @@
   gap: var(--ds-architecture-gap);
   align-items: center;
 }
-.drsnap-page .ds-architecture__group { position: relative; text-align: center; }
+.drsnap-page .ds-architecture__group { position: relative; text-align: left; }
 @media (min-width: 761px) {
   .drsnap-page .ds-architecture__group--browser { transform: translateY(calc(var(--ds-browser-y) * 1px)); }
   .drsnap-page .ds-architecture__group--backend { transform: translateY(calc(var(--ds-backend-y) * 1px)); }
@@ -1059,13 +1059,13 @@
 .drsnap-page .ds-architecture__group > .ds-label { display: block; margin-bottom: 1rem; }
 .drsnap-page .ds-architecture__environment { padding: var(--ds-environment-padding); border: 1px dashed var(--ds-intervention); }
 .drsnap-page .ds-architecture__services { display: grid; gap: 0.75rem; padding: 0.25rem; border: 1px dashed var(--ds-services-line); }
-.drsnap-page .ds-tech-node { padding: 1.25rem 0.875rem; border: 1px solid var(--project-line); background: #fffdfb; text-align: center; }
+.drsnap-page .ds-tech-node { padding: 1.25rem 0.875rem; border: 1px solid var(--project-line); background: #fffdfb; text-align: left; }
 .drsnap-page .ds-tech-node p { margin-top: 0.5rem; color: var(--project-body); font-size: 0.875rem; line-height: 1.55; }
 .drsnap-page .ds-architecture__modules { display: grid; gap: 0.75rem; margin-top: 0.75rem; }
 .drsnap-page .ds-architecture__environment > .project-note { margin-top: 0.75rem; font-size: 0.8125rem; }
 
 .drsnap-page .ds-dev-flow { --ds-flow-gap: 1.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ds-flow-gap); padding: 0; list-style: none; }
-.drsnap-page .ds-dev-flow > li { position: relative; display: flex; flex-direction: column; justify-content: center; min-width: 0; min-height: 7rem; padding: 1.25rem 1rem; border: 1px solid var(--project-line); background: #fffdfb; text-align: center; }
+.drsnap-page .ds-dev-flow > li { position: relative; display: flex; flex-direction: column; justify-content: center; min-width: 0; min-height: 7rem; padding: 1.25rem 1rem; border: 1px solid var(--project-line); background: #fffdfb; text-align: left; }
 .drsnap-page .ds-dev-flow > li > p { margin-top: 0.5rem; color: var(--project-body); font-size: 0.875rem; line-height: 1.5; }
 .drsnap-page .ds-dev-flow > li:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: 50%; width: calc(var(--ds-flow-gap) + 2px); border-top: 1px dashed var(--ds-intervention); }
 
@@ -1110,14 +1110,14 @@
 .drsnap-page .ds-selection-path .ds-modality-label { position: absolute; bottom: calc(100% + var(--ds-modality-gap)); left: 0; display: flex; align-items: center; gap: 0.5rem; margin: 0; color: var(--ds-pipeline-muted); font: 700 0.75rem/1.3 var(--font-mono); }
 .drsnap-page .ds-modality-label img { width: var(--ds-modality-size); height: var(--ds-modality-size); }
 .drsnap-page .ds-selection-row { display: grid; grid-template-columns: minmax(0, 1fr) var(--ds-process-size) minmax(0, 1fr); gap: var(--ds-stage-gap); align-items: center; }
-.drsnap-page .ds-selection-node { position: relative; display: grid; place-items: center; min-height: var(--ds-node-height); padding: 0.75rem; border: 1px solid var(--ds-pipeline-line); background: #fffefe; text-align: center; }
+.drsnap-page .ds-selection-node { position: relative; display: grid; place-items: center; min-height: var(--ds-node-height); padding: 0.75rem; border: 1px solid var(--ds-pipeline-line); background: #fffefe; text-align: left; }
 .drsnap-page .ds-selection-node p { margin: 0; color: var(--ds-pipeline-text); font: 400 1rem/1.25 var(--font-sans); }
-.drsnap-page .ds-selection-process { position: relative; display: grid; place-items: center; width: var(--ds-process-size); height: var(--ds-process-size); border: 1px dashed var(--ds-pipeline-muted); border-radius: 50%; text-align: center; }
+.drsnap-page .ds-selection-process { position: relative; display: grid; place-items: center; width: var(--ds-process-size); height: var(--ds-process-size); border: 1px dashed var(--ds-pipeline-muted); border-radius: 50%; text-align: left; }
 .drsnap-page .ds-selection-process p { margin: 0; color: var(--ds-pipeline-muted); font: 700 0.6875rem/1.3 var(--font-mono); }
 .drsnap-page .ds-selection-node--input::after,
 .drsnap-page .ds-selection-process::after { content: ''; position: absolute; top: 50%; left: 100%; width: calc(var(--ds-stage-gap) + 2px); border-top: 1px dashed var(--ds-pipeline-muted); transform: translateY(-50%); }
 .drsnap-page .ds-output-type { position: absolute; right: 0.375rem; bottom: 0.375rem; color: #c0b8aa; font: 700 0.625rem/1 var(--font-mono); }
-.drsnap-page .ds-selection-result { position: relative; grid-column: 2; grid-row: 1 / span 2; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: var(--ds-node-height); padding: 0.75rem; border: 1px solid #c8a788; background: #f7f1eb; text-align: center; }
+.drsnap-page .ds-selection-result { position: relative; grid-column: 2; grid-row: 1 / span 2; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: var(--ds-node-height); padding: 0.75rem; border: 1px solid #c8a788; background: #f7f1eb; text-align: left; }
 .drsnap-page .ds-selection-result h5 { margin: 0; color: var(--ds-pipeline-text); font: 400 1rem/1.3 var(--font-sans); }
 .drsnap-page .ds-selection-result p { margin: 0.5rem 0 0; color: #98949e; font: 400 0.75rem/1.4 var(--font-sans); }
 .drsnap-page .ds-selection-result::before { content: ''; position: absolute; top: 50%; right: calc(100% + var(--ds-join-stem)); width: calc(var(--ds-result-gap) - var(--ds-join-stem)); height: calc(max(var(--ds-process-size), var(--ds-node-height)) + var(--ds-row-gap)); border: 1px dashed var(--ds-pipeline-muted); border-left: 0; transform: translateY(-50%); }
@@ -1135,7 +1135,7 @@
   .drsnap-page .ds-retrieval-layout { display: block; aspect-ratio: auto; padding: 1.5rem; }
   .drsnap-page .ds-knowledge-prep { padding-bottom: 1.5rem; border-right: 0; border-bottom: 0.5px solid #e4e1dc; }
   .drsnap-page .ds-knowledge-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1rem; padding: 0; }
-  .drsnap-page .ds-knowledge-stack > li { display: block; min-height: 0; padding: 1rem 0.75rem; text-align: center; }
+  .drsnap-page .ds-knowledge-stack > li { display: block; min-height: 0; padding: 1rem 0.75rem; text-align: left; }
   .drsnap-page .ds-knowledge-stack img { display: block; width: 3rem; height: 3rem; margin: 0 auto 0.75rem; }
   .drsnap-page .ds-knowledge-stack h5 { font-size: 0.75rem; }
   .drsnap-page .ds-knowledge-stack p { margin-top: 0.375rem; font-size: 1rem; }
@@ -1173,7 +1173,7 @@
 }
 
 .drsnap-page .ds-dialogue-map > .ds-dev-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.drsnap-page .ds-dialogue-return { position: relative; margin: 0 12.5%; padding: 1.25rem 1rem; border: 1px dashed var(--ds-intervention); border-top: 0; color: var(--ds-intervention); font: 400 0.6875rem/1.7 var(--font-mono); text-align: center; }
+.drsnap-page .ds-dialogue-return { position: relative; margin: 0 12.5%; padding: 1.25rem 1rem; border: 1px dashed var(--ds-intervention); border-top: 0; color: var(--ds-intervention); font: 400 0.6875rem/1.7 var(--font-mono); text-align: left; }
 .drsnap-page .ds-dialogue-return::before { content: ""; position: absolute; top: 0; left: -4px; width: 6px; height: 6px; border-top: 1px solid var(--ds-intervention); border-left: 1px solid var(--ds-intervention); transform: rotate(45deg); }
 .drsnap-page .ds-prompt-constraints { margin-top: 4rem; }
 .drsnap-page .ds-prompt-constraints > p { margin-top: 0.875rem; color: color-mix(in srgb, var(--project-body) 50%, transparent); font-size: 0.9375rem; line-height: 1.7; }
