@@ -550,22 +550,31 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 @media (min-width: 1024px) and (min-height: 480px) {
   .profile-canvas {
-    --profile-canvas-height: min(60dvh, 540px);
+    --profile-canvas-height: min(65dvh, 700px);
     --profile-canvas-gutter: 54px;
-    --profile-canvas-lift: min(var(--space-12), calc(var(--profile-start) - var(--space-2)));
-    --profile-scrollbar-thumb: rgb(43 42 40 / 8%);
-    --profile-fade-top-size: 90px;
-    --profile-fade-bottom-size: 150px;
+    --profile-canvas-lift: min(70px, calc(var(--profile-start) - var(--space-2)));
+    --profile-fade-top-size: 100px;
+    --profile-fade-bottom-size: 160px;
     width: calc(100% + var(--profile-canvas-gutter));
     padding-inline-end: var(--profile-canvas-gutter);
     margin-block-start: calc(-1 * var(--profile-canvas-lift));
     height: min(var(--profile-canvas-height), calc(100dvh - var(--profile-header-height, 171px) - var(--profile-start) - var(--space-6)));
     overflow-y: auto;
-    scrollbar-color: var(--profile-scrollbar-thumb) transparent;
+    scrollbar-width: none;
     scroll-padding-block: var(--profile-fade-top-size) var(--profile-fade-bottom-size);
-    mask-image: linear-gradient(to bottom,
+    /* mask-image: linear-gradient(to bottom,
       transparent, black min(var(--profile-scroll-before, 0px), var(--profile-fade-top-size)),
-      black calc(100% - min(var(--profile-scroll-after, 0px), var(--profile-fade-bottom-size))), transparent);
+      black calc(100% - min(var(--profile-scroll-after, 0px), var(--profile-fade-bottom-size))), transparent); */
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      black var(--profile-fade-top-active, 0px),
+      black calc(100% - var(--profile-fade-bottom-active, 0px)),
+      transparent 100%
+    );
+  }
+  .profile-canvas::-webkit-scrollbar {
+    display: none;
   }
   .profile-canvas > .profile-content {
     margin-block-start: var(--profile-canvas-lift);

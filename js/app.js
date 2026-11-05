@@ -131,10 +131,28 @@
     var canvas = document.querySelector(".profile-canvas");
     if (!canvas) return;
 
+    // function updateFades() {
+    //   var remaining = canvas.scrollHeight - canvas.clientHeight - canvas.scrollTop;
+    //   canvas.style.setProperty("--profile-scroll-before", Math.max(0, canvas.scrollTop) + "px");
+    //   canvas.style.setProperty("--profile-scroll-after", Math.max(0, remaining) + "px");
+    // }
     function updateFades() {
-      var remaining = canvas.scrollHeight - canvas.clientHeight - canvas.scrollTop;
-      canvas.style.setProperty("--profile-scroll-before", Math.max(0, canvas.scrollTop) + "px");
-      canvas.style.setProperty("--profile-scroll-after", Math.max(0, remaining) + "px");
+      var remaining =
+        canvas.scrollHeight - canvas.clientHeight - canvas.scrollTop;
+    
+      canvas.style.setProperty(
+        "--profile-fade-top-active",
+        canvas.scrollTop > 1
+          ? "var(--profile-fade-top-size)"
+          : "0px"
+      );
+    
+      canvas.style.setProperty(
+        "--profile-fade-bottom-active",
+        remaining > 1
+          ? "var(--profile-fade-bottom-size)"
+          : "0px"
+      );
     }
     function measure() {
       var scrollable = getComputedStyle(canvas).overflowY === "auto" && canvas.scrollHeight > canvas.clientHeight;
