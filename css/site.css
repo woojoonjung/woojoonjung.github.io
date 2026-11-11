@@ -1176,6 +1176,18 @@ body[data-page="blog"] main > .container--wide {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* Below the side-by-side profile, a hanging label inside the 0.6 column
+   left the biography at ~340px. Stack the label and open the measure. */
+@media (max-width: 1023px) {
+  .profile-top > .container {
+    max-width: min(640px, 100%);
+  }
+  .profile-top .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  .profile-top .row__label { text-align: left; }
+}
 @media (max-width: 880px) {
   .work-grid, .pub-grid { grid-template-columns: repeat(2, 1fr); }
   .footer__links { gap: var(--space-10); }
