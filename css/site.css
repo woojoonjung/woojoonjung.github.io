@@ -438,7 +438,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 /* ---------- Profile: hanging-label rows ---------- */
 .profile-top {
-  --profile-photo-width: 198px;
+  --profile-photo-width: 182px;
   --profile-photo-ratio: calc(786 / 1040);
   /* Laptop / tablet (default) */
   padding-top: 60px;
@@ -512,7 +512,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 /* Desktop profile. The portrait and reading area share one grid row. */
 @media (min-width: 1024px) {
   .profile-top {
-    --profile-width-extra: -12px;
+    --profile-width-extra: 84px;
     --profile-lift: 10px;
     --profile-start: max(var(--space-6), calc(50dvh - var(--profile-photo-width) / var(--profile-photo-ratio) / 2 - var(--profile-header-height, 171px) - var(--profile-lift)));
     min-height: calc(100dvh - var(--profile-header-height, 171px));
@@ -521,7 +521,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
   .profile-top > .container {
     display: grid;
     grid-template-columns: var(--profile-photo-width) minmax(0, 1fr);
-    column-gap: clamp(48px, 5vw, 75px);
+    column-gap: clamp(36px, 4vw, 58px);
     align-items: start;
     max-width: calc((var(--container-max) + var(--gutter) * 2) * 2 / 3 + 30px + var(--profile-width-extra) + var(--profile-photo-width) - 200px);
   }
@@ -549,12 +549,12 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
 
 @media (min-width: 1024px) and (min-height: 480px) {
   .profile-canvas {
-    --profile-canvas-height: min(70dvh, 670px);
+    --profile-canvas-height: min(70dvh, 600px);
     /* --profile-canvas-height: 65dvh; */
     --profile-canvas-gutter: 54px;
     --profile-canvas-lift: min(70px, calc(var(--profile-start) - var(--space-2)));
     --profile-fade-top-size: 100px;
-    --profile-fade-bottom-size: 140px;
+    --profile-fade-bottom-size: 120px;
     width: calc(100% + var(--profile-canvas-gutter));
     padding-inline-end: var(--profile-canvas-gutter);
     margin-block-start: calc(-1 * var(--profile-canvas-lift));
@@ -569,7 +569,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
       to bottom,
       transparent 0,
       black var(--profile-fade-top-active, 0px),
-      black calc(100% - var(--profile-fade-bottom-active, 0px)),
+      black calc(100% - var(--profile-fade-bottom-active)),
       transparent 100%
     );
   }
@@ -578,6 +578,7 @@ body.is-morphing #morphTag { opacity: 0 !important; transition: none; }
   }
   .profile-canvas > .profile-content {
     margin-block-start: var(--profile-canvas-lift);
+    padding-block-end: var(--profile-fade-bottom-size);
   }
 }
 
